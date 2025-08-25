@@ -1,0 +1,280 @@
+@import "common.css";
+
+// Temp styles for container before insertion of code into tasks.bladed.php
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("./HelveticaNeueCyr-Roman.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.main-temporary-container {
+  max-width: 1460px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background: #fff;
+  box-sizing: border-box;
+}
+// color: #3e445b
+// --------------------------------------------------
+
+// Permanent styles
+
+#tasks-page-wrapper {
+  // Colors
+  $text-color: #3e445b;
+  $text-color-active: #3d445c;
+  $primary-color: #fc6b40;
+  $border-color: #cdd4d9;
+  $placeholder-color: #adb0b9;
+  $white-color: #fff;
+  $background-color: #fff;
+
+  font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  & * {
+    box-sizing: border-box;
+  }
+
+  & .title-row {
+    padding: 22px 20px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & h1 {
+      padding: 0;
+      margin: 0;
+      font-size: 34px;
+      line-height: 41px;
+      font-style: normal;
+      font-weight: normal;
+      color: $text-color;
+    }
+  }
+
+  & .tasks-view-type {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 83px;
+    height: 42px;
+    right: 20px;
+    top: 0;
+  }
+
+  & .view-item {
+    position: static;
+  }
+
+  & .box-view {
+    margin-left: -1px;
+  }
+
+  & .tasks-toolbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  & .tasks-search-input {
+    background: $white-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    width: 340px;
+    height: 42px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: $text-color;
+    padding: 0 11px;
+    margin-right: auto;
+
+    &::placeholder {
+      display: block;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      line-height: 16px;
+      color: $placeholder-color;
+      margin-bottom: 5px;
+    }
+  }
+
+  & .tasks-filter-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: $white-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: $text-color;
+    height: 42px;
+  }
+
+  & .tasks-settings-btn {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $white-color;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: $text-color;
+  }
+
+  & .create-task-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: $primary-color;
+    border: 1px solid $primary-color;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: $white-color;
+    height: 42px;
+  }
+
+  & .tasks-tabs {
+    margin: 0 0 20px;
+    font-size: 14px;
+    line-height: 1.2;
+    color: $text-color;
+    border-bottom: solid 1px $border-color;
+
+    & .tasks-tab-btn {
+      font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 22px;
+      color: $primary-color;
+      padding-bottom: 7px;
+      display: inline-block;
+      margin-right: 20px;
+      border-bottom: 2px solid rgba(0, 0, 0, 0);
+      text-decoration: none;
+
+      &.active {
+        border-bottom: 2px solid $primary-color;
+        color: $text-color-active;
+      }
+    }
+  }
+
+  & .tasks-table {
+    border: 1px solid #e8ebf1;
+  }
+
+  & .tasks-table-title {
+    width: 100%;
+    padding: 20px 16px;
+    color: $text-color;
+    font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 32px;
+    border-bottom: 1px solid #e8ebf1;
+  }
+
+  .tasks-table-header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid #e8ebf1;
+  }
+
+  & .tasks-table-col {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    padding-left: 0;
+    color: var(--black-100, #3d445c);
+    font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: lowercase;
+    cursor: n-resize;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    user-select: none; /* Стандарт */
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    & > span {
+      flex-grow: 0;
+      flex-shrink: 1;
+    }
+  }
+
+  & .tasks-table-col.tasks-table-col__accordeon-arrow {
+    width: 3%;
+    // min-width: 35px;
+  }
+  & .tasks-table-col.tasks-table-col__task-type {
+    width: 9%;
+    // min-width: 92px;
+  }
+  & .tasks-table-col.tasks-table-col__priority {
+    width: 11%;
+    // min-width: 100px;
+  }
+  & .tasks-table-col.tasks-table-col__title {
+    width: 12%;
+    // min-width: 136px;
+  }
+  & .tasks-table-col.tasks-table-col__client {
+    width: 9%;
+    // min-width: 92px;
+  }
+  & .tasks-table-col.tasks-table-col__status {
+    width: 11%;
+    // min-width: 100px;
+  }
+  & .tasks-table-col.tasks-table-col__creation-time {
+    width: 9%;
+    // min-width: 96px;
+  }
+  & .tasks-table-col.tasks-table-col__dedline-time {
+    width: 9%;
+    // min-width: 96px;
+  }
+  & .tasks-table-col.tasks-table-col__initiator {
+    width: 9%;
+    // min-width: 96px;
+  }
+  & .tasks-table-col.tasks-table-col__responsible {
+    width: 9%;
+    // min-width: 96px;
+  }
+  & .tasks-table-col.tasks-table-col__completion-time {
+    width: 9%;
+    // min-width: 96px;
+  }
+}

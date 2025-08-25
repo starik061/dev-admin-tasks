@@ -1,23 +1,341 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Разработка страницы "Задачи"</title>
-  <!-- Скомпилированные стили. Не трогайте этот файл. -->
-  <link rel="stylesheet" href="tasks-temp.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Разработка страницы "Задачи"</title>
+    <link rel="stylesheet" href="tasks.css" />
+  </head>
 
-  <!-- Это обертка для вашей страницы. Вся верстка должна быть здесь. -->
-  <div class="tasks-page-wrapper">
-    <div class="main-temporary-container">
-        <h1>Страница "Задачи"</h1>
-        <p>Начните верстку здесь.</p>
+  <body>
+    <div class="main-temporary-container" id="tasks-page-wrapper">
+      <div class="title-row">
+        <h1>Задачі</h1>
+
+        <div class="tasks-view-type">
+          <div class="line-view view-item active" data-url="/manager/leads">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.66797 5H17.5013"
+                stroke="#3D445C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M6.66797 10H17.5013"
+                stroke="#3D445C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M6.66797 15H17.5013"
+                stroke="#3D445C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M2.5 5H2.50833"
+                stroke="#3D445C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M2.5 10H2.50833"
+                stroke="#3D445C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M2.5 15H2.50833"
+                stroke="#3D445C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </div>
+          <div
+            class="box-view view-item"
+            data-url="/manager/leads?tmplt=kanban"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.8333 2.5H4.16667C3.24619 2.5 2.5 3.24619 2.5 4.16667V15.8333C2.5 16.7538 3.24619 17.5 4.16667 17.5H15.8333C16.7538 17.5 17.5 16.7538 17.5 15.8333V4.16667C17.5 3.24619 16.7538 2.5 15.8333 2.5Z"
+                stroke="#3D445C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M2.5 10H17.5"
+                stroke="#3D445C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+              <path
+                d="M10 2.5V17.5"
+                stroke="#3D445C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="tasks-toolbar">
+        <input
+          class="tasks-search-input"
+          type="text"
+          name="tasks-search"
+          value=""
+          placeholder="Пошук"
+        />
+
+        <button class="tasks-settings-btn">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+          >
+            <g clip-path="url(#clip0_11756_79313)">
+              <path
+                d="M7.55708 2.37233C7.602 1.87829 8.01622 1.5 8.51227 1.5H9.48773C9.98378 1.5 10.398 1.87829 10.4429 2.37233C10.4798 2.77794 10.7717 3.10907 11.1531 3.252C11.2511 3.28874 11.348 3.32793 11.4436 3.36947C11.821 3.53347 12.2648 3.50204 12.5809 3.23864C12.9715 2.91315 13.5458 2.93921 13.9053 3.29872L14.5938 3.98717C14.9366 4.32994 14.9614 4.87753 14.651 5.24994C14.3926 5.56012 14.3685 5.99809 14.5423 6.36256C14.6175 6.52039 14.6862 6.68194 14.748 6.84687C14.8909 7.22825 15.2221 7.52018 15.6277 7.55708C16.1217 7.602 16.5 8.01622 16.5 8.51227V9.48773C16.5 9.98378 16.1217 10.398 15.6277 10.4429C15.2221 10.4798 14.8909 10.7717 14.748 11.1531C14.6925 11.3012 14.6315 11.4465 14.5652 11.5889C14.404 11.9348 14.4301 12.3478 14.6743 12.641C14.9715 12.9975 14.9477 13.5218 14.6195 13.85L13.85 14.6195C13.5218 14.9477 12.9975 14.9715 12.641 14.6743C12.3478 14.4301 11.9348 14.404 11.5889 14.5652C11.4465 14.6315 11.3012 14.6925 11.1531 14.748C10.7717 14.8909 10.4798 15.2221 10.4429 15.6277C10.398 16.1217 9.98378 16.5 9.48773 16.5H8.51227C8.01622 16.5 7.602 16.1217 7.55708 15.6277C7.52018 15.2221 7.22825 14.8909 6.84688 14.748C6.68195 14.6862 6.5204 14.6175 6.36257 14.5423C5.99809 14.3685 5.56012 14.3926 5.24994 14.651C4.87753 14.9614 4.32994 14.9366 3.98716 14.5938L3.29872 13.9053C2.9392 13.5458 2.91315 12.9715 3.23864 12.5809C3.50204 12.2648 3.53347 11.821 3.36947 11.4436C3.32793 11.348 3.28875 11.2512 3.252 11.1531C3.10908 10.7717 2.77794 10.4798 2.37233 10.4429C1.87829 10.398 1.5 9.98378 1.5 9.48773V8.51227C1.5 8.01622 1.87829 7.602 2.37233 7.55708C2.77795 7.52018 3.10908 7.22826 3.25201 6.84688C3.2952 6.73163 3.34176 6.61801 3.39157 6.50617C3.56782 6.11037 3.53853 5.64193 3.26116 5.30908C2.92291 4.90319 2.94999 4.30634 3.32359 3.93274L3.93273 3.32359C4.30633 2.94999 4.90318 2.92291 5.30907 3.26116C5.64192 3.53854 6.11036 3.56782 6.50616 3.39157C6.61801 3.34176 6.73162 3.2952 6.84687 3.25201C7.22825 3.10908 7.52018 2.77795 7.55708 2.37233Z"
+                stroke="#3D445C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11.25 9C11.25 10.2427 10.2427 11.25 9 11.25C7.75732 11.25 6.75 10.2427 6.75 9C6.75 7.75732 7.75732 6.75 9 6.75C10.2427 6.75 11.25 7.75732 11.25 9Z"
+                stroke="#3D445C"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_11756_79313">
+                <rect width="18" height="18" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </button>
+
+        <button class="tasks-filter-btn">
+          <svg
+            width="18"
+            height="16"
+            viewBox="0 0 18 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M0.989754 1.01326C1.08192 0.814602 1.28101 0.6875 1.50001 0.6875H16.5C16.719 0.6875 16.9181 0.814602 17.0103 1.01326C17.1024 1.21191 17.0709 1.446 16.9295 1.61322L11.0625 8.55096V14.75C11.0625 14.945 10.9616 15.126 10.7957 15.2285C10.6299 15.331 10.4228 15.3403 10.2485 15.2531L7.24845 13.7531C7.05788 13.6578 6.93751 13.4631 6.93751 13.25V8.55096L1.0705 1.61322C0.929088 1.446 0.897583 1.21191 0.989754 1.01326ZM2.71237 1.8125L7.92952 7.98178C8.01539 8.08333 8.06251 8.21201 8.06251 8.345V12.9024L9.93751 13.8399V8.345C9.93751 8.21201 9.98463 8.08333 10.0705 7.98178L15.2877 1.8125H2.71237Z"
+              fill="#FC6B40"
+            ></path>
+          </svg>
+          Фільтр
+        </button>
+
+        <button class="create-task-btn">Створити задачу</button>
+      </div>
+
+      <div class="tasks-tabs">
+        <a href="/manager/tasks/?type=pending" class="tasks-tab-btn active">
+          До виконання
+        </a>
+        <a href="/manager/tasks/?type=overdue" class="tasks-tab-btn">
+          Протерміновані
+        </a>
+      </div>
+
+      <div class="tasks-table">
+        <div class="tasks-table-title">На сьогодні</div>
+
+        <div class="tasks-table-header">
+          <div class="tasks-table-col tasks-table-col__accordeon-arrow"></div>
+
+          <div class="tasks-table-col tasks-table-col__task-type">
+            <span>тип задачі</span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class=" "
+            >
+              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+            </svg>
+          </div>
+
+          <div class="tasks-table-col tasks-table-col__priority">
+            <span>пріоритет</span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class=" "
+            >
+              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+            </svg>
+          </div>
+
+          <div class="tasks-table-col tasks-table-col__title">
+            <span>title задачі</span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class=" "
+            >
+              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+            </svg>
+          </div>
+
+          <div class="tasks-table-col tasks-table-col__client">
+            <span>лід/клієнт</span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class=" "
+            >
+              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+            </svg>
+          </div>
+
+          <div class="tasks-table-col tasks-table-col__status">
+            <span>статус</span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class=" "
+            >
+              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+            </svg>
+          </div>
+
+          <div class="tasks-table-col tasks-table-col__creation-time">
+            <span>дата та час створення</span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class=" "
+            >
+              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+            </svg>
+          </div>
+
+          <div class="tasks-table-col tasks-table-col__dedline-time">
+            <span>дата та час дедлайна</span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class=" "
+            >
+              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+            </svg>
+          </div>
+
+          <div class="tasks-table-col tasks-table-col__initiator">
+            <span>постановник</span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class=" "
+            >
+              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+            </svg>
+          </div>
+
+          <div class="tasks-table-col tasks-table-col__responsible">
+            <span>відповідальний</span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class=" "
+            >
+              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+            </svg>
+          </div>
+
+          <div class="tasks-table-col tasks-table-col__completion-time">
+            <span>дата та час закриття задачі</span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 12 12"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class=" "
+            >
+              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+            </svg>
+          </div>
+        </div>
+
+        <div class="tasks-table-body"></div>
+      </div>
     </div>
-  </div>
 
-  <!-- Ваши скрипты -->
-  <script src="tasks-temp.js"></script>
-</body>
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/tasks.js"></script>
+  </body>
 </html>

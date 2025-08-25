@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "common.css";
 @font-face {
   font-family: "Helvetica Neue";
@@ -20,6 +21,9 @@
   font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
+}
+#tasks-page-wrapper * {
+  box-sizing: border-box;
 }
 #tasks-page-wrapper .title-row {
   padding: 22px 20px 12px;
@@ -60,7 +64,7 @@
   margin-bottom: 24px;
 }
 #tasks-page-wrapper .tasks-search-input {
-  background: white;
+  background: #fff;
   border: 1px solid #cdd4d9;
   border-radius: 4px;
   width: 340px;
@@ -88,7 +92,7 @@
   align-items: center;
   gap: 10px;
   padding: 12px 24px;
-  background: white;
+  background: #fff;
   border: 1px solid #cdd4d9;
   border-radius: 4px;
   cursor: pointer;
@@ -102,7 +106,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: white;
+  background: #fff;
   border: 1px solid #cdd4d9;
   border-radius: 4px;
   cursor: pointer;
@@ -120,7 +124,7 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  color: white;
+  color: #fff;
   height: 42px;
 }
 #tasks-page-wrapper .tasks-tabs {
@@ -147,54 +151,86 @@
   border-bottom: 2px solid #fc6b40;
   color: #3d445c;
 }
-#tasks-page-wrapper .tasks-table .tasks-table-header {
+#tasks-page-wrapper .tasks-table {
+  border: 1px solid #e8ebf1;
+}
+#tasks-page-wrapper .tasks-table-title {
+  width: 100%;
+  padding: 20px 16px;
+  color: #3e445b;
+  font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+  border-bottom: 1px solid #e8ebf1;
+}
+#tasks-page-wrapper .tasks-table-header {
+  width: 100%;
   display: flex;
-  padding: 0 20px;
-  margin-bottom: 10px;
-  color: #8A90A9;
-  font-size: 13px;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid #e8ebf1;
 }
-#tasks-page-wrapper .tasks-table .tasks-table-body .tasks-table-date-group {
-  margin-bottom: 20px;
-}
-#tasks-page-wrapper .tasks-table .tasks-table-body .tasks-table-date-header {
-  padding: 10px 20px;
-  background-color: #f5f5f5;
-  font-weight: bold;
-}
-#tasks-page-wrapper .tasks-table .tasks-table-body .tasks-table-row-wrapper {
-  border-bottom: 1px solid #EAEDF1;
-}
-#tasks-page-wrapper .tasks-table .tasks-table-body .tasks-table-row-wrapper:last-child {
-  border-bottom: none;
-}
-#tasks-page-wrapper .tasks-table .tasks-table-body .tasks-table-row {
+#tasks-page-wrapper .tasks-table-col {
   display: flex;
-  padding: 20px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-#tasks-page-wrapper .tasks-table .tasks-table-body .tasks-table-row:hover {
-  background-color: #f5f5f5;
-}
-#tasks-page-wrapper .tasks-table .tasks-table-body .tasks-table-row.active {
-  background-color: #fff0ec;
-}
-#tasks-page-wrapper .tasks-table .tasks-table-body .tasks-table-row-details {
-  padding: 0 20px 20px;
-}
-#tasks-page-wrapper .tasks-table .tasks-table-col {
-  width: 16.66%;
-  padding: 0 10px;
-}
-#tasks-page-wrapper .tasks-table .tasks-table-col:first-child {
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
   padding-left: 0;
+  color: var(--black-100, #3d445c);
+  font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: lowercase;
+  cursor: n-resize;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  user-select: none; /* Стандарт */
+  flex-grow: 0;
+  flex-shrink: 0;
 }
-#tasks-page-wrapper .tasks-table .tasks-table-col:last-child {
-  padding-right: 0;
+#tasks-page-wrapper .tasks-table-col > span {
+  flex-grow: 0;
+  flex-shrink: 1;
 }
-#tasks-page-wrapper .tasks-table .hide {
-  display: none;
+#tasks-page-wrapper .tasks-table-col.tasks-table-col__accordeon-arrow {
+  width: 3%;
+}
+#tasks-page-wrapper .tasks-table-col.tasks-table-col__task-type {
+  width: 9%;
+}
+#tasks-page-wrapper .tasks-table-col.tasks-table-col__priority {
+  width: 11%;
+}
+#tasks-page-wrapper .tasks-table-col.tasks-table-col__title {
+  width: 12%;
+}
+#tasks-page-wrapper .tasks-table-col.tasks-table-col__client {
+  width: 9%;
+}
+#tasks-page-wrapper .tasks-table-col.tasks-table-col__status {
+  width: 11%;
+}
+#tasks-page-wrapper .tasks-table-col.tasks-table-col__creation-time {
+  width: 9%;
+}
+#tasks-page-wrapper .tasks-table-col.tasks-table-col__dedline-time {
+  width: 9%;
+}
+#tasks-page-wrapper .tasks-table-col.tasks-table-col__initiator {
+  width: 9%;
+}
+#tasks-page-wrapper .tasks-table-col.tasks-table-col__responsible {
+  width: 9%;
+}
+#tasks-page-wrapper .tasks-table-col.tasks-table-col__completion-time {
+  width: 9%;
 }
 
-/*# sourceMappingURL=tasks-temp.css.map */
+/*# sourceMappingURL=tasks.css.map */
