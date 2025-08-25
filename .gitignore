@@ -1,0 +1,72 @@
+# Laravel .gitignore для Blade шаблонов и ассетов
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Операционная система
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Логи
+*.log
+logs/
+
+# Временные файлы
+*.tmp
+*.temp
+.cache/
+
+# Зависимости (если появятся)
+node_modules/
+vendor/
+
+# Конфигурация среды
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Собранные ассеты (если появятся)
+/public/hot
+/public/storage
+/storage/*.key
+
+# Кэш
+bootstrap/cache/
+storage/app/
+storage/framework/cache/
+storage/framework/sessions/
+storage/framework/testing/
+storage/framework/views/
+
+# Загруженные файлы
+/public/uploads/
+/storage/uploads/
+
+# Временные файлы проекта
+*.backup
+*.bak
+
+# Папка с временными файлами
+temp_files/
+
+# Системные файлы Windows
+ehthumbs.db
+ehthumbs_vista.db
+
+# Системные файлы macOS
+.AppleDouble
+.LSOverride
+
+# Системные файлы Linux
+*~
+
+# Конфигурация Qoder IDE (оставляем правила)
+# .qoder/
+!.qoder/rules/

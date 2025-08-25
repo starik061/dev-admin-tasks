@@ -1,0 +1,18 @@
+.tasks-page-wrapper {
+  /*  */
+}
+.tasks-page-wrapper .main-temporary-container {
+  max-width: 1460px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background: #fff;
+  font-family: Helvetica Neue;
+  font-style: normal;
+  font-weight: normal;
+  box-sizing: border-box;
+}
+
+/*# sourceMappingURL=tasks-temp.css.map */

@@ -1,0 +1,81 @@
+@include('add.head')
+<body>
+  @include('add.header')
+  @include('add.menu')
+  @include('add.bread')
+
+<!-- RESULT SEARCH (START) -->
+@php
+$webp = "";
+@endphp
+
+<section id="result-search-list" class="al-client-info">
+  <div class="container-fluid container-fluid-base">
+    <div class="row no-gutters">
+      <div class="container container-base container-search-result manager-search our-details posts-block">
+        <div class="favorite-viewed-tab system-info-tabs">
+          @include('front.crm.settings-menu')
+        </div>
+        <h1 class="title-search-result">
+            {{ $data['seo']->h1_title }}
+        </h1>
+        <a class="crm-button abs-top-right" href="/manager/services/new">Новая услуга</a>
+        <div class="content-block posts-block">
+          <div class="posts-list">
+            <div class="clients-contracts-data">
+              <div class="data-table">
+                <div class="data-thead">
+                  <div class="data-tr">
+                    <div class="data-td td-name">@lang('message.service_name')</div>
+                    <div class="data-td">@lang('message.price_')</div>
+                    <div class="data-td action-col"></div>
+                  </div>
+                </div>
+                <div class="data-tbody contracts-rows">
+                @foreach($services as $key => $item)
+                  <div class="data-tr" data-id="{{$item->id}}">
+                    <div class="data-td td-name">{{$item->name}}</div>
+                    <div class="data-td">{{$item->price}}</div>
+                    <div class="data-td action-col">
+                      <a href="/manager/services/{{$item->id}}/edit" class="edit @if(!$item->can_delete) mr0 @endif">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M12.75 2.24998C12.947 2.053 13.1808 1.89674 13.4382 1.79014C13.6956 1.68353 13.9714 1.62866 14.25 1.62866C14.5286 1.62866 14.8044 1.68353 15.0618 1.79014C15.3192 1.89674 15.553 2.053 15.75 2.24998C15.947 2.44697 16.1032 2.68082 16.2098 2.93819C16.3165 3.19556 16.3713 3.47141 16.3713 3.74998C16.3713 4.02856 16.3165 4.30441 16.2098 4.56178C16.1032 4.81915 15.947 5.053 15.75 5.24998L5.625 15.375L1.5 16.5L2.625 12.375L12.75 2.24998Z" stroke="#FC6B40" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </a>
+                    @if($item->can_delete) 
+                      <a class="service-delete pointer del_" data-id="{{$item->id}}">
+                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M1.6875 4.5C1.6875 4.18934 1.93934 3.9375 2.25 3.9375H15.75C16.0607 3.9375 16.3125 4.18934 16.3125 4.5C16.3125 4.81066 16.0607 5.0625 15.75 5.0625H2.25C1.93934 5.0625 1.6875 4.81066 1.6875 4.5Z" fill="#FC6B40"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 2.0625C7.25136 2.0625 7.0129 2.16127 6.83709 2.33709C6.66127 2.5129 6.5625 2.75136 6.5625 3V3.9375H11.4375V3C11.4375 2.75136 11.3387 2.5129 11.1629 2.33709C10.9871 2.16127 10.7486 2.0625 10.5 2.0625H7.5ZM12.5625 3.9375V3C12.5625 2.45299 12.3452 1.92839 11.9584 1.54159C11.5716 1.1548 11.047 0.9375 10.5 0.9375H7.5C6.95299 0.9375 6.42839 1.1548 6.04159 1.54159C5.6548 1.92839 5.4375 2.45299 5.4375 3V3.9375H3.75C3.43934 3.9375 3.1875 4.18934 3.1875 4.5V15C3.1875 15.547 3.4048 16.0716 3.79159 16.4584C4.17839 16.8452 4.70299 17.0625 5.25 17.0625H12.75C13.297 17.0625 13.8216 16.8452 14.2084 16.4584C14.5952 16.0716 14.8125 15.547 14.8125 15V4.5C14.8125 4.18934 14.5607 3.9375 14.25 3.9375H12.5625ZM4.3125 5.0625V15C4.3125 15.2486 4.41127 15.4871 4.58709 15.6629C4.7629 15.8387 5.00136 15.9375 5.25 15.9375H12.75C12.9986 15.9375 13.2371 15.8387 13.4129 15.6629C13.5887 15.4871 13.6875 15.2486 13.6875 15V5.0625H4.3125Z" fill="#FC6B40"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 7.6875C7.81066 7.6875 8.0625 7.93934 8.0625 8.25V12.75C8.0625 13.0607 7.81066 13.3125 7.5 13.3125C7.18934 13.3125 6.9375 13.0607 6.9375 12.75V8.25C6.9375 7.93934 7.18934 7.6875 7.5 7.6875Z" fill="#FC6B40"/>
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 7.6875C10.8107 7.6875 11.0625 7.93934 11.0625 8.25V12.75C11.0625 13.0607 10.8107 13.3125 10.5 13.3125C10.1893 13.3125 9.9375 13.0607 9.9375 12.75V8.25C9.9375 7.93934 10.1893 7.6875 10.5 7.6875Z" fill="#FC6B40"/>
+                        </svg>
+                      </a>
+                    @endif
+                    </div>
+                  </div>
+                @endforeach
+                </div>
+              </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+@include('add.footer')
+<div class="al-overlay3 hide"></div>
+@include('front.crm.footer');
+
+<script>
+var main_url = '/manager/services';
+</script>
+
+@include('front.crm.scripts')
+
+@if(session('success') || @$success)
+<script>
+  notify("{!! session('name') !!}")
+</script>
+@endif

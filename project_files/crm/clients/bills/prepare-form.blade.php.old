@@ -1,0 +1,335 @@
+<div class="bill-add-sideblock zi10101">
+  <div class="bill-add-sideblock-header">
+    <span>Создать счет</span>
+    <span class="close">
+      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.693739 15.119L0.587673 15.225L0.693739 15.3311L1.54227 16.1796L1.64833 16.2857L1.7544 16.1796L8.43656 9.49746L15.1187 16.1796L15.2248 16.2857L15.3308 16.1796L16.1794 15.3311L16.2854 15.225L16.1794 15.119L9.49722 8.4368L16.1794 1.75464L16.2854 1.64858L16.1794 1.54251L15.3308 0.693983L15.2248 0.587917L15.1187 0.693983L8.43656 7.37614L1.7544 0.693983L1.64833 0.587917L1.54227 0.693983L0.693739 1.54251L0.587673 1.64858L0.693739 1.75464L7.3759 8.4368L0.693739 15.119Z" fill="#3D445C" stroke="#3D445C" stroke-width="0.3"/>
+      </svg>
+    </span>
+  </div>
+  <div class="bill-add-sideblock-body">
+    <ul class="tab-selector">
+      <li class="active" data-id="by-contract">@lang('message.contract')</li>
+      <li data-id="by-period">@lang('message.period')</li>
+    </ul>
+    <div class="bill-add-tabs">
+      <div id="by-contract" class="tab-item active">
+        <form class="bill-form-add" id="bill-form-add">
+          <input type="hidden" name="client_id" value="{{$client->id}}"/>
+          <div class="field-container">
+            <div class="input-block">
+              <label>@lang('message.contract_number')</label>
+              <select class="contract-select" name="contract_id" id="contract_id" required>
+                @if(count($contracts) > 1)
+                <option value=""></option>
+                @endif
+                {{--@if(count($contracts) == 1)--}}
+                @foreach($contracts as $key => $item)
+                <option value="{{$item->id}}" data-detail_id="{{$item->detail_id}}">№{{ $item->number }}</option>
+                @endforeach
+                {{--@endif--}}
+              </select>
+            </div>
+            <div class="input-block">
+              <label>@lang('message.application')</label>
+              <select class="application-select" name="application_id" id="application_id" required>
+                @if(count($contracts) > 1)
+                <option value=""></option>
+                @else
+                  @if(count($contracts)==1 && count($applications))
+                  @foreach($applications[$contracts[0]->id] as $key => $item)
+                  <option value="{{$item->id}}">№{{$item->number}}</option>
+                  @endforeach
+                  @endif
+                @endif
+              </select>
+            </div>
+          </div>
+          <div class="field-container">
+            @php
+            $periods = [];
+            if(count($contracts) == 1 /*&& count($applications[$contracts[0]->id]) == 1*/){
+              $periods = json_decode($applications[$contracts[0]->id][0]->months_list, true);
+              @krsort($periods);
+            }
+            @endphp
+            <div class="input-block ib2">
+              <label>@lang('message.period')</label>
+              <select class="period-select" name="periods[]" id="period-select" multiple required>
+                @foreach((array)$periods as $key => $value)
+                <option value="{{$key}}">{{ $value }}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+          <div class="field-container">
+            <div class="input-block">
+              <label>@lang('message.status')</label>
+              <div class="radio-button">
+                <input type="radio" name="status" value="1" id="sid-1" checked>
+                <label for="sid-1">@lang('message.created')</label>
+              </div>
+              <div class="radio-button">
+                <input type="radio" name="status" value="2" id="sid-2">
+                <label for="sid-2">@lang('message.to_approve')</label>
+              </div>
+              <div class="radio-button">
+                <input type="radio" name="status" value="3" id="sid-3">
+                <label for="sid-3">@lang('message.to_fast_approve')</label>
+              </div>
+            </div>
+          </div>
+          <div class="field-container">
+            <div class="input-block">
+              <label>@lang('message.bill_date')</label>
+              <input type="text" name="date" value="" class="datepicker" required/>
+            </div>
+            <div class="input-block">
+              <label>@lang('message.payer')</label>
+              <select class="details-select" name="detail_id" id="contract_detail_id" required>
+                @if(count($contracts) > 1)
+                <option value=""></option>
+                @else
+                @php
+                if(count($contracts) == 1){
+                  $contracts[0]->getCurrentDetails();
+                }
+                @endphp
+                @if(count($contracts) == 1)
+                <option value="{{$contracts[0]->detail_id}}">{{$contracts[0]->company_name_short}}</option>
+                @endif
+                @endif
+              </select>
+            </div>
+            {{--
+            <div class="input-block">
+              <label>Дата оплаты</label>
+              <input type="text" name="first_month_pay_date" value="" class="datepicker" required/>
+            </div>
+            --}}
+          </div>
+          <div class="field-container view-fix">
+            <div class="input-block">
+              <label>
+                <input type="checkbox" value="1" name="without_pay_date">&nbsp;Без даты оплаты
+              </label>
+            </div>
+          </div>
+          <div class="field-container">
+            <div class="input-block ib2">
+              <label>@lang('message.payment_form')</label>
+              <div class="form_toggle">
+                <div class="form_toggle-item item-1" style="opacity:0.5;">
+                  <input id="fid-1" type="radio" name="cash" value="1" disabled>
+                  <label for="fid-1">@lang('message.cash')</label>
+                </div>
+                <div class="form_toggle-item item-2">
+                  <input id="fid-2" type="radio" name="cash" value="0" checked="" disabled>
+                  <label for="fid-2">@lang('message.cashless_payments')</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field-container">
+            <div class="input-block">
+              <label>@lang('message.sum')</label>
+              <input type="text" name="itogo" value="" disabled/><br>
+              <span class="price-notice">@lang('message.sum_note')</span>
+            </div>
+          </div>
+          <div class="buttons-block right-buttons">
+            <a class="cancel pointer">@lang('message.cancel')</a>
+            <button class="crm-button">@lang('message.add')</button>
+            <div class="lds-ellipsis2 hide"><div></div><div></div><div></div><div></div></div>
+          </div>
+        </form>
+      </div>
+      <div id="by-period" class="tab-item">
+        <form class="bill-form-add" id="bill-form-add-2">
+          <input type="hidden" name="client_id" value="{{$client->id}}"/>
+          <input type="hidden" name="contract_id" value=""/>
+          <input type="hidden" name="application_id" value=""/>
+          <div class="field-container">
+            <div class="input-block ib2">
+              <label>@lang('message.period')</label>
+              <select class="period-select" name="periods[]" id="period-select2" multiple required>
+                @php
+                  krsort($avaliablePeriod);
+                @endphp
+                @foreach($avaliablePeriod as $key => $value)
+                <option value="{{$key}}">{{ $value }}</option>
+                @endforeach
+              </select>
+            </div>
+          </div>
+          <div class="field-container">
+            <div class="appications-list-data">
+              
+            </div>
+          </div>
+          <div class="field-container for-hide hide">
+            <div class="input-block">
+              <label>@lang('message.status')</label>
+              <div class="radio-button">
+                <input type="radio" name="status" value="1" id="sid_-1" checked>
+                <label for="sid_-1">@lang('message.created')</label>
+              </div>
+              <div class="radio-button">
+                <input type="radio" name="status" value="2" id="sid_-2">
+                <label for="sid_-2">@lang('message.to_approve')</label>
+              </div>
+              <div class="radio-button">
+                <input type="radio" name="status" value="3" id="sid_-3">
+                <label for="sid_-3">@lang('message.to_fast_approve')</label>
+              </div>
+            </div>
+          </div>
+          <div class="field-container for-hide hide">
+            <div class="input-block">
+              <label>@lang('message.bill_date')</label>
+              <input type="text" name="date" value="" class="datepicker datepicker2" required/>
+            </div>
+            <div class="input-block">
+              <label>@lang('message.payer')</label>
+              <select class="details-select" name="detail_id" id="contract_detail_id2" required>
+              </select>
+            </div>
+          </div>
+          <div class="field-container view-fix">
+            <div class="input-block">
+              <label>
+                <input type="checkbox" value="1" name="without_pay_date">&nbsp;Без даты оплаты
+              </label>
+            </div>
+          </div>
+          <div class="field-container for-hide hide">
+            <div class="input-block ib2">
+              <label>@lang('message.payment_form')</label>
+              <div class="form_toggle">
+                <div class="form_toggle-item item-1" style="opacity:0.5;">
+                  <input id="fid-1" type="radio" name="cash" value="1" disabled>
+                  <label for="fid-1">@lang('message.cash')</label>
+                </div>
+                <div class="form_toggle-item item-2">
+                  <input id="fid-2" type="radio" name="cash" value="0" checked="" disabled>
+                  <label for="fid-2">@lang('message.cashless_payments')</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="field-container for-hide hide">
+            <div class="input-block">
+              <label>@lang('message.sum')</label>
+              <input type="text" name="itogo" value="" disabled/><br>
+              <span class="price-notice">@lang('message.sum_note')</span>
+            </div>
+          </div>
+          <div class="buttons-block right-buttons for-hide hide">
+            <a class="cancel pointer">@lang('message.cancel')</a>
+            <button class="crm-button">@lang('message.add')</button>
+            <div class="lds-ellipsis2 hide"><div></div><div></div><div></div><div></div></div>
+          </div>
+          <div class="notification hide">
+            <div class="img">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#FC6B40" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 16V12" stroke="#FC6B40" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M12 8H12.01" stroke="#FC6B40" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="text">
+              <b>@lang('message.only_by_contract')</b><br/>
+              @lang('message.only_by_contract_note')
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style type="text/css">
+.input-block .select2-search.select2-search--inline{
+  display:none;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
+  line-height: 28px;
+  border: none;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  margin-top:0px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display{
+  padding: 0px 4px 0px 5px;
+  font-size: 13px;
+  /*line-height: 18px;*/
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove{
+  border-right: none;
+}
+.select2-selection__choice__remove span{
+  width: 12px;
+  height: 12px;
+  display: block;
+  line-height: 12px;
+  margin-right: 5px;
+}
+.select2-container--default .select2-selection--multiple{
+  padding-bottom: 0px;
+}
+.bill-add-sideblock .qs-datepicker-container{
+  z-index: 101101;
+}
+</style>
+<script>
+let applicationsGroupList = {};
+let applicationsGroupListPeriods = {};
+let contractsCurrentPayer = {};
+//LIST
+@foreach($applications as $contractId => $list)
+applicationsGroupList["{{$contractId}}"] = [];
+@foreach($list as $item)
+applicationsGroupList["{{$contractId}}"].push({"id":{{$item->id}}, "text":{{$item->number}}});
+@endforeach
+@endforeach
+//PERIODS
+@foreach($applications as $contractId => $list)
+applicationsGroupListPeriods["{{$contractId}}"] = [];
+@foreach($list as $item)
+applicationsGroupListPeriods["{{$contractId}}"]["{{$item->id}}"] = []
+@php
+$period = [];
+if($item->months_list){
+  $period = json_decode($item->months_list, true);
+  krsort($period);
+}/*elseif($item->sum && !$item->months_list){
+  $period = ["services" => 'Доп. услуги'];
+}*/
+@endphp
+@foreach($period as $k => $v)
+applicationsGroupListPeriods["{{$contractId}}"]["{{$item->id}}"].push({"id":"{{$k}}", "text":"{{$v}}"});
+@endforeach
+@endforeach
+@endforeach
+//CONTRACTS PAYER
+@foreach($contracts as $key => $contract)
+contractsCurrentPayer['{{$contract->id}}'] = [];
+@php
+$contract->getCurrentDetails();
+@endphp
+contractsCurrentPayer['{{$contract->id}}'].push({"id":"{{$contract->id}}", "text":"{!! addslashes($contract->company_name_short) !!}"});
+@endforeach
+
+
+document.billCreating = {
+  client_id: {{$client->id}},
+  @if(count($contracts) == 1)
+  contract_id: {{$contracts[0]->id}},
+  @endif
+  @if(count($applications) == 1)
+  application_id: {{$applications[$contracts[0]->id][0]->id}},
+  @endif
+}
+</script>

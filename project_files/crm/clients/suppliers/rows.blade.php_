@@ -1,0 +1,155 @@
+@php
+$editable = in_array(Auth::user()->id,[1,202,248,263]) ? "editable" : "";
+@endphp
+@foreach($suppliers as $supplier)
+	@php
+	if(!count($suppliersBoardsInfo[$supplier->id])){
+		continue;
+	}
+	$paidSum = 0;
+	foreach($suppliersBoardsInfo[$supplier->id] as $clientDetailId => $clientInfo){
+		$board = null;
+		foreach($clientInfo as $boardId => $boardInfo){
+			foreach($suppliersBoards[$supplier->id] as $k => $b){
+				if($b->id == $boardId){
+					$board = $b;
+					$cbsp = App\CrmContractsBoardsSuppliersPayment::where('contract_board_id',$boardInfo[0]->contract_board_id)->where('paid_period',$period)->first();
+					if($cbsp){
+						$boardInfo[0]->supplier_paid = $cbsp->supplier_paid;
+					}else{
+						$boardInfo[0]->supplier_paid = 0;
+					}
+					if($boardInfo[0]->supplier_paid){
+						$paidSum += $boardInfo[0]->owner_price;
+					}
+					break;
+				}
+			}
+			if(!$board){
+				continue;
+			}
+		}
+	}
+	$board = null;
+	$addClass = "";
+	if($paidSum && $paidSum < $supplier->sum){
+		$addClass = "bill-detials-2";
+	}
+	if($paidSum >= $supplier->sum && $paidSum){
+		$addClass = "bill-detials-1";
+	}
+	@endphp
+
+<div class="supplier-block {{$addClass}}">
+	<div class="supplier-row supplier-data-row">
+	    <div class="supplier-col">{{$supplier->name}}</div>
+	    <div class="supplier-col sum-by-supplier supplier-col-05">{{number_format($supplier->sum,2,'.','')}}</div>
+	    <div class="supplier-col sum-by-supplier-paid supplier-col-05">{{$paidSum}}</div>
+	    <div class="supplier-col action-col">
+	    	<span class=" pointer up-down-new">
+	          <svg fill="#FC6B40" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18px" height="18px" viewBox="0 0 30.727 30.727" xml:space="preserve"  class="info-arrow">
+	            <g class="info-arrow">
+	              <path d="M29.994,10.183L15.363,24.812L0.733,10.184c-0.977-0.978-0.977-2.561,0-3.536c0.977-0.977,2.559-0.976,3.536,0
+	                l11.095,11.093L26.461,6.647c0.977-0.976,2.559-0.976,3.535,0C30.971,7.624,30.971,9.206,29.994,10.183z"  class="info-arrow"/>
+	            </g>
+	          </svg>
+	        </span>
+	    </div>
+	</div>
+	<div class="supplier-row-selects hide">
+		<!-- Информация о бордах -->
+		@if(isset($suppliersBoards[$supplier->id]))
+			<div class="suppliers-thead">
+				<div class="supplier-col">ID / код</div>
+				<div class="supplier-col">город</div>
+				<div class="supplier-col">тип</div>
+				<div class="supplier-col f3">адрес</div>
+				<div class="supplier-col f03">ст.</div>
+				<div class="supplier-col f07">период</div>
+				<div class="supplier-col f07">цена покупки</div>
+				<div class="supplier-col">оплата от клиента</div>
+				<div class="supplier-col">оплата собственнику</div>
+			</div>
+			@php
+            $companyName = "";
+            @endphp
+            @foreach($suppliersBoardsInfo[$supplier->id] as $clientDetailId => $clientInfo)
+	            @php
+		            $firstBoard = $clientInfo[array_key_first($clientInfo)][0];
+		            $companyName = ($firstBoard->company_name_short ?: $firstBoard->company_name);
+		            if($firstBoard->act_id == 912){
+		            	$companyName = 'ФОП Кореганова Ю.А.';
+		            }
+	            @endphp
+	            @if(count($suppliersBoardsInfo[$supplier->id]) > 1 || $firstBoard->act_id == 912)
+	            <div class="client-company-title">{{ $companyName }}</div>
+	            @endif
+				@foreach($clientInfo as $boardId => $boardInfo)
+				@php
+					$board = null;
+					foreach($suppliersBoards[$supplier->id] as $k => $b){
+						if($b->id == $boardId){
+							$board = $b;
+							break;
+						}
+					}
+					if(!$board){
+						continue;
+					}
+				@endphp
+				<div class="supplier-row">
+					<div class="supplier-col">{{$board->id}} / {{$board->code}}</div>
+					<div class="supplier-col">{{$board->board_city->name}}</div>
+					<div class="supplier-col">{{$board->board_type->title}} {{$board->format}}</div>
+					<div class="supplier-col f3">{{$board->addr}}</div>
+					<div class="supplier-col f03">{{$board->side}}</div>
+					<div class="supplier-col f07">{{date('d.m.Y',strtotime($boardInfo[0]->date_from))}} {{date('d.m.Y',strtotime($boardInfo[0]->date_to))}}</div>
+					<div class="supplier-col f07 owner-price">
+						@if($boardInfo[0]->supplier_paid || Auth::user()->role_id == 5)
+						{{$boardInfo[0]->owner_price}}
+						@else
+						<input class="owner-price" type="text" data-client_id="{{$client->id}}" data-contract_id="{{$boardInfo[0]->contract_id}}" data-act_id="{{$boardInfo[0]->act_id}}" data-board_id="{{$board->id}}" data-contract_board_id="{{$boardInfo[0]->cbid}}" value="{{$boardInfo[0]->owner_price}}" data-default_price="{{$boardInfo[0]->owner_price}}"/>
+						@endif
+					</div>
+					<div class="supplier-col">
+						<span class="informer @if($boardInfo[0]->paid) paid @else wait @endif">&bull; @if($boardInfo[0]->paid) Оплачен @else Ожидает @endif</span>
+						@if($boardInfo[0]->paid)
+						<br> 
+						<span class="informer-date">{{ date('d.m.Y', strtotime($boardInfo[0]->paid_at)) }}</span>
+						@endif
+					</div>
+					<div class="supplier-col" id="b-{{$board->id}}">
+						@php
+						$cbsp = App\CrmContractsBoardsSuppliersPayment::where('contract_board_id',$boardInfo[0]->contract_board_id)->where('paid_period',$period)->first();
+						if($cbsp){
+							$boardInfo[0]->supplier_paid = $cbsp->supplier_paid;
+						}else{
+							$boardInfo[0]->supplier_paid = 0;
+						}
+						@endphp
+
+						<span class="informer {{$editable}} @if($boardInfo[0]->supplier_paid) paid @else wait @endif" data-id="{{$board->id}}" data-contract_id="{{$boardInfo[0]->contract_id}}">&bull;
+						@if($boardInfo[0]->supplier_paid) Оплачен @else Ожидает @endif</span>
+						@if($boardInfo[0]->supplier_paid)
+						<br>
+						<span class="informer-date">{{ date('d.m.Y', strtotime($boardInfo[0]->supplier_paid_at)) }}</span>
+						<span class="informer-form">
+						@php
+						$spf = '';
+						switch($boardInfo[0]->supplier_paid_form){
+				          case "1": $spf = 'Безнал ТОВ'; break;
+				          case "2": $spf = 'Безнал ФОП'; break;
+				          case "3": $spf = 'Форма 2'; break;
+				        }
+						@endphp
+							{{ $spf }}
+						</span>
+						@endif
+					</div>
+				</div>
+				@endforeach
+			@endforeach
+		@endif
+	</div>
+</div>
+@endforeach
