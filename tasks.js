@@ -1,49 +1,35 @@
-// Функционал клика на строку задачи
-
 $(document).ready(function () {
+  // Accordion functionality
   $(".tasks-table-body").on("click", ".task-summary-grid", function (e) {
     const parentRow = $(this).closest(".task-row-item");
-
-    // Проверяем, была ли строка уже открыта
     const isAlreadyExpanded = parentRow.hasClass("expanded");
-
-    // Сначала закрываем все открытые строки
     $(".task-row-item.expanded").removeClass("expanded");
-
-    // Если строка не была открыта, открываем ее
     if (!isAlreadyExpanded) {
       parentRow.addClass("expanded");
     }
   });
-});
-//_________________________________________________________
 
-// Функционал клика на табы в деталях задачи
-document.addEventListener("DOMContentLoaded", function () {
-  const taskRows = document.querySelectorAll(".task-row-item");
+  // Tab functionality using event delegation
+  $(".tasks-table-body").on("click", ".details-wrapper .tasks-tab-btn", function (event) {
+    event.preventDefault();
+    const $this = $(this);
+    const $detailsWrapper = $this.closest(".details-wrapper");
+    const tabId = $this.data("tab");
 
-  taskRows.forEach((row) => {
-    const tabs = row.querySelectorAll(".details-wrapper .tasks-tab-btn");
-    const tabContents = row.querySelectorAll(".details-wrapper .tab-content");
+    $detailsWrapper.find(".tasks-tab-btn").removeClass("active");
+    $this.addClass("active");
 
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", function (event) {
-        event.preventDefault();
+    $detailsWrapper.find(".tab-content").removeClass("active");
+    $detailsWrapper.find(`.tab-content#${tabId}`).addClass("active");
+  });
 
-        tabs.forEach((t) => t.classList.remove("active"));
-        this.classList.add("active");
-
-        const tabId = this.dataset.tab;
-
-        tabContents.forEach((content) => {
-          if (content.id === tabId) {
-            content.style.display = "block";
-          } else {
-            content.style.display = "none";
-          }
-        });
-      });
-    });
+  // Set initial state for all tabs
+  $(".task-row-item").each(function () {
+    const $row = $(this);
+    const $initialTab = $row.find(".details-wrapper .tasks-tab-btn.active");
+    if ($initialTab.length) {
+      const initialTabId = $initialTab.data("tab");
+      $row.find(`.details-wrapper .tab-content#${initialTabId}`).addClass("active");
+    }
   });
 });
-//_________________________________________________________
