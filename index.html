@@ -173,164 +173,326 @@
         </a>
       </div>
 
-      <div class="tasks-table">
+      <div class="tasks-table-wrapper">
         <div class="tasks-table-title">На сьогодні</div>
-
-        <div class="tasks-table-header">
-          <div class="tasks-table-col tasks-table-col__accordeon-arrow"></div>
-
-          <div class="tasks-table-col tasks-table-col__task-type">
-            <span>тип задачі</span>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class=" "
-            >
-              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
-              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
-            </svg>
-          </div>
-
-          <div class="tasks-table-col tasks-table-col__priority">
-            <span>пріоритет</span>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class=" "
-            >
-              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
-              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
-            </svg>
-          </div>
-
-          <div class="tasks-table-col tasks-table-col__title">
-            <span>title задачі</span>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class=" "
-            >
-              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
-              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
-            </svg>
-          </div>
-
-          <div class="tasks-table-col tasks-table-col__client">
-            <span>лід/клієнт</span>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class=" "
-            >
-              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
-              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
-            </svg>
-          </div>
-
-          <div class="tasks-table-col tasks-table-col__status">
-            <span>статус</span>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class=" "
-            >
-              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
-              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
-            </svg>
-          </div>
-
-          <div class="tasks-table-col tasks-table-col__creation-time">
-            <span>дата та час створення</span>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class=" "
-            >
-              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
-              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
-            </svg>
-          </div>
-
-          <div class="tasks-table-col tasks-table-col__dedline-time">
-            <span>дата та час дедлайна</span>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class=" "
-            >
-              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
-              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
-            </svg>
-          </div>
-
-          <div class="tasks-table-col tasks-table-col__initiator">
-            <span>постановник</span>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class=" "
-            >
-              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
-              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
-            </svg>
-          </div>
-
-          <div class="tasks-table-col tasks-table-col__responsible">
-            <span>відповідальний</span>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class=" "
-            >
-              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
-              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
-            </svg>
-          </div>
-
-          <div class="tasks-table-col tasks-table-col__completion-time">
-            <span>дата та час закриття задачі</span>
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              class=" "
-            >
-              <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
-              <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
-            </svg>
-          </div>
-        </div>
-
-        <div class="tasks-table-body"></div>
+        <table class="tasks-table">
+          <thead class="tasks-table-header">
+            <tr>
+              <th class="tasks-table-col tasks-table-col__accordeon-arrow"></th>
+              <th class="tasks-table-col tasks-table-col__task-type">
+                <div class="tasks-table-th-wrapper">
+                  <span>тип задачі</span>
+                  <div class="sort-icon-wrapper">
+                    <button class="sort-button">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8 4.5H4L5.90476 2.5L8 4.5Z"
+                          fill="#3D445C"
+                        ></path>
+                        <path
+                          d="M8 7.5H4L5.90476 9.5L8 7.5Z"
+                          fill="#3D445C"
+                        ></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </th>
+              <th class="tasks-table-col tasks-table-col__priority">
+                <div class="tasks-table-th-wrapper">
+                  <span>пріоритет</span>
+                  <div class="sort-icon-wrapper">
+                    <button class="sort-button">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+                        <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </th>
+              <th class="tasks-table-col tasks-table-col__title">
+                <div class="tasks-table-th-wrapper">
+                  <span>title задачі</span>
+                  <div class="sort-icon-wrapper">
+                    <button class="sort-button">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+                        <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </th>
+              <th class="tasks-table-col tasks-table-col__client">
+                <div class="tasks-table-th-wrapper">
+                  <span>лід/клієнт</span>
+                  <div class="sort-icon-wrapper">
+                    <button class="sort-button">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+                        <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </th>
+              <th class="tasks-table-col tasks-table-col__status">
+                <div class="tasks-table-th-wrapper">
+                  <span>статус</span>
+                  <div class="sort-icon-wrapper">
+                    <button class="sort-button">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+                        <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </th>
+              <th class="tasks-table-col tasks-table-col__creation-time">
+                <div class="tasks-table-th-wrapper">
+                  <span>дата та час створення</span>
+                  <div class="sort-icon-wrapper">
+                    <button class="sort-button">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+                        <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </th>
+              <th class="tasks-table-col tasks-table-col__dedline-time">
+                <div class="tasks-table-th-wrapper">
+                  <span>дата та час дедлайна</span>
+                  <div class="sort-icon-wrapper">
+                    <button class="sort-button">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+                        <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </th>
+              <th class="tasks-table-col tasks-table-col__initiator">
+                <div class="tasks-table-th-wrapper">
+                  <span>постановник</span>
+                  <div class="sort-icon-wrapper">
+                    <button class="sort-button">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+                        <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </th>
+              <th class="tasks-table-col tasks-table-col__responsible">
+                <div class="tasks-table-th-wrapper">
+                  <span>відповідальний</span>
+                  <div class="sort-icon-wrapper">
+                    <button class="sort-button">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+                        <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </th>
+              <th class="tasks-table-col tasks-table-col__completion-time">
+                <div class="tasks-table-th-wrapper">
+                  <span>дата та час закриття задачі</span>
+                  <div class="sort-icon-wrapper">
+                    <button class="sort-button">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M8 4.5H4L5.90476 2.5L8 4.5Z" fill="#3D445C"></path>
+                        <path d="M8 7.5H4L5.90476 9.5L8 7.5Z" fill="#3D445C"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="tasks-table-body">
+            <tr class="task-row-item">
+              <td colspan="11">
+                <div class="task-summary-grid">
+                  <div class="tasks-table-col tasks-table-col__accordeon-arrow">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6 12L10 8L6 4"
+                        stroke="#3D445C"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__task-type">
+                    Зв'язатись з клієнтом
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__priority">
+                    Високий
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__title">
+                    Підписати договір
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__client">
+                    ТОВ "Нова справа"
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__status">
+                    В роботі
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__creation-time">
+                    26.08.2025 10:00
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__dedline-time">
+                    27.08.2025 18:00
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__initiator">
+                    Іванов І.І.
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__responsible">
+                    Петров П.П.
+                  </div>
+                  <div
+                    class="tasks-table-col tasks-table-col__completion-time"
+                  ></div>
+                </div>
+                <div class="details-content">
+                  Деталі по договору з ТОВ "Нова справа". Потрібно узгодити
+                  пункт 4.1.
+                </div>
+              </td>
+            </tr>
+            <tr class="task-row-item">
+              <td colspan="11">
+                <div class="task-summary-grid">
+                  <div class="tasks-table-col tasks-table-col__accordeon-arrow">
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 16 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6 12L10 8L6 4"
+                        stroke="#3D445C"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__task-type">
+                    Підготувати КП
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__priority">
+                    Середній
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__title">
+                    Запит від "Мрія"
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__client">
+                    ФОП "Мрія"
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__status">
+                    Нова
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__creation-time">
+                    26.08.2025 11:30
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__dedline-time">
+                    26.08.2025 15:00
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__initiator">
+                    Сидоренко С.С.
+                  </div>
+                  <div class="tasks-table-col tasks-table-col__responsible">
+                    Петров П.П.
+                  </div>
+                  <div
+                    class="tasks-table-col tasks-table-col__completion-time"
+                  ></div>
+                </div>
+                <div class="details-content">
+                  Комерційна пропозиція на 10 білбордів у центрі.
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 
