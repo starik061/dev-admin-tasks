@@ -1,5 +1,4 @@
 $(document).ready(function () {
-  // Вешаем один обработчик на тело таблицы для эффективности
   $(".tasks-table-body").on(
     "click",
     ".task-summary-grid, .details-content",
