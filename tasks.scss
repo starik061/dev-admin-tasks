@@ -28,8 +28,6 @@
   $primary-color: #fc6b40;
   $border-color: #e8ebf1;
   $placeholder-color: #adb0b9;
-  $white-color: #fff;
-  $background-color: #fff;
   $background-color-active: #f5f5f5;
   $usual-type-color: #4fb14b;
   $usual-type-background-color: #edf7ed;
@@ -89,7 +87,7 @@
   }
 
   & .tasks-search-input {
-    background: $white-color;
+    background: white;
     border: 1px solid $border-color;
     border-radius: 4px;
     width: 340px;
@@ -119,7 +117,7 @@
     align-items: center;
     gap: 10px;
     padding: 12px 24px;
-    background: $white-color;
+    background: white;
     border: 1px solid $border-color;
     border-radius: 4px;
     cursor: pointer;
@@ -134,7 +132,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: $white-color;
+    background: white;
     border: 1px solid $border-color;
     border-radius: 4px;
     cursor: pointer;
@@ -153,7 +151,7 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
-    color: $white-color;
+    color: white;
     height: 42px;
   }
 
@@ -206,6 +204,7 @@
     font-style: normal;
     font-weight: 500;
     line-height: 32px;
+    border-top: 1px solid #e8ebf1;
     border-bottom: 1px solid #e8ebf1;
   }
 
@@ -222,7 +221,6 @@
     line-height: normal;
     text-transform: lowercase;
     text-align: left;
-    transition: font-size 0.3s ease-out, line-height 0.3s ease-out;
   }
 
   & .tasks-table-th-wrapper {
@@ -268,7 +266,6 @@
       grid-template-columns: 3% 9% 11% 12% 9% 11% 9% 9% 9% 9% 9%; // Синхронизируем с ширинами th
       align-items: center;
       cursor: pointer;
-      transition: all 0.3s ease-out;
       padding-top: 16px;
       padding-bottom: 16px;
       overflow: hidden;
@@ -307,10 +304,10 @@
       height: 16px;
     }
     & .details-content {
+      position: relative;
       background-color: $background-color-active;
       max-height: 0;
       opacity: 0;
-      overflow: hidden;
       padding: 0 20px;
       transition: all 0.3s ease-out;
     }
@@ -345,7 +342,7 @@
       & .details-content {
         max-height: 1200px;
         opacity: 1;
-        padding: 20px;
+        padding: 0 20px 20px;
       }
 
       & .tasks-table-col__accordeon-arrow svg {
@@ -427,5 +424,87 @@
     display: inline-block;
     padding: 3px 6px;
     border-radius: 4px;
+  }
+
+  & .details-wrapper {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: white;
+  }
+
+  & .detais-table {
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    width: 100%;
+  }
+
+  & .detais-table__row-title {
+    width: 200px;
+    color: $text-color;
+    font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  & .detais-table .client-name {
+    color: $primary-color;
+  }
+
+  & .details-content-btn-wrapper {
+    position: absolute;
+    top: -40px;
+    right: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+  }
+
+  & .details-content-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid $border-color;
+  }
+
+  & .detais-bottom-btn-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+  }
+
+  & .finish-task-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 12px;
+    gap: 6px;
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  & .change-task-time-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 6px 12px;
+    gap: 6px;
+    background-color: transparent;
+    color: $primary-color;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
 }

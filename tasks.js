@@ -1,28 +1,16 @@
 $(document).ready(function () {
-  $(".tasks-table-body").on(
-    "click",
-    ".task-summary-grid, .details-content",
-    function (e) {
-      const parentRow = $(this).closest(".task-row-item");
+  $(".tasks-table-body").on("click", ".task-summary-grid", function (e) {
+    const parentRow = $(this).closest(".task-row-item");
 
-      // Если кликнули по блоку с деталями - просто закрываем
-      if ($(this).hasClass("details-content")) {
-        parentRow.removeClass("expanded");
-        return; // Завершаем выполнение
-      }
+    // Проверяем, была ли строка уже открыта
+    const isAlreadyExpanded = parentRow.hasClass("expanded");
 
-      // --- Иначе, это клик по верхней части, работает логика аккордеона ---
+    // Сначала закрываем все открытые строки
+    $(".task-row-item.expanded").removeClass("expanded");
 
-      // Проверяем, была ли строка уже открыта
-      const isAlreadyExpanded = parentRow.hasClass("expanded");
-
-      // Сначала закрываем все открытые строки
-      $(".task-row-item.expanded").removeClass("expanded");
-
-      // Если строка не была открыта, открываем ее
-      if (!isAlreadyExpanded) {
-        parentRow.addClass("expanded");
-      }
+    // Если строка не была открыта, открываем ее
+    if (!isAlreadyExpanded) {
+      parentRow.addClass("expanded");
     }
-  );
+  });
 });
