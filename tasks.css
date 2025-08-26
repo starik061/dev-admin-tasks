@@ -153,6 +153,7 @@
 #tasks-page-wrapper .tasks-table-wrapper {
   border-left: 1px solid #e8ebf1;
   border-right: 1px solid #e8ebf1;
+  margin-bottom: 32px;
 }
 #tasks-page-wrapper .tasks-table {
   width: 100%;
