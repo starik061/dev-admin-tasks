@@ -132,6 +132,10 @@
   white-space: nowrap !important;
 }
 
+.hide {
+  display: none !important;
+}
+
 body {
   margin: 0;
   padding: 0;

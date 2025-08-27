@@ -53,4 +53,25 @@ $(document).ready(function () {
       $(".overdue-wrapper").show();
     }
   });
+
+  // Filter functionality
+  $(".tasks-filter-btn").on("click", function (event) {
+    event.preventDefault();
+    $('.al-overlay3').removeClass('hide');
+    $('#tasks-filter-block').removeClass('hide');
+  });
+
+  // Close filter on overlay click
+  $(document).on("click", ".al-overlay3", function (event) {
+    if ($(this).hasClass('zi10101')) {
+      $('.al-overlay3').addClass('hide');
+      $('#tasks-filter-block').addClass('hide');
+    }
+  });
+
+  // Close filter on close button click
+  $(document).on("click", ".bk-filter-header .close", function (event) {
+    $('.al-overlay3').addClass('hide');
+    $('#tasks-filter-block').addClass('hide');
+  });
 });

@@ -908,7 +908,7 @@
 
   <!-- Filters panel -->
 
-  <div class="bk-filter-block" id="tasks-filter-block">
+  <div class="bk-filter-block hide" id="tasks-filter-block">
     <div class="bk-filter-header">
       <!-- <span>@lang('message.filter')</span> -->
       <span>Фільтри</span>
@@ -933,8 +933,8 @@
           <select name="taskType" class="manager-select" style="width: 100%">
             <option value="">Оберіть тип задачі</option>
             <!-- @foreach($docsTypes as $docType)
-            <option value="{{$docType}}" @if($docType==@$params['docType']) selected @endif>{{$docType}}</option>
-            @endforeach -->
+             <option value="{{$docType}}" @if($docType==@$params['docType']) selected @endif>{{$docType}}</option>
+             @endforeach -->
           </select>
         </div>
       </div>
@@ -947,9 +947,9 @@
           <select name="taskStatus" class="manager-select" style="width: 100%">
             <option value="">Невиконані задачі</option>
             <!-- @foreach($managers as $manager)
-            <option value="{{$manager->name}}" @if($manager->name == @$params['manager']) selected
-              @endif>{{$manager->name}}</option>
-            @endforeach -->
+             <option value="{{$manager->name}}" @if($manager->name == @$params['manager']) selected
+               @endif>{{$manager->name}}</option>
+             @endforeach -->
           </select>
         </div>
       </div>
@@ -962,10 +962,10 @@
           <select name="taskTerm" class="manager-select" style="width: 100%">
             <option value="">-</option>
             <!-- @foreach($entities as $entity)
-            <option @if(@$params['entity']==$entity->name_short) selected
-              @endif
-              value="{{$entity->name_short}}">{{$entity->name_short}}</option>
-            @endforeach -->
+             <option @if(@$params['entity']==$entity->name_short) selected
+               @endif
+               value="{{$entity->name_short}}">{{$entity->name_short}}</option>
+             @endforeach -->
           </select>
         </div>
       </div>
@@ -999,8 +999,8 @@
           <select name="tasksКesponsible" class="report_period-select" style="width: 100%">
             <option value="">-</option>
             <!-- @foreach($dates as $k => $v)
-            <option value="{{ $k }}" {{ in_array($k, $params['periods']) ? 'selected' : '' }}>{{ $v }}</option>
-            @endforeach -->
+             <option value="{{ $k }}" {{ in_array($k, $params['periods']) ? 'selected' : '' }}>{{ $v }}</option>
+             @endforeach -->
           </select>
         </div>
       </div>
@@ -1044,7 +1044,7 @@
   </div>
 
 
-  <div class="al-overlay3 zi10101"></div>
+  <div class="al-overlay3 zi10101 hide"></div>
 
   <!-- Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
