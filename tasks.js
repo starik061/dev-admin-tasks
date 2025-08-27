@@ -32,4 +32,25 @@ $(document).ready(function () {
       $row.find(`.details-wrapper .tab-content#${initialTabId}`).addClass("active");
     }
   });
+
+  // Tab functionality for main tasks tabs
+  $(".main-tasks-tab-btn").on("click", function (event) {
+    event.preventDefault();
+    const $this = $(this);
+    const $tabsContainer = $this.closest(".main-tasks-tabs");
+    const tabId = $this.data("tab");
+
+    $tabsContainer.find(".main-tasks-tab-btn").removeClass("active");
+    $this.addClass("active");
+
+    // Hide all content
+    $(".tasks-table-wrapper").hide();
+
+    // Show corresponding content
+    if (tabId === "pending") {
+      $(".tasks-table-wrapper:not(.overdue-wrapper)").show();
+    } else if (tabId === "overdue") {
+      $(".overdue-wrapper").show();
+    }
+  });
 });
