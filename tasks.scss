@@ -22,7 +22,6 @@
 
 // Permanent styles
 
-#tasks-page-wrapper {
   // Colors
   $text-color: #3d445c;
   $primary-color: #fc6b40;
@@ -34,6 +33,9 @@
   $important-type-color: #348af8;
   $important-type-background-color: #ebf3fe;
   $extra-important-type-background-color: #fce9e4;
+
+#tasks-page-wrapper {
+
 
   font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
   font-style: normal;
@@ -509,3 +511,86 @@
     cursor: pointer;
   }
 }
+
+// Filters panel
+
+ .visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+ .show-tasks-panel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+ }
+
+ .show-tasks-btn {
+  width: calc((100% - 2px) / 3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $border-color;
+  height: 100%;
+  cursor: pointer;
+ }
+
+ .show-tasks-radio:checked+.show-tasks-btn {
+  border: 1px solid $primary-color;
+ }
+
+ .show-tasks--btn__all {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+ }
+ .show-tasks--btn__clients {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+ }
+
+
+ .tasks-filter-modal-btn-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+ }
+   .show-task-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: $primary-color;
+    border: 1px solid $primary-color;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: white;
+    height: 42px;
+  }
+
+  .reset-task-btn {
+display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: white;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: $text-color;
+    height: 42px;
+  }
