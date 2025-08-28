@@ -16,6 +16,10 @@
   box-sizing: border-box;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 #tasks-page-wrapper {
   font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
   font-style: normal;
@@ -374,12 +378,12 @@
 #tasks-page-wrapper .details-wrapper .tab-content.active {
   display: block;
 }
-#tasks-page-wrapper .detais-table {
+#tasks-page-wrapper .details-table {
   border-collapse: separate;
   border-spacing: 0 15px;
   width: 100%;
 }
-#tasks-page-wrapper .detais-table__row-title {
+#tasks-page-wrapper .details-table__row-title {
   width: 200px;
   color: #3d445c;
   font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
@@ -388,7 +392,7 @@
   font-weight: 400;
   line-height: normal;
 }
-#tasks-page-wrapper .detais-table .client-name {
+#tasks-page-wrapper .details-table .client-name {
   color: #fc6b40;
 }
 #tasks-page-wrapper .details-content-btn-wrapper {
@@ -410,7 +414,7 @@
   border-radius: 4px;
   border: 1px solid #CDD4D9;
 }
-#tasks-page-wrapper .detais-bottom-btn-wrapper {
+#tasks-page-wrapper .details-bottom-btn-wrapper {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -440,6 +444,37 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+#tasks-page-wrapper .details-modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background: #f5f5f5;
+  z-index: 10102;
+  border-radius: 4px;
+}
+#tasks-page-wrapper .details-modal-container .details-content {
+  width: 900px;
+  border-radius: 4px;
+  padding: 20px;
+  overflow-y: auto;
+}
+#tasks-page-wrapper .details-modal-container .details-content-btn-wrapper {
+  position: static;
+}
+#tasks-page-wrapper .details-modal-container .calendar-task-details-modal__header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#tasks-page-wrapper .details-modal-container .details-wrapper {
+  background-color: white;
+}
+#tasks-page-wrapper .details-modal-container .tab-content {
+  height: 390px;
+  overflow-y: auto;
 }
 
 .visually-hidden {

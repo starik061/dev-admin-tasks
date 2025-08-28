@@ -456,12 +456,12 @@ $webp = "";
   border-radius: 4px;
   background-color: white;
 }
-#tasks-page-wrapper .detais-table {
+#tasks-page-wrapper .details-table {
   border-collapse: separate;
   border-spacing: 0 15px;
   width: 100%;
 }
-#tasks-page-wrapper .detais-table__row-title {
+#tasks-page-wrapper .details-table__row-title {
   width: 200px;
   color: #3d445c;
   font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
@@ -470,7 +470,7 @@ $webp = "";
   font-weight: 400;
   line-height: normal;
 }
-#tasks-page-wrapper .detais-table .client-name {
+#tasks-page-wrapper .details-table .client-name {
   color: #fc6b40;
 }
 #tasks-page-wrapper .details-content-btn-wrapper {
@@ -492,7 +492,7 @@ $webp = "";
   border-radius: 4px;
   border: 1px solid #e8ebf1;
 }
-#tasks-page-wrapper .detais-bottom-btn-wrapper {
+#tasks-page-wrapper .details-bottom-btn-wrapper {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -913,10 +913,10 @@ $webp = "";
                         <a href="#" class="tasks-tab-btn" data-tab="chrono">Хронологія</a>
                       </div>
                       <div class="tab-content active" id="info">
-                        <table class="detais-table">
+                        <table class="details-table">
                           <tbody>
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Title задачі:
                               </td>
                               <td>
@@ -925,7 +925,7 @@ $webp = "";
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Description задачі:
                               </td>
                               <td>
@@ -935,26 +935,26 @@ $webp = "";
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">Пріоритет:</td>
+                              <td class="details-table__row-title">Пріоритет:</td>
                               <td>
                                 <span class="important">Звичайний</span>
                               </td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">Тип задачі:</td>
+                              <td class="details-table__row-title">Тип задачі:</td>
                               <td>Дзвінок</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">Лід/Клієнт:</td>
+                              <td class="details-table__row-title">Лід/Клієнт:</td>
                               <td>
                                 <span class="client-name">Sushi Master</span>
                               </td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">Статус:</td>
+                              <td class="details-table__row-title">Статус:</td>
                               <td>
                                 <span>Телеграм</span>
                                 <span class="usual">Виконані</span>
@@ -962,35 +962,35 @@ $webp = "";
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Постановник:
                               </td>
                               <td>Руководитель</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Відповідальний:
                               </td>
                               <td>Евгений</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Дія після закриття задачі:
                               </td>
                               <td>—</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Дата та час виконання задачі:
                               </td>
                               <td>2025-01-19 12:18:03</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Дата та час закриття задачі:
                               </td>
                               <td>2025-01-19 14:12:05</td>
@@ -999,15 +999,15 @@ $webp = "";
                         </table>
                       </div>
                       <div class="tab-content" id="chrono">
-                        <table class="detais-table">
+                        <table class="details-table">
                           <tbody>
                             <tr>
-                              <td class="detais-table__row-title">10:15:45</td>
+                              <td class="details-table__row-title">10:15:45</td>
                               <td>Задача створена</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">17:50:29</td>
+                              <td class="details-table__row-title">17:50:29</td>
                               <td>
                                 Внесено зміни - електронна пошта ліда:
                                 lead@gmail.com
@@ -1017,7 +1017,7 @@ $webp = "";
                         </table>
                       </div>
                     </div>
-                    <div class="detais-bottom-btn-wrapper">
+                    <div class="details-bottom-btn-wrapper">
                       <button class="change-task-time-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                           <g clip-path="url(#clip0_11783_21480)">
@@ -1136,10 +1136,10 @@ $webp = "";
                         <a href="#" class="tasks-tab-btn" data-tab="chrono">Хронологія</a>
                       </div>
                       <div class="tab-content active" id="info">
-                        <table class="detais-table">
+                        <table class="details-table">
                           <tbody>
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Title задачі:
                               </td>
                               <td>
@@ -1148,7 +1148,7 @@ $webp = "";
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Description задачі:
                               </td>
                               <td>
@@ -1158,26 +1158,26 @@ $webp = "";
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">Пріоритет:</td>
+                              <td class="details-table__row-title">Пріоритет:</td>
                               <td>
                                 <span class="important">Звичайний</span>
                               </td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">Тип задачі:</td>
+                              <td class="details-table__row-title">Тип задачі:</td>
                               <td>Дзвінок</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">Лід/Клієнт:</td>
+                              <td class="details-table__row-title">Лід/Клієнт:</td>
                               <td>
                                 <span class="client-name">Sushi Master</span>
                               </td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">Статус:</td>
+                              <td class="details-table__row-title">Статус:</td>
                               <td>
                                 <span>Телеграм</span>
                                 <span class="usual">Виконані</span>
@@ -1185,35 +1185,35 @@ $webp = "";
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Постановник:
                               </td>
                               <td>Руководитель</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Відповідальний:
                               </td>
                               <td>Евгений</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Дія після закриття задачі:
                               </td>
                               <td>—</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Дата та час виконання задачі:
                               </td>
                               <td>2025-01-19 12:18:03</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Дата та час закриття задачі:
                               </td>
                               <td>2025-01-19 14:12:05</td>
@@ -1222,15 +1222,15 @@ $webp = "";
                         </table>
                       </div>
                       <div class="tab-content" id="chrono">
-                        <table class="detais-table">
+                        <table class="details-table">
                           <tbody>
                             <tr>
-                              <td class="detais-table__row-title">10:15:45</td>
+                              <td class="details-table__row-title">10:15:45</td>
                               <td>Задача створена</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">17:50:29</td>
+                              <td class="details-table__row-title">17:50:29</td>
                               <td>
                                 Внесено зміни - електронна пошта ліда:
                                 lead@gmail.com
@@ -1240,7 +1240,7 @@ $webp = "";
                         </table>
                       </div>
                     </div>
-                    <div class="detais-bottom-btn-wrapper">
+                    <div class="details-bottom-btn-wrapper">
                       <button class="change-task-time-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                           <g clip-path="url(#clip0_11783_21480)">
@@ -1359,10 +1359,10 @@ $webp = "";
                         <a href="#" class="tasks-tab-btn" data-tab="chrono">Хронологія</a>
                       </div>
                       <div class="tab-content active" id="info">
-                        <table class="detais-table">
+                        <table class="details-table">
                           <tbody>
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Title задачі:
                               </td>
                               <td>
@@ -1371,7 +1371,7 @@ $webp = "";
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Description задачі:
                               </td>
                               <td>
@@ -1381,26 +1381,26 @@ $webp = "";
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">Пріоритет:</td>
+                              <td class="details-table__row-title">Пріоритет:</td>
                               <td>
                                 <span class="important">Звичайний</span>
                               </td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">Тип задачі:</td>
+                              <td class="details-table__row-title">Тип задачі:</td>
                               <td>Дзвінок</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">Лід/Клієнт:</td>
+                              <td class="details-table__row-title">Лід/Клієнт:</td>
                               <td>
                                 <span class="client-name">Sushi Master</span>
                               </td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">Статус:</td>
+                              <td class="details-table__row-title">Статус:</td>
                               <td>
                                 <span>Телеграм</span>
                                 <span class="usual">Виконані</span>
@@ -1408,35 +1408,35 @@ $webp = "";
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Постановник:
                               </td>
                               <td>Руководитель</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Відповідальний:
                               </td>
                               <td>Евгений</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Дія після закриття задачі:
                               </td>
                               <td>—</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Дата та час виконання задачі:
                               </td>
                               <td>2025-01-19 12:18:03</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">
+                              <td class="details-table__row-title">
                                 Дата та час закриття задачі:
                               </td>
                               <td>2025-01-19 14:12:05</td>
@@ -1445,15 +1445,15 @@ $webp = "";
                         </table>
                       </div>
                       <div class="tab-content" id="chrono">
-                        <table class="detais-table">
+                        <table class="details-table">
                           <tbody>
                             <tr>
-                              <td class="detais-table__row-title">10:15:45</td>
+                              <td class="details-table__row-title">10:15:45</td>
                               <td>Задача створена</td>
                             </tr>
 
                             <tr>
-                              <td class="detais-table__row-title">17:50:29</td>
+                              <td class="details-table__row-title">17:50:29</td>
                               <td>
                                 Внесено зміни - електронна пошта ліда:
                                 lead@gmail.com
@@ -1463,7 +1463,7 @@ $webp = "";
                         </table>
                       </div>
                     </div>
-                    <div class="detais-bottom-btn-wrapper">
+                    <div class="details-bottom-btn-wrapper">
                       <button class="change-task-time-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                           <g clip-path="url(#clip0_11783_21480)">

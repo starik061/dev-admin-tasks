@@ -51,6 +51,20 @@ $(document).ready(function () {
     $detailsWrapper.find(`.tab-content#${tabId}`).addClass("active");
   });
 
+  //! Details tab functionality (inside modal)
+  $("#calendar-task-details-modal").on("click", ".details-wrapper .tasks-tab-btn", function (event) {
+    event.preventDefault();
+    const $this = $(this);
+    const $detailsWrapper = $this.closest(".details-wrapper");
+    const tabId = $this.data("tab");
+
+    $detailsWrapper.find(".tasks-tab-btn").removeClass("active");
+    $this.addClass("active");
+
+    $detailsWrapper.find(".tab-content").removeClass("active");
+    $detailsWrapper.find(`.tab-content#${tabId}`).addClass("active");
+  });
+
   // Set initial state for all detail tabs
   $(".task-row-item").each(function () {
     const $row = $(this);
@@ -92,6 +106,8 @@ $(document).ready(function () {
     if ($(this).hasClass('zi10101')) {
       $('.al-overlay3').addClass('hide');
       $('#tasks-filter-block').addClass('hide').css("display", "none");
+      $('#calendar-task-details-modal').addClass('hide');
+      $("body").removeClass("modal-open");
     }
   });
 
@@ -117,7 +133,9 @@ $(document).ready(function () {
         editable: true,
         eventClick: function(info) {
           info.jsEvent.preventDefault();
-          alert('Задача: ' + info.event.title);
+          $("#calendar-task-details-modal").removeClass("hide");
+          $(".al-overlay3").removeClass("hide");
+          $("body").addClass("modal-open");
         },
         events: [ // Sample data for pending tasks
           { title: 'Pending Task 1', start: '2025-08-05' },
@@ -142,7 +160,9 @@ $(document).ready(function () {
         editable: true,
         eventClick: function(info) {
           info.jsEvent.preventDefault();
-          alert('Задача: ' + info.event.title);
+          $("#calendar-task-details-modal").removeClass("hide");
+          $(".al-overlay3").removeClass("hide");
+          $("body").addClass("modal-open");
         },
         events: [ // Sample data for overdue tasks
           { title: 'Overdue Task 1', start: '2025-08-01', color: 'red' },
