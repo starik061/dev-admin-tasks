@@ -572,7 +572,7 @@ $extra-important-type-background-color: #fce9e4;
 
 .show-tasks-panel {
   width: 100%;
-  display: flex;
+  display: flex !important;
   justify-content: center;
   align-items: center;
   height: 42px;
