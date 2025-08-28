@@ -470,6 +470,14 @@ $extra-important-type-background-color: #fce9e4;
     padding: 20px;
     border-radius: 4px;
     background-color: white;
+
+    .tab-content {
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
   }
 
   & .detais-table {

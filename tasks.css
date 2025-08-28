@@ -368,6 +368,12 @@
   border-radius: 4px;
   background-color: white;
 }
+#tasks-page-wrapper .details-wrapper .tab-content {
+  display: none;
+}
+#tasks-page-wrapper .details-wrapper .tab-content.active {
+  display: block;
+}
 #tasks-page-wrapper .detais-table {
   border-collapse: separate;
   border-spacing: 0 15px;
