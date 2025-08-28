@@ -1,4 +1,32 @@
 $(document).ready(function () {
+  // A single function to rule them all: updates the view based on active tab and view mode.
+  function updateTaskView() {
+    const activeTab = $(".main-tasks-tab-btn.active").data("tab"); // 'pending' or 'overdue'
+    const isLineView = $(".line-view.view-item").hasClass("active");
+
+    // Hide all content wrappers first
+    $("#pending-tasks-tables-wrapper").hide();
+    $("#overdue-tasks-tables-wrapper").hide();
+    $("#pending-tasks-calendar").hide();
+    $("#overdue-tasks-calendar").hide();
+
+    if (isLineView) {
+      if (activeTab === "pending") {
+        $("#pending-tasks-tables-wrapper").show();
+      } else if (activeTab === "overdue") {
+        $("#overdue-tasks-tables-wrapper").show();
+      }
+    } else { // Box view (calendar)
+      if (activeTab === "pending") {
+        $("#pending-tasks-calendar").show();
+        initPendingCalendar(); // Initialize the correct calendar
+      } else if (activeTab === "overdue") {
+        $("#overdue-tasks-calendar").show();
+        initOverdueCalendar(); // Initialize the correct calendar
+      }
+    }
+  }
+
   //! Accordion functionality
   $(".tasks-table-body").on("click", ".task-summary-grid", function (e) {
     const parentRow = $(this).closest(".task-row-item");
@@ -9,7 +37,7 @@ $(document).ready(function () {
     }
   });
 
-  //! Details tab functionality using event delegation
+  //! Details tab functionality (inside accordion)
   $(".tasks-table-body").on("click", ".details-wrapper .tasks-tab-btn", function (event) {
     event.preventDefault();
     const $this = $(this);
@@ -23,7 +51,7 @@ $(document).ready(function () {
     $detailsWrapper.find(`.tab-content#${tabId}`).addClass("active");
   });
 
-  // Set initial state for all tabs
+  // Set initial state for all detail tabs
   $(".task-row-item").each(function () {
     const $row = $(this);
     const $initialTab = $row.find(".details-wrapper .tasks-tab-btn.active");
@@ -33,25 +61,23 @@ $(document).ready(function () {
     }
   });
 
-  //! Tab functionality for main tasks tabs
+  //! Main tasks tabs click handler
   $(".main-tasks-tab-btn").on("click", function (event) {
     event.preventDefault();
     const $this = $(this);
-    const $tabsContainer = $this.closest(".main-tasks-tabs");
-    const tabId = $this.data("tab");
-
-    $tabsContainer.find(".main-tasks-tab-btn").removeClass("active");
+    // No need to check if it's already active, just update and re-render
+    $(".main-tasks-tab-btn").removeClass("active");
     $this.addClass("active");
+    updateTaskView();
+  });
 
-    // Hide all content
-    $(".tasks-table-wrapper").hide();
-
-    // Show corresponding content
-    if (tabId === "pending") {
-      $(".tasks-table-wrapper:not(.overdue-wrapper)").show();
-    } else if (tabId === "overdue") {
-      $(".overdue-wrapper").show();
-    }
+  //! View type switcher click handler
+  $(".tasks-view-type .view-item").on("click", function() {
+    const $this = $(this);
+    // No need to check if it's already active
+    $(".tasks-view-type .view-item").removeClass("active");
+    $this.addClass("active");
+    updateTaskView();
   });
 
   //! Filter functionality
@@ -75,110 +101,59 @@ $(document).ready(function () {
      $('#tasks-filter-block').addClass('hide').css("display", "none");
    });
 
- });
+  //! Calendar functionality
+  var pendingCalendar = null;
+  var overdueCalendar = null;
 
-//! View type switching functionality for tasks
- $(document).ready(function() {
-   $(".tasks-view-type .view-item").on("click", function() {
-     const $this = $(this);
-     const targetUrl = $this.data("url");
-
-     // Update active class
-     $(".tasks-view-type .view-item").removeClass("active");
-     $this.addClass("active");
-
-     // Switch content visibility based on URL parameter
-     if (targetUrl.includes("tmplt=calendar")) {
-       $("#tasks-tables").hide();
-       $("#tasks-calendar").show();
-       initCalendar(); // Initialize calendar when shown
-     } else {
-       $("#tasks-tables").show();
-       $("#tasks-calendar").hide();
-     }
-   });
- });
-
-//! Calendar functionality
-var calendar = null;  // Global calendar variable
-
-function initCalendar() {
-  if (!calendar) {
-    var calendarEl = document.getElementById('tasks-calendar');
-    calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      locale: 'uk',
-      buttonText: {
-        today: 'Сьогодні'
-      },
-      headerToolbar: {
-        left: 'today prev,title,next',
-        center: '',
-        right: 'customList'
-      },
-      customButtons: {
-        customList: {
-          text: ' ' // Placeholder
-        }
-      },
-      editable: true,
-      eventClick: function(info) {
-        info.jsEvent.preventDefault();
-        alert('Задача: ' + info.event.title);
-      },
-      events: [
-        {
-          title: 'Тестова задача 1',
-          start: '2025-08-05'
+  function initPendingCalendar() {
+    if (!pendingCalendar) {
+      var calendarEl = document.getElementById('pending-tasks-calendar');
+      pendingCalendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'uk',
+        buttonText: { today: 'Сьогодні' },
+        headerToolbar: { left: 'today prev,title,next', center: '', right: 'customList' },
+        customButtons: { customList: { text: ' ' } },
+        editable: true,
+        eventClick: function(info) {
+          info.jsEvent.preventDefault();
+          alert('Задача: ' + info.event.title);
         },
-        {
-          title: 'Дуже важлива зустріч',
-          start: '2025-08-08',
-          end: '2025-08-10'
-        },
-        {
-          title: 'Щоденний мітинг',
-          start: '2025-08-12T10:30:00',
-          end: '2025-08-12T11:30:00'
-        },
-        {
-          title: 'Планування спринту',
-          start: '2025-09-01'
-        },
-        { title: 'Задача 1', start: '2025-09-05' },
-        { title: 'Задача 2', start: '2025-09-05' },
-        { title: 'Задача 3', start: '2025-09-05' },
-        { title: 'Задача 4', start: '2025-09-05' },
-        { title: 'Задача 5', start: '2025-09-05' },
-        { title: 'Задача 6', start: '2025-09-05' },
-        { title: 'Задача 7', start: '2025-09-05' },
-        { title: 'Задача 8', start: '2025-09-05' },
-        { title: 'Задача 9', start: '2025-09-05' },
-        { title: 'Задача 10', start: '2025-09-05' },
-        {
-          title: 'Рев\'ю дизайну',
-          start: '2025-09-15'
-        },
-        {
-          title: 'Зателефонувати клієнту',
-          start: '2025-09-22'
-        },
-        {
-          title: 'Вебінар по React',
-          start: '2025-09-28T14:00:00'
-        }
-      ]
-    });
-    calendar.render();
-    // Use jQuery to set the HTML content of the custom button
-    $(".fc-customList-button").html("<ul><li><span>Звичайний:</span><span class=\"custom-list-tasks-number\">3</span></li><li><span>Важливо:</span><span class=\"custom-list-tasks-number\">10</span></li><li><span>Дуже важливо:</span><span class=\"custom-list-tasks-number\">5</span></li></ul>");
+        events: [ // Sample data for pending tasks
+          { title: 'Pending Task 1', start: '2025-08-05' },
+          { title: 'Pending Task 2', start: '2025-08-08' }
+        ]
+      });
+      pendingCalendar.render();
+      // This custom button content should probably be specific to the calendar
+      $(calendarEl).find(".fc-customList-button").html('<ul><li><span>Звичайний:</span><span class="custom-list-tasks-number">1</span></li><li><span>Важливо:</span><span class="custom-list-tasks-number">1</span></li><li><span>Дуже важливо:</span><span class="custom-list-tasks-number">0</span></li></ul>');
+    }
   }
-}
 
-// Initialize calendar on page load
-document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('tasks-calendar');
-  if (calendarEl && !calendarEl.hasAttribute('style') || !calendarEl.style.display === 'none') {
-    initCalendar();
+  function initOverdueCalendar() {
+    if (!overdueCalendar) {
+      var calendarEl = document.getElementById('overdue-tasks-calendar');
+      overdueCalendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'uk',
+        buttonText: { today: 'Сьогодні' },
+        headerToolbar: { left: 'today prev,title,next', center: '', right: 'customList' },
+        customButtons: { customList: { text: ' ' } },
+        editable: true,
+        eventClick: function(info) {
+          info.jsEvent.preventDefault();
+          alert('Задача: ' + info.event.title);
+        },
+        events: [ // Sample data for overdue tasks
+          { title: 'Overdue Task 1', start: '2025-08-01', color: 'red' },
+          { title: 'Overdue Task 2', start: '2025-08-03', color: 'red' }
+        ]
+      });
+      overdueCalendar.render();
+      $(calendarEl).find(".fc-customList-button").html('<ul><li><span>Звичайний:</span><span class="custom-list-tasks-number">0</span></li><li><span>Важливо:</span><span class="custom-list-tasks-number">2</span></li><li><span>Дуже важливо:</span><span class="custom-list-tasks-number">0</span></li></ul>');
+    }
   }
+
+  // Initial view setup on page load
+  updateTaskView();
 });
