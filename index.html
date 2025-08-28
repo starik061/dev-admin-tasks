@@ -1771,7 +1771,7 @@
 
     <div class="bk-filter-block hide" id="tasks-filter-block">
       <div class="bk-filter-header">
-        {{-- <span>@lang('message.filter')</span> --}}
+        <!--{{-- <span>@lang('message.filter')</span> --}}-->
         <span>Фільтри</span>
         <span class="close">
           <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1788,29 +1788,29 @@
 
         <div class="field-container">
           <div class="input-block big-input-block">
-            {{-- <label>@lang('message.document_type')</label> --}}
+            <!-- {{-- <label>@lang('message.document_type')</label> --}}-->
             <label>Тип задачі</label>
 
             <select name="taskType" class="manager-select" style="width: 100%">
               <option value="">Оберіть тип задачі</option>
-              {{-- @foreach($docsTypes as $docType)
+              <!-- {{-- @foreach($docsTypes as $docType)
               <option value="{{$docType}}" @if($docType==@$params['docType']) selected @endif>{{$docType}}</option>
-              @endforeach --}}
+              @endforeach --}}-->
             </select>
           </div>
         </div>
 
         <div class="field-container">
           <div class="input-block big-input-block">
-            {{-- <label>@lang('message.manager')</label> --}}
+            <!--{{-- <label>@lang('message.manager')</label> --}}-->
             <label>Статус</label>
 
             <select name="taskStatus" class="manager-select" style="width: 100%">
               <option value="">Невиконані задачі</option>
-              {{-- @foreach($managers as $manager)
+              <!--{{-- @foreach($managers as $manager)
               <option value="{{$manager->name}}" @if($manager->name == @$params['manager']) selected
                 @endif>{{$manager->name}}</option>
-              @endforeach --}}
+              @endforeach --}}-->
             </select>
           </div>
         </div>
@@ -1822,11 +1822,11 @@
 
             <select name="taskTerm" class="manager-select" style="width: 100%">
               <option value="">-</option>
-              {{-- @foreach($entities as $entity)
+              <!--{{-- @foreach($entities as $entity)
               <option @if(@$params['entity']==$entity->name_short) selected
                 @endif
                 value="{{$entity->name_short}}">{{$entity->name_short}}</option>
-              @endforeach --}}
+              @endforeach --}}-->
             </select>
           </div>
         </div>
@@ -1854,14 +1854,14 @@
 
         <div class="field-container">
           <div class="input-block small-input-block" style="width: 88%">
-            {{-- <label>@lang('message.results_period')</label> -}}
+            <!--{{-- <label>@lang('message.results_period')</label> -}}-->
             <label>Відповідальний</label>
 
             <select name="tasksКesponsible" class="report_period-select" style="width: 100%">
               <option value="">-</option>
-              {{-- @foreach($dates as $k => $v)
+              <!-- {{-- @foreach($dates as $k => $v)
               <option value="{{ $k }}" {{ in_array($k, $params['periods']) ? 'selected' : '' }}>{{ $v }}</option>
-              @endforeach --}}
+              @endforeach --}}-->
             </select>
           </div>
         </div>
