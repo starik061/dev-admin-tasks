@@ -40,7 +40,6 @@
   color: #3d445c;
 }
 #tasks-page-wrapper .tasks-view-type {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,6 +50,21 @@
 }
 #tasks-page-wrapper .view-item {
   position: static;
+}
+#tasks-page-wrapper .view-item.line-view svg {
+  stroke: #3d445c;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#tasks-page-wrapper .view-item.line-view.active svg, #tasks-page-wrapper .view-item.line-view:hover svg {
+  stroke: #fc6b40;
+}
+#tasks-page-wrapper .view-item.box-view svg {
+  fill: #3d445c;
+}
+#tasks-page-wrapper .view-item.box-view.active svg, #tasks-page-wrapper .view-item.box-view:hover svg {
+  fill: #fc6b40;
 }
 #tasks-page-wrapper .box-view {
   margin-left: -1px;

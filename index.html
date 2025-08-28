@@ -12,36 +12,6 @@
   <div class="main-temporary-container" id="tasks-page-wrapper">
     <div class="title-row">
       <h1>Задачі</h1>
-
-      <div class="tasks-view-type">
-        <div class="line-view view-item active" data-url="/manager/leads">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.66797 5H17.5013" stroke="#3D445C" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round"></path>
-            <path d="M6.66797 10H17.5013" stroke="#3D445C" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round"></path>
-            <path d="M6.66797 15H17.5013" stroke="#3D445C" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round"></path>
-            <path d="M2.5 5H2.50833" stroke="#3D445C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            </path>
-            <path d="M2.5 10H2.50833" stroke="#3D445C" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round"></path>
-            <path d="M2.5 15H2.50833" stroke="#3D445C" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
-        </div>
-        <div class="box-view view-item" data-url="/manager/leads?tmplt=kanban">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M15.8333 2.5H4.16667C3.24619 2.5 2.5 3.24619 2.5 4.16667V15.8333C2.5 16.7538 3.24619 17.5 4.16667 17.5H15.8333C16.7538 17.5 17.5 16.7538 17.5 15.8333V4.16667C17.5 3.24619 16.7538 2.5 15.8333 2.5Z"
-              stroke="#3D445C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-            <path d="M2.5 10H17.5" stroke="#3D445C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            </path>
-            <path d="M10 2.5V17.5" stroke="#3D445C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            </path>
-          </svg>
-        </div>
-      </div>
     </div>
 
     <div class="tasks-toolbar">
@@ -75,6 +45,23 @@
       </button>
 
       <button class="create-task-btn">Створити задачу</button>
+
+      <div class="tasks-view-type">
+        <div class="line-view view-item active" data-url="/manager/leads">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M17.5 8.33337H2.5" />
+            <path d="M17.5 5H2.5" />
+            <path d="M17.5 11.6666H2.5" />
+            <path d="M17.5 15H2.5" />
+          </svg>
+        </div>
+        <div class="box-view view-item" data-url="/manager/leads?tmplt=kanban">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="20" viewBox="0 0 18 20" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M13.168 1.66671C13.168 1.20647 12.7949 0.833374 12.3346 0.833374C11.8744 0.833374 11.5013 1.20647 11.5013 1.66671V2.50004H6.5013V1.66671C6.5013 1.20647 6.12821 0.833374 5.66797 0.833374C5.20773 0.833374 4.83464 1.20647 4.83464 1.66671V2.50004H3.16797C1.78726 2.50004 0.667969 3.61933 0.667969 5.00004V8.33337V16.6667C0.667969 18.0474 1.78726 19.1667 3.16797 19.1667H14.8346C16.2153 19.1667 17.3346 18.0474 17.3346 16.6667V8.33337V5.00004C17.3346 3.61933 16.2153 2.50004 14.8346 2.50004H13.168V1.66671ZM15.668 7.50004V5.00004C15.668 4.5398 15.2949 4.16671 14.8346 4.16671H13.168V5.00004C13.168 5.46028 12.7949 5.83337 12.3346 5.83337C11.8744 5.83337 11.5013 5.46028 11.5013 5.00004V4.16671H6.5013V5.00004C6.5013 5.46028 6.12821 5.83337 5.66797 5.83337C5.20773 5.83337 4.83464 5.46028 4.83464 5.00004V4.16671H3.16797C2.70773 4.16671 2.33464 4.5398 2.33464 5.00004V7.50004H15.668ZM2.33464 9.16671H15.668V16.6667C15.668 17.1269 15.2949 17.5 14.8346 17.5H3.16797C2.70773 17.5 2.33464 17.1269 2.33464 16.6667V9.16671Z" />
+          </svg>
+        </div>
+      </div>
     </div>
 
     <div class="tasks-tabs main-tasks-tabs">
