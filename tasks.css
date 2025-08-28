@@ -78,7 +78,7 @@
 }
 #tasks-page-wrapper .tasks-search-input {
   background: white;
-  border: 1px solid #e8ebf1;
+  border: 1px solid #CDD4D9;
   border-radius: 4px;
   width: 340px;
   height: 42px;
@@ -106,7 +106,7 @@
   gap: 10px;
   padding: 12px 24px;
   background: white;
-  border: 1px solid #e8ebf1;
+  border: 1px solid #CDD4D9;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
@@ -120,7 +120,7 @@
   justify-content: center;
   align-items: center;
   background: white;
-  border: 1px solid #e8ebf1;
+  border: 1px solid #CDD4D9;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
@@ -145,7 +145,7 @@
   font-size: 14px;
   line-height: 1.2;
   color: #3d445c;
-  border-bottom: solid 1px #e8ebf1;
+  border-bottom: solid 1px #CDD4D9;
 }
 #tasks-page-wrapper .tasks-tab-btn {
   font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
@@ -174,7 +174,7 @@
   border-collapse: collapse;
 }
 #tasks-page-wrapper .tasks-table tr, #tasks-page-wrapper .tasks-table th {
-  border-bottom: 1px solid #e8ebf1;
+  border-bottom: 1px solid #CDD4D9;
 }
 #tasks-page-wrapper .tasks-table-title {
   width: 100%;
@@ -402,7 +402,7 @@
   width: 30px;
   height: 30px;
   border-radius: 4px;
-  border: 1px solid #e8ebf1;
+  border: 1px solid #CDD4D9;
 }
 #tasks-page-wrapper .detais-bottom-btn-wrapper {
   width: 100%;
@@ -461,7 +461,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #e8ebf1;
+  border: 1px solid #CDD4D9;
   height: 100%;
   cursor: pointer;
 }
@@ -510,12 +510,107 @@
   gap: 10px;
   padding: 12px 24px;
   background: white;
-  border: 1px solid #e8ebf1;
+  border: 1px solid #CDD4D9;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
   color: #3d445c;
   height: 42px;
+}
+
+.fc .fc-customList-button {
+  background-color: transparent !important;
+  border: none !important;
+  color: #3d445c !important;
+  padding: 0 !important;
+}
+.fc .fc-customList-button ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  list-style: none;
+  font-family: "Helvetica Neue";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 130%;
+}
+.fc .fc-customList-button li {
+  display: flex;
+  gap: 5px;
+}
+.fc .fc-customList-button li .custom-list-tasks-number {
+  font-weight: 600;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-top: -4px;
+  margin-bottom: 20px;
+}
+
+.fc-today-button {
+  background-color: transparent !important;
+  color: #3d445c !important;
+  border: 1px solid #CDD4D9 !important;
+  font-size: 13px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 130% !important;
+  height: 52px !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  min-width: 100px !important;
+  border-radius: 4px !important;
+}
+
+.fc-toolbar-chunk:first-of-type {
+  display: flex;
+}
+.fc-toolbar-chunk:first-of-type > div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
+}
+.fc-toolbar-chunk:first-of-type > div h2 {
+  width: 106px;
+  overflow: auto;
+  font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif !important;
+  font-weight: 600;
+  font-size: 13px !important;
+  text-align: center;
+}
+.fc-toolbar-chunk:first-of-type > div h2::first-letter {
+  text-transform: uppercase;
+}
+.fc-toolbar-chunk:first-of-type > div .fc-button {
+  background-color: transparent;
+  border: none;
+  color: #3d445c;
+}
+
+.fc {
+  color: #3d445c;
+  font-size: 13px;
+  margin-bottom: 80px;
+}
+
+.fc .fc-daygrid-day-top:not(.fc-day-other .fc-daygrid-day-top) {
+  font-weight: 600;
+}
+
+.fc .fc-daygrid-day-top {
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  color: #fc6b40;
+  outline: 1px dashed #fc6b40;
 }
 
 /*# sourceMappingURL=tasks.css.map */

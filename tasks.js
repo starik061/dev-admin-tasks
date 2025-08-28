@@ -106,9 +106,72 @@ function initCalendar() {
   if (!calendar) {
     var calendarEl = document.getElementById('tasks-calendar');
     calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth'
+      initialView: 'dayGridMonth',
+      locale: 'uk',
+      buttonText: {
+        today: 'Сьогодні'
+      },
+      headerToolbar: {
+        left: 'today prev,title,next',
+        center: '',
+        right: 'customList'
+      },
+      customButtons: {
+        customList: {
+          text: ' ' // Placeholder
+        }
+      },
+      editable: true,
+      eventClick: function(info) {
+        info.jsEvent.preventDefault();
+        alert('Задача: ' + info.event.title);
+      },
+      events: [
+        {
+          title: 'Тестова задача 1',
+          start: '2025-08-05'
+        },
+        {
+          title: 'Дуже важлива зустріч',
+          start: '2025-08-08',
+          end: '2025-08-10'
+        },
+        {
+          title: 'Щоденний мітинг',
+          start: '2025-08-12T10:30:00',
+          end: '2025-08-12T11:30:00'
+        },
+        {
+          title: 'Планування спринту',
+          start: '2025-09-01'
+        },
+        { title: 'Задача 1', start: '2025-09-05' },
+        { title: 'Задача 2', start: '2025-09-05' },
+        { title: 'Задача 3', start: '2025-09-05' },
+        { title: 'Задача 4', start: '2025-09-05' },
+        { title: 'Задача 5', start: '2025-09-05' },
+        { title: 'Задача 6', start: '2025-09-05' },
+        { title: 'Задача 7', start: '2025-09-05' },
+        { title: 'Задача 8', start: '2025-09-05' },
+        { title: 'Задача 9', start: '2025-09-05' },
+        { title: 'Задача 10', start: '2025-09-05' },
+        {
+          title: 'Рев\'ю дизайну',
+          start: '2025-09-15'
+        },
+        {
+          title: 'Зателефонувати клієнту',
+          start: '2025-09-22'
+        },
+        {
+          title: 'Вебінар по React',
+          start: '2025-09-28T14:00:00'
+        }
+      ]
     });
     calendar.render();
+    // Use jQuery to set the HTML content of the custom button
+    $(".fc-customList-button").html("<ul><li><span>Звичайний:</span><span class=\"custom-list-tasks-number\">3</span></li><li><span>Важливо:</span><span class=\"custom-list-tasks-number\">10</span></li><li><span>Дуже важливо:</span><span class=\"custom-list-tasks-number\">5</span></li></ul>");
   }
 }
 

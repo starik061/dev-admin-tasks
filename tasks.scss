@@ -18,6 +18,7 @@
   background: #fff;
   box-sizing: border-box;
 }
+
 // --------------------------------------------------
 
 // Permanent styles
@@ -25,7 +26,7 @@
 // Colors
 $text-color: #3d445c;
 $primary-color: #fc6b40;
-$border-color: #e8ebf1;
+$border-color: #CDD4D9;
 $placeholder-color: #adb0b9;
 $background-color-active: #f5f5f5;
 $usual-type-color: #4fb14b;
@@ -38,6 +39,7 @@ $extra-important-type-background-color: #fce9e4;
   font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
+
   & * {
     box-sizing: border-box;
   }
@@ -71,12 +73,14 @@ $extra-important-type-background-color: #fce9e4;
 
   & .view-item {
     position: static;
+
     &.line-view svg {
       stroke: $text-color;
       stroke-width: 1.5;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
+
     &.line-view.active svg,
     &.line-view:hover svg {
       stroke: $primary-color;
@@ -199,6 +203,7 @@ $extra-important-type-background-color: #fce9e4;
       color: $text-color;
     }
   }
+
   & .tasks-table-wrapper {
     border-left: 1px solid #e8ebf1;
     border-right: 1px solid #e8ebf1;
@@ -208,6 +213,7 @@ $extra-important-type-background-color: #fce9e4;
   & .tasks-table {
     width: 100%;
     border-collapse: collapse;
+
     & tr,
     & th {
       border-bottom: 1px solid $border-color;
@@ -250,6 +256,7 @@ $extra-important-type-background-color: #fce9e4;
     align-items: center;
     gap: 5px;
   }
+
   & .sort-icon-wrapper {
     position: relative;
     width: 12px;
@@ -318,10 +325,12 @@ $extra-important-type-background-color: #fce9e4;
         color: $primary-color;
       }
     }
+
     & .row-expand-arrow-wrapper {
       width: 16px;
       height: 16px;
     }
+
     & .details-content {
       position: relative;
       background-color: $background-color-active;
@@ -341,6 +350,7 @@ $extra-important-type-background-color: #fce9e4;
         background-color: $background-color-active;
         grid-template-columns: 3% 97%;
       }
+
       & .tasks-table-col__task-type {
         font-weight: 700;
         max-width: 50%;
@@ -380,42 +390,52 @@ $extra-important-type-background-color: #fce9e4;
     padding-right: 8px !important;
     // min-width: 35px;
   }
+
   & .tasks-table-col__task-type {
     width: 9%;
     // min-width: 92px;
   }
+
   & .tasks-table-col__priority {
     width: 11%;
     // min-width: 100px;
   }
+
   & .tasks-table-col__title {
     width: 12%;
     // min-width: 136px;
   }
+
   & .tasks-table-col__client {
     width: 9%;
     // min-width: 92px;
   }
+
   & .tasks-table-col__status {
     width: 11%;
     // min-width: 100px;
   }
+
   & .tasks-table-col__creation-time {
     width: 9%;
     // min-width: 96px;
   }
+
   & .tasks-table-col__dedline-time {
     width: 9%;
     // min-width: 96px;
   }
+
   & .tasks-table-col__initiator {
     width: 9%;
     // min-width: 96px;
   }
+
   & .tasks-table-col__responsible {
     width: 9%;
     // min-width: 96px;
   }
+
   & .tasks-table-col__completion-time {
     width: 9%;
     // min-width: 96px;
@@ -560,7 +580,7 @@ $extra-important-type-background-color: #fce9e4;
   cursor: pointer;
 }
 
-.show-tasks-radio:checked + .show-tasks-btn {
+.show-tasks-radio:checked+.show-tasks-btn {
   border: 1px solid $primary-color;
 }
 
@@ -568,6 +588,7 @@ $extra-important-type-background-color: #fce9e4;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
+
 .show-tasks--btn__clients {
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -580,6 +601,7 @@ $extra-important-type-background-color: #fce9e4;
   gap: 12px;
   flex-wrap: wrap;
 }
+
 .show-task-btn {
   display: flex;
   justify-content: center;
@@ -608,4 +630,108 @@ $extra-important-type-background-color: #fce9e4;
   font-size: 14px;
   color: $text-color;
   height: 42px;
+}
+
+
+// Calendar styles
+.fc .fc-customList-button {
+  background-color: transparent !important;
+  border: none !important;
+  color: $text-color !important;
+  padding: 0 !important;
+
+  & ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15px;
+    list-style: none;
+    font-family: "Helvetica Neue";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+  }
+
+  & li {
+    display: flex;
+    gap: 5px;
+
+    & .custom-list-tasks-number {
+      font-weight: 600;
+    }
+  }
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+  margin-top: -4px;
+  margin-bottom: 20px;
+}
+
+.fc-today-button {
+  background-color: transparent !important;
+  color: $text-color !important;
+  border: 1px solid $border-color !important;
+  font-size: 13px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  line-height: 130% !important;
+  height: 52px !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  min-width: 100px !important;
+  border-radius: 4px !important;
+}
+
+.fc-toolbar-chunk:first-of-type {
+  display: flex;
+
+  &>div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+
+    & h2 {
+      width: 106px;
+      overflow: auto;
+      font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif !important;
+      font-weight: 600;
+      font-size: 13px !important;
+      text-align: center;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+
+    & .fc-button {
+      background-color: transparent;
+      border: none;
+      color: $text-color;
+    }
+  }
+}
+
+.fc {
+  color: $text-color;
+  font-size: 13px;
+  margin-bottom: 80px;
+}
+
+.fc .fc-daygrid-day-top:not(.fc-day-other .fc-daygrid-day-top) {
+  font-weight: 600;
+}
+
+.fc .fc-daygrid-day-top {
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  color: $primary-color;
+  outline: 1px dashed $primary-color;
 }
