@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  // Accordion functionality
+  //! Accordion functionality
   $(".tasks-table-body").on("click", ".task-summary-grid", function (e) {
     const parentRow = $(this).closest(".task-row-item");
     const isAlreadyExpanded = parentRow.hasClass("expanded");
@@ -9,7 +9,7 @@ $(document).ready(function () {
     }
   });
 
-  // Tab functionality using event delegation
+  //! Details tab functionality using event delegation
   $(".tasks-table-body").on("click", ".details-wrapper .tasks-tab-btn", function (event) {
     event.preventDefault();
     const $this = $(this);
@@ -33,7 +33,7 @@ $(document).ready(function () {
     }
   });
 
-  // Tab functionality for main tasks tabs
+  //! Tab functionality for main tasks tabs
   $(".main-tasks-tab-btn").on("click", function (event) {
     event.preventDefault();
     const $this = $(this);
@@ -54,24 +54,68 @@ $(document).ready(function () {
     }
   });
 
-  // Filter functionality
+  //! Filter functionality
   $(".tasks-filter-btn").on("click", function (event) {
     event.preventDefault();
     $('.al-overlay3').removeClass('hide');
-    $('#tasks-filter-block').removeClass('hide');
+    $('#tasks-filter-block').removeClass('hide').css("display", "block");
   });
 
   // Close filter on overlay click
   $(document).on("click", ".al-overlay3", function (event) {
     if ($(this).hasClass('zi10101')) {
       $('.al-overlay3').addClass('hide');
-      $('#tasks-filter-block').addClass('hide');
+      $('#tasks-filter-block').addClass('hide').css("display", "none");
     }
   });
 
   // Close filter on close button click
   $(document).on("click", ".bk-filter-header .close", function (event) {
-    $('.al-overlay3').addClass('hide');
-    $('#tasks-filter-block').addClass('hide');
-  });
+     $('.al-overlay3').addClass('hide');
+     $('#tasks-filter-block').addClass('hide').css("display", "none");
+   });
+
+ });
+
+//! View type switching functionality for tasks
+ $(document).ready(function() {
+   $(".tasks-view-type .view-item").on("click", function() {
+     const $this = $(this);
+     const targetUrl = $this.data("url");
+
+     // Update active class
+     $(".tasks-view-type .view-item").removeClass("active");
+     $this.addClass("active");
+
+     // Switch content visibility based on URL parameter
+     if (targetUrl.includes("tmplt=calendar")) {
+       $("#tasks-tables").hide();
+       $("#tasks-calendar").show();
+       initCalendar(); // Initialize calendar when shown
+     } else {
+       $("#tasks-tables").show();
+       $("#tasks-calendar").hide();
+     }
+   });
+ });
+
+//! Calendar functionality
+var calendar = null;  // Global calendar variable
+
+function initCalendar() {
+  if (!calendar) {
+    var calendarEl = document.getElementById('tasks-calendar');
+    calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth'
+    });
+    calendar.render();
+  }
+}
+
+// Initialize calendar on page load
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('tasks-calendar');
+  if (calendarEl && !calendarEl.hasAttribute('style') || !calendarEl.style.display === 'none') {
+    initCalendar();
+  }
 });
