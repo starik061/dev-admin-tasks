@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "common.css";
 @font-face {
   font-family: "Helvetica Neue";
@@ -652,6 +653,45 @@ body.modal-open {
 .fc .fc-daygrid-day.fc-day-today {
   color: #fc6b40;
   outline: 1px dashed #fc6b40;
+}
+
+/* Стили для событий в календаре */
+.fc-daygrid-event {
+  cursor: pointer;
+  padding: 4px 8px;
+  margin-bottom: 4px;
+  border-radius: 11px;
+  font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+}
+
+.fc-daygrid-event .fc-event-title {
+  color: white;
+}
+
+.fc-event-usual {
+  background-color: #edf7ed;
+}
+.fc-event-usual .fc-event-title {
+  color: #4fb14b;
+}
+
+.fc-event-important {
+  background-color: #ebf3fe;
+}
+.fc-event-important .fc-event-title {
+  color: #348af8;
+}
+
+.fc-event-extra-important {
+  background-color: #fce9e4;
+}
+.fc-event-extra-important .fc-event-title {
+  color: #fc6b40;
 }
 
 /*# sourceMappingURL=tasks.css.map */

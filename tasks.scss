@@ -787,3 +787,45 @@ body.modal-open {
   color: $primary-color;
   outline: 1px dashed $primary-color;
 }
+
+/* Стили для событий в календаре */
+.fc-daygrid-event {
+  cursor: pointer;
+  padding: 4px 8px;
+  margin-bottom: 4px;
+  border-radius: 11px;
+  font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+}
+
+.fc-daygrid-event .fc-event-title {
+  color: white;
+}
+
+.fc-event-usual {
+  background-color: $usual-type-background-color;
+
+  & .fc-event-title {
+    color: $usual-type-color;
+  }
+}
+
+.fc-event-important {
+  background-color: $important-type-background-color;
+
+  & .fc-event-title {
+    color: $important-type-color;
+  }
+}
+
+.fc-event-extra-important {
+  background-color: $extra-important-type-background-color;
+
+  & .fc-event-title {
+    color: $primary-color;
+  }
+}

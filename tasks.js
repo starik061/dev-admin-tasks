@@ -138,8 +138,9 @@ $(document).ready(function () {
           $("body").addClass("modal-open");
         },
         events: [ // Sample data for pending tasks
-          { title: 'Pending Task 1', start: '2025-08-05' },
-          { title: 'Pending Task 2', start: '2025-08-08' }
+          { title: 'Pending Task 1', start: '2025-08-05', className: 'fc-event-important' },
+          { title: 'Pending Task 2', start: '2025-08-08', className: 'fc-event-usual' },
+          { title: 'Pending Task 3', start: '2025-08-08', className: 'fc-event-extra-important' }
         ]
       });
       pendingCalendar.render();
