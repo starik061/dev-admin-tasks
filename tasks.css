@@ -510,7 +510,8 @@ body.modal-open {
   overflow-y: auto;
 }
 #tasks-page-wrapper .complete-task-modal__textarea:focus-visible {
-  outline: 1px solid rgb(228, 228, 228);
+  outline: none;
+  border-color: rgb(133, 133, 133);
 }
 #tasks-page-wrapper .modal-header {
   display: flex;
