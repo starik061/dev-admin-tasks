@@ -1,4 +1,24 @@
 $(document).ready(function () {
+  $('.complete-task-modal__show-datepicker-btn').daterangepicker({
+    singleDatePicker: true,
+    timePicker: true,
+    timePicker24Hour: true,
+    locale: {
+      format: 'DD.MM.YYYY HH:mm',
+      applyLabel: 'Застосувати',
+      cancelLabel: 'Скасувати',
+      fromLabel: 'З',
+      toLabel: 'По',
+      customRangeLabel: 'Користувацький',
+      weekLabel: 'Т',
+      daysOfWeek: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+      monthNames: ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'],
+      firstDay: 1
+    }
+  }, function(start, end, label) {
+    $('#changeTaskTimeInput').val(start.format('DD.MM.YYYY HH:mm'));
+  });
+
   // A single function to rule them all: updates the view based on active tab and view mode.
   function updateTaskView() {
     const activeTab = $(".main-tasks-tab-btn.active").data("tab"); // 'pending' or 'overdue'
