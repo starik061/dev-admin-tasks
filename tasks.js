@@ -102,20 +102,48 @@ $(document).ready(function () {
     $("#tasks-filter-block").removeClass("hide").css("display", "block");
   });
 
-  // Close filter on overlay click
+  // Close modals on overlay click
   $(document).on("click", ".al-overlay3", function (event) {
-    if ($(this).hasClass("zi10101")) {
-      $(".al-overlay3").addClass("hide");
-      $("#tasks-filter-block").addClass("hide").css("display", "none");
+    if ($("#complete-task-modal").is(":visible")) {
+      // If complete-task-modal is visible, just close it and do nothing else.
+      $("#complete-task-modal").css("display", "none");
+      $("#calendar-task-details-modal").css("z-index", "10102");
+    } else if ($("#calendar-task-details-modal").is(":visible")) {
       $("#calendar-task-details-modal").addClass("hide");
+      $(".al-overlay3").addClass("hide");
       $("body").removeClass("modal-open");
+    } else if ($("#tasks-filter-block").is(":visible")) {
+      $("#tasks-filter-block").addClass("hide");
+      $(".al-overlay3").addClass("hide");
     }
   });
 
   // Close filter on close button click
-  $(document).on("click", ".bk-filter-header .close", function (event) {
+  $(document).on("click", "#tasks-filter-block .close", function (event) {
     $(".al-overlay3").addClass("hide");
     $("#tasks-filter-block").addClass("hide").css("display", "none");
+  });
+
+  //! "Complete task" modal functionality
+  $(document).on("click", ".finish-task-btn", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(".al-overlay3.zi10101").removeClass("hide");
+    $("#complete-task-modal").css("display", "block");
+    $("body").addClass("modal-open");
+    $("#calendar-task-details-modal").css("z-index", "10100");
+  });
+
+  $(document).on("click", "#complete-task-modal .close, #complete-task-modal .reset-task-btn", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $("#complete-task-modal").css("display", "none");
+    $("#calendar-task-details-modal").css("z-index", "10102");
+
+    if ($("#calendar-task-details-modal").hasClass("hide")) {
+      $(".al-overlay3.zi10101").addClass("hide");
+      $("body").removeClass("modal-open");
+    }
   });
 
   //! Calendar functionality

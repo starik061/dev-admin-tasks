@@ -610,6 +610,7 @@ body.modal-open {
     padding: 20px 30px;
     background-color: white;
     border-radius: 10px;
+    z-index: 10102 !important;
   }
 
   & .complete-task-modal-btn-wrapper {
