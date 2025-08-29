@@ -2087,7 +2087,7 @@
     </div>
 
     <div id="complete-task-modal" class="modal-container" style="display: none;">
-      <div class="bk-filter-header">
+      <div class="modal-header">
         <!--{{-- <span>@lang('message.filter')</span> --}}-->
         <span>Позначити задачу як виконану?</span>
         <span class="close">
@@ -2099,12 +2099,11 @@
         </span>
       </div>
 
-      <div class="field-container">
-        <div class="input-block">
-          <label for="taskCompleteDate">Коментар </label>
-          <textarea value="" id="complete-tast-comment" class="complete-task-modal__textarea" rows="3"></textarea>
-        </div>
+      <div class="complete-task-modal__field-wrapper">
+        <label for="complete-tast-comment">Коментар</label>
+        <textarea value="" id="completeTastComment" class="complete-task-modal__textarea" rows="10"></textarea>
       </div>
+
 
       <div class="complete-task-modal-btn-wrapper">
         <button class="reset-task-btn">Відмінити</button>

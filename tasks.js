@@ -108,6 +108,11 @@ $(document).ready(function () {
       // If complete-task-modal is visible, just close it and do nothing else.
       $("#complete-task-modal").css("display", "none");
       $("#calendar-task-details-modal").css("z-index", "10102");
+
+      if ($("#calendar-task-details-modal").hasClass("hide")) {
+        $(".al-overlay3").addClass("hide");
+        $("body").removeClass("modal-open");
+      }
     } else if ($("#calendar-task-details-modal").is(":visible")) {
       $("#calendar-task-details-modal").addClass("hide");
       $(".al-overlay3").addClass("hide");
