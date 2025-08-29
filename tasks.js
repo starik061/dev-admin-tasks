@@ -16,7 +16,8 @@ $(document).ready(function () {
       } else if (activeTab === "overdue") {
         $("#overdue-tasks-tables-wrapper").show();
       }
-    } else { // Box view (calendar)
+    } else {
+      // Box view (calendar)
       if (activeTab === "pending") {
         $("#pending-tasks-calendar").show();
         initPendingCalendar(); // Initialize the correct calendar
@@ -86,7 +87,7 @@ $(document).ready(function () {
   });
 
   //! View type switcher click handler
-  $(".tasks-view-type .view-item").on("click", function() {
+  $(".tasks-view-type .view-item").on("click", function () {
     const $this = $(this);
     // No need to check if it's already active
     $(".tasks-view-type .view-item").removeClass("active");
@@ -97,81 +98,107 @@ $(document).ready(function () {
   //! Filter functionality
   $(".tasks-filter-btn").on("click", function (event) {
     event.preventDefault();
-    $('.al-overlay3').removeClass('hide');
-    $('#tasks-filter-block').removeClass('hide').css("display", "block");
+    $(".al-overlay3").removeClass("hide");
+    $("#tasks-filter-block").removeClass("hide").css("display", "block");
   });
 
   // Close filter on overlay click
   $(document).on("click", ".al-overlay3", function (event) {
-    if ($(this).hasClass('zi10101')) {
-      $('.al-overlay3').addClass('hide');
-      $('#tasks-filter-block').addClass('hide').css("display", "none");
-      $('#calendar-task-details-modal').addClass('hide');
+    if ($(this).hasClass("zi10101")) {
+      $(".al-overlay3").addClass("hide");
+      $("#tasks-filter-block").addClass("hide").css("display", "none");
+      $("#calendar-task-details-modal").addClass("hide");
       $("body").removeClass("modal-open");
     }
   });
 
   // Close filter on close button click
   $(document).on("click", ".bk-filter-header .close", function (event) {
-     $('.al-overlay3').addClass('hide');
-     $('#tasks-filter-block').addClass('hide').css("display", "none");
-   });
+    $(".al-overlay3").addClass("hide");
+    $("#tasks-filter-block").addClass("hide").css("display", "none");
+  });
 
   //! Calendar functionality
   var pendingCalendar = null;
   var overdueCalendar = null;
 
+  const commonCalendarOptions = {
+    initialView: "dayGridMonth",
+    locale: "uk",
+    buttonText: { today: "Сьогодні" },
+    headerToolbar: { left: "today prev,title,next", center: "", right: "customList" },
+    customButtons: { customList: { text: " " } },
+    editable: true,
+    dayMaxEvents: true,
+    aspectRatio: 1.13,
+    moreLinkContent: function(args) {
+      return '+ ще ' + args.num;
+    },
+    eventClick: function(info) {
+      info.jsEvent.preventDefault();
+      $("#calendar-task-details-modal").removeClass("hide");
+      $(".al-overlay3").removeClass("hide");
+      $("body").addClass("modal-open");
+    },
+  };
+
+  function createCalendar(elementId, eventData, customListHTML) {
+    var calendarEl = document.getElementById(elementId);
+    if (calendarEl) {
+      const calendar = new FullCalendar.Calendar(calendarEl, {
+        ...commonCalendarOptions,
+        events: eventData,
+      });
+      calendar.render();
+      $(calendarEl).find(".fc-customList-button").html(customListHTML);
+      return calendar;
+    }
+    return null;
+  }
+
   function initPendingCalendar() {
     if (!pendingCalendar) {
-      var calendarEl = document.getElementById('pending-tasks-calendar');
-      pendingCalendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        locale: 'uk',
-        buttonText: { today: 'Сьогодні' },
-        headerToolbar: { left: 'today prev,title,next', center: '', right: 'customList' },
-        customButtons: { customList: { text: ' ' } },
-        editable: true,
-        eventClick: function(info) {
-          info.jsEvent.preventDefault();
-          $("#calendar-task-details-modal").removeClass("hide");
-          $(".al-overlay3").removeClass("hide");
-          $("body").addClass("modal-open");
-        },
-        events: [ // Sample data for pending tasks
-          { title: 'Pending Task 1', start: '2025-08-05', className: 'fc-event-important' },
-          { title: 'Pending Task 2', start: '2025-08-08', className: 'fc-event-usual' },
-          { title: 'Pending Task 3', start: '2025-08-08', className: 'fc-event-extra-important' }
-        ]
-      });
-      pendingCalendar.render();
-      // This custom button content should probably be specific to the calendar
-      $(calendarEl).find(".fc-customList-button").html('<ul><li><span>Звичайний:</span><span class="custom-list-tasks-number">1</span></li><li><span>Важливо:</span><span class="custom-list-tasks-number">1</span></li><li><span>Дуже важливо:</span><span class="custom-list-tasks-number">0</span></li></ul>');
+      const events = [
+        // Sample data for pending tasks
+        // 8 tasks for Aug 1
+        { title: "Task for Aug 1, #1", start: "2025-08-01", className: "fc-event-usual" },
+        { title: "Task for Aug 1, #2", start: "2025-08-01", className: "fc-event-important" },
+        { title: "Task for Aug 1, #3", start: "2025-08-01", className: "fc-event-extra-important" },
+        { title: "Task for Aug 1, #4", start: "2025-08-01", className: "fc-event-usual" },
+        { title: "Task for Aug 1, #5", start: "2025-08-01", className: "fc-event-important" },
+        { title: "Task for Aug 1, #6", start: "2025-08-01", className: "fc-event-extra-important" },
+        { title: "Task for Aug 1, #7", start: "2025-08-01", className: "fc-event-usual" },
+        { title: "Task for Aug 1, #8", start: "2025-08-01", className: "fc-event-important" },
+
+        // 1 task for Aug 2-3
+        { title: "Task for Aug 2-3", start: "2025-08-02", end: "2025-08-04", className: "fc-event-extra-important" },
+
+        // 8 tasks for Aug 4-5
+        { title: "Task for Aug 4-5, #1", start: "2025-08-04", end: "2025-08-06", className: "fc-event-usual" },
+        { title: "Task for Aug 4-5, #2", start: "2025-08-04", end: "2025-08-06", className: "fc-event-important" },
+        { title: "Task for Aug 4-5, #3", start: "2025-08-04", end: "2025-08-06", className: "fc-event-extra-important" },
+        { title: "Task for Aug 4-5, #4", start: "2025-08-04", end: "2025-08-06", className: "fc-event-usual" },
+        { title: "Task for Aug 4-5, #5", start: "2025-08-04", end: "2025-08-06", className: "fc-event-important" },
+        { title: "Task for Aug 4-5, #6", start: "2025-08-04", end: "2025-08-06", className: "fc-event-extra-important" },
+        { title: "Task for Aug 4-5, #7", start: "2025-08-04", end: "2025-08-06", className: "fc-event-usual" },
+        { title: "Task for Aug 4-5, #8", start: "2025-08-04", end: "2025-08-06", className: "fc-event-important" },
+      ];
+      const customList =
+        '<ul><li><span>Звичайний:</span><span class="custom-list-tasks-number">1</span></li><li><span>Важливо:</span><span class="custom-list-tasks-number">1</span></li><li><span>Дуже важливо:</span><span class="custom-list-tasks-number">0</span></li></ul>';
+      pendingCalendar = createCalendar("pending-tasks-calendar", events, customList);
     }
   }
 
   function initOverdueCalendar() {
     if (!overdueCalendar) {
-      var calendarEl = document.getElementById('overdue-tasks-calendar');
-      overdueCalendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        locale: 'uk',
-        buttonText: { today: 'Сьогодні' },
-        headerToolbar: { left: 'today prev,title,next', center: '', right: 'customList' },
-        customButtons: { customList: { text: ' ' } },
-        editable: true,
-        eventClick: function(info) {
-          info.jsEvent.preventDefault();
-          $("#calendar-task-details-modal").removeClass("hide");
-          $(".al-overlay3").removeClass("hide");
-          $("body").addClass("modal-open");
-        },
-        events: [ // Sample data for overdue tasks
-          { title: 'Overdue Task 1', start: '2025-08-01', color: 'red' },
-          { title: 'Overdue Task 2', start: '2025-08-03', color: 'red' }
-        ]
-      });
-      overdueCalendar.render();
-      $(calendarEl).find(".fc-customList-button").html('<ul><li><span>Звичайний:</span><span class="custom-list-tasks-number">0</span></li><li><span>Важливо:</span><span class="custom-list-tasks-number">2</span></li><li><span>Дуже важливо:</span><span class="custom-list-tasks-number">0</span></li></ul>');
+      const events = [
+        // Sample data for overdue tasks
+        { title: "Overdue Task 1", start: "2025-08-01", className: "fc-event-extra-important" },
+        { title: "Overdue Task 2", start: "2025-08-03", className: "fc-event-important" },
+      ];
+      const customList =
+        '<ul><li><span>Звичайний:</span><span class="custom-list-tasks-number">0</span></li><li><span>Важливо:</span><span class="custom-list-tasks-number">2</span></li><li><span>Дуже важливо:</span><span class="custom-list-tasks-number">0</span></li></ul>';
+      overdueCalendar = createCalendar("overdue-tasks-calendar", events, customList);
     }
   }
 

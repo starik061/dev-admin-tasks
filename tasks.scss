@@ -780,7 +780,7 @@ body.modal-open {
 
 .fc .fc-daygrid-day-top {
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .fc .fc-daygrid-day.fc-day-today {
@@ -828,4 +828,46 @@ body.modal-open {
   & .fc-event-title {
     color: $primary-color;
   }
+}
+
+.fc .fc-daygrid-more-link {
+  width: 100%;
+  // margin-top: 7px;
+  padding: 4px 8px;
+  border-radius: 11px;
+  cursor: pointer;
+  line-height: 1;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  z-index: 4;
+  border-radius: 11px;
+  font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  border: none;
+  background-color: $primary-color;
+  color: white;
+  text-align: center;
+}
+
+// .fc-daygrid-day-top {
+//   position: relative;
+
+//   &::before {
+//     content: "";
+//     width: 23px;
+//     height: 23px;
+//     background-color: $background-color-active;
+//     border-radius: 50%;
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//   }
+// }
+
+.fc thead {
+  background-color: $background-color-active;
 }
