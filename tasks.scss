@@ -342,6 +342,7 @@ body.modal-open {
       opacity: 0;
       padding: 0 20px;
       transition: all 0.3s ease-out;
+      overflow: hidden;
     }
 
     & .tasks-table-col__accordeon-arrow svg {
@@ -598,6 +599,47 @@ body.modal-open {
       overflow-y: auto;
     }
   }
+
+  // Modals
+  & .modal-container {
+    position: fixed;
+    min-width: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 30px;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  & .complete-task-modal-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+  }
+
+  & .complete-task-modal__textarea {
+    width: 100%;
+    padding: 13px 14px;
+    margin-bottom: 35px;
+    color: $text-color;
+    font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 130%;
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    resize: none;
+    overflow-y: auto;
+
+    &:focus-visible {
+      outline: 1px solid rgb(228, 228, 228);
+    }
+  }
+
+
 }
 
 // Filters panel
@@ -701,7 +743,7 @@ body.modal-open {
     align-items: center;
     gap: 15px;
     list-style: none;
-    font-family: "Helvetica Neue";
+    font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
