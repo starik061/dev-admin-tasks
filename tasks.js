@@ -134,8 +134,8 @@ $(document).ready(function () {
 
   // Close modals on overlay click
   $(document).on("click", ".al-overlay3", function (event) {
-    if ($("#complete-task-modal").is(":visible") || $("#change-task-time-modal").is(":visible")) {
-      $("#complete-task-modal, #change-task-time-modal").css("display", "none");
+    if ($("#complete-task-modal").is(":visible") || $("#change-task-time-modal").is(":visible") || $("#create-task-modal").is(":visible")) {
+      $("#complete-task-modal, #change-task-time-modal, #create-task-modal").css("display", "none");
       $("#calendar-task-details-modal").css("z-index", "10102");
 
       if ($("#calendar-task-details-modal").hasClass("hide")) {
@@ -194,6 +194,28 @@ $(document).ready(function () {
     e.preventDefault();
     e.stopPropagation();
     $("#change-task-time-modal").css("display", "none");
+    $("#calendar-task-details-modal").css("z-index", "10102");
+
+    if ($("#calendar-task-details-modal").hasClass("hide")) {
+      $(".al-overlay3.zi10101").addClass("hide");
+      $("body").removeClass("modal-open");
+    }
+  });
+
+  //! "Create task" modal functionality
+  $(document).on("click", ".create-task-btn", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $(".al-overlay3.zi10101").removeClass("hide");
+    $("#create-task-modal").css("display", "block");
+    $("body").addClass("modal-open");
+    $("#calendar-task-details-modal").css("z-index", "10100");
+  });
+
+  $(document).on("click", "#create-task-modal .close, #create-task-modal .reset-task-btn", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    $("#create-task-modal").css("display", "none");
     $("#calendar-task-details-modal").css("z-index", "10102");
 
     if ($("#calendar-task-details-modal").hasClass("hide")) {
