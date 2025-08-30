@@ -30,3 +30,6 @@
 
 Документация для библиотеки календаря:
 https://fullcalendar.io/docs/intro
+
+Документация для датапикера:
+https://www.daterangepicker.com/#usage
