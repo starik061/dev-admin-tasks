@@ -1,22 +1,32 @@
 $(document).ready(function () {
-  $('.complete-task-modal__show-datepicker-btn').daterangepicker({
-    singleDatePicker: true,
-    timePicker: true,
-    timePicker24Hour: true,
-    locale: {
-      format: 'DD.MM.YYYY HH:mm',
-      applyLabel: 'Застосувати',
-      cancelLabel: 'Скасувати',
-      fromLabel: 'З',
-      toLabel: 'По',
-      customRangeLabel: 'Користувацький',
-      weekLabel: 'Т',
-      daysOfWeek: ['Нд', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
-      monthNames: ['Січень', 'Лютий', 'Березень', 'Квітень', 'Травень', 'Червень', 'Липень', 'Серпень', 'Вересень', 'Жовтень', 'Листопад', 'Грудень'],
-      firstDay: 1
+  // Инициализируем datetimepicker на инпуте
+  $("#changeTaskTimeInput").daterangepicker(
+    {
+      singleDatePicker: true,
+      timePicker: true,
+      timePicker24Hour: true,
+      locale: {
+        format: "DD.MM.YYYY HH:mm",
+        applyLabel: "Застосувати",
+        cancelLabel: "Скасувати",
+        fromLabel: "З",
+        toLabel: "По",
+        customRangeLabel: "Користувацький",
+        weekLabel: "Т",
+        daysOfWeek: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+        monthNames: ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
+        firstDay: 1,
+      },
+    },
+    function (start, end, label) {
+      $("#changeTaskTimeInput").val(start.format("DD.MM.YYYY HH:mm"));
     }
-  }, function(start, end, label) {
-    $('#changeTaskTimeInput').val(start.format('DD.MM.YYYY HH:mm'));
+  );
+
+  // Добавляем обработчик клика на кнопку для открытия пикера
+  $(".complete-task-modal__show-datepicker-btn").on("click", function (e) {
+    e.preventDefault();
+    $("#changeTaskTimeInput").data("daterangepicker").show();
   });
 
   // A single function to rule them all: updates the view based on active tab and view mode.
@@ -205,10 +215,10 @@ $(document).ready(function () {
     editable: true,
     dayMaxEvents: true,
     aspectRatio: 1.13,
-    moreLinkContent: function(args) {
-      return '+ ще ' + args.num;
+    moreLinkContent: function (args) {
+      return "+ ще " + args.num;
     },
-    eventClick: function(info) {
+    eventClick: function (info) {
       info.jsEvent.preventDefault();
       $("#calendar-task-details-modal").removeClass("hide");
       $(".al-overlay3").removeClass("hide");

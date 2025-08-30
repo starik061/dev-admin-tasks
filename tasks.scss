@@ -44,6 +44,14 @@ body.modal-open {
   font-style: normal;
   font-weight: normal;
 
+  & input:focus-visible,
+  & select:focus-visible,
+  & textarea:focus-visible {
+    outline: none;
+    border-color: rgb(133, 133, 133) !important;
+
+  }
+
   & * {
     box-sizing: border-box;
   }
@@ -612,6 +620,10 @@ body.modal-open {
     z-index: 10102 !important;
   }
 
+  & #change-task-time-modal {
+    width: 600px;
+  }
+
   & .complete-task-modal-btn-wrapper {
     display: flex;
     justify-content: flex-end;
@@ -988,4 +1000,24 @@ body.modal-open {
 
 .daterangepicker {
   z-index: 10103 !important;
+}
+
+// Datetimepicker styles in change-task-time-modal
+
+.daterangepicker td.active {
+  background-color: $primary-color !important;
+}
+
+.daterangepicker .drp-buttons .btn {
+  background-color: $primary-color !important;
+  border-radius: 4px;
+  border: none;
+  color: white;
+  cursor: pointer;
+
+  &.cancelBtn {
+    color: $text-color;
+    background-color: transparent !important;
+    border: 1px solid $border-color
+  }
 }
