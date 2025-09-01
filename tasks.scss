@@ -1018,6 +1018,19 @@ body.modal-open {
   padding-right: 24px !important;
   min-width: 100px !important;
   border-radius: 4px !important;
+
+  &:not(:disabled):hover {
+    border: 1px solid $primary-color !important;
+    box-shadow: none;
+  }
+
+  &:not(:disabled):active,
+  &:not(:disabled):active:focus {
+    background-color: $primary-color !important;
+    box-shadow: none;
+    border: 1px solid $primary-color !important;
+    color: white !important;
+  }
 }
 
 .fc-toolbar-chunk:first-of-type {
@@ -1046,6 +1059,21 @@ body.modal-open {
       background-color: transparent;
       border: none;
       color: $text-color;
+
+      &:focus,
+      &:hover {
+        outline: 1px solid $primary-color;
+        box-shadow: none;
+        border: none;
+      }
+
+      &:active,
+      &:active:focus {
+        background-color: $primary-color;
+        box-shadow: none;
+        border: none;
+        outline: none;
+      }
     }
   }
 }
@@ -1191,6 +1219,18 @@ body.modal-open {
     flex-direction: row;
     align-items: center;
     margin: 0;
+  }
 
+  & .create-task-termin-type-btn {
+    border: none;
+    background-color: transparent;
+    color: $primary-color;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
   }
 }

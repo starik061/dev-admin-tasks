@@ -514,10 +514,11 @@ $(document).ready(function () {
     button.on("click", initAndShowPicker);
   };
 
-  // Применяем нашу функцию-инициализатор ко всем нужным инпутам в панели фильтров
+  // Применяем нашу функцию-инициализатор ко всем инпутам для выбора одиночной даты
   initializeSingleDatePicker("#filterCreateTaskTime");
   initializeSingleDatePicker("#filterDeadlineTaskTime");
   initializeSingleDatePicker("#filterCompleteTaskTime");
+  initializeSingleDatePicker("#createTaskDeadline");
 
   // Initial view setup on page load
   updateTaskView();

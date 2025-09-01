@@ -855,6 +855,16 @@ body.modal-open {
   min-width: 100px !important;
   border-radius: 4px !important;
 }
+.fc-today-button:not(:disabled):hover {
+  border: 1px solid #fc6b40 !important;
+  box-shadow: none;
+}
+.fc-today-button:not(:disabled):active, .fc-today-button:not(:disabled):active:focus {
+  background-color: #fc6b40 !important;
+  box-shadow: none;
+  border: 1px solid #fc6b40 !important;
+  color: white !important;
+}
 
 .fc-toolbar-chunk:first-of-type {
   display: flex;
@@ -880,6 +890,17 @@ body.modal-open {
   background-color: transparent;
   border: none;
   color: #3d445c;
+}
+.fc-toolbar-chunk:first-of-type > div .fc-button:focus, .fc-toolbar-chunk:first-of-type > div .fc-button:hover {
+  outline: 1px solid #fc6b40;
+  box-shadow: none;
+  border: none;
+}
+.fc-toolbar-chunk:first-of-type > div .fc-button:active, .fc-toolbar-chunk:first-of-type > div .fc-button:active:focus {
+  background-color: #fc6b40;
+  box-shadow: none;
+  border: none;
+  outline: none;
 }
 
 .fc {
@@ -996,6 +1017,17 @@ body.modal-open {
   flex-direction: row;
   align-items: center;
   margin: 0;
+}
+#create-task-modal .create-task-termin-type-btn {
+  border: none;
+  background-color: transparent;
+  color: #fc6b40;
+  font-weight: 600;
+  cursor: pointer;
+}
+#create-task-modal .create-task-termin-type-btn:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /*# sourceMappingURL=tasks.css.map */
