@@ -1786,105 +1786,93 @@
 
 
       <div class="bk-filter-fields">
-        <h5>За типом</h5>
+        <h5 class="filters-panel-subtitle">За типом</h5>
 
-        <div class="field-container">
-          <div class="input-block big-input-block">
-            <!-- {{-- <label>@lang('message.document_type')</label> --}}-->
-            <label>Тип задачі</label>
+        <div class="filters-panel__field-wrapper">
+          <!-- {{-- <label>@lang('message.document_type')</label> --}}-->
+          <label>Тип задачі</label>
 
-            <select name="taskType" id="taskTypeFilter" style="width: 100%">
-              <!-- {{-- @foreach($docsTypes as $docType)
+          <select name="taskType" id="taskTypeFilter" style="width: 100%">
+            <!-- {{-- @foreach($docsTypes as $docType)
               <option value="{{$docType}}" @if($docType==@$params['docType']) selected @endif>{{$docType}}</option>
               @endforeach --}}-->
-              <option value="">-</option>
-              <option value="call">Дзвінок</option>
-              <option value="meeting">Зустріч</option>
-              <option value="email">Email</option>
-            </select>
-          </div>
+            <option value="">-</option>
+            <option value="call">Дзвінок</option>
+            <option value="meeting">Зустріч</option>
+            <option value="email">Email</option>
+          </select>
         </div>
 
-        <div class="field-container">
-          <div class="input-block big-input-block">
-            <!--{{-- <label>@lang('message.manager')</label> --}}-->
-            <label>Статус</label>
+        <div class="filters-panel__field-wrapper">
+          <!--{{-- <label>@lang('message.manager')</label> --}}-->
+          <label>Статус</label>
 
-            <select name="taskStatus" id="taskStatusFilter" style="width: 100%">
-              <!--{{-- @foreach($managers as $manager)
+          <select name="taskStatus" id="taskStatusFilter" style="width: 100%">
+            <!--{{-- @foreach($managers as $manager)
               <option value="{{$manager->name}}" @if($manager->name == @$params['manager']) selected
                 @endif>{{$manager->name}}</option>
                 @endforeach --}}-->
-              <option value="">-</option>
-              <option value="uncompleted">Невиконані задачі</option>
-              <option value="completed">Виконані</option>
-              <option value="overdue">Протерміновані</option>
-              <option value="in_progress">В роботі</option>
-            </select>
-          </div>
+            <option value="">-</option>
+            <option value="uncompleted">Невиконані задачі</option>
+            <option value="completed">Виконані</option>
+            <option value="overdue">Протерміновані</option>
+            <option value="in_progress">В роботі</option>
+          </select>
         </div>
 
-        <div class="field-container">
-          <div class="input-block big-input-block">
+        <div class="filters-panel__field-wrapper">
+          <label>Термін</label>
 
-            <label>Термін</label>
-
-            <select name="taskTerm" id="taskTermFilter" style="width: 100%">
-              <!--{{-- @foreach($entities as $entity)
+          <select name="taskTerm" id="taskTermFilter" style="width: 100%">
+            <!--{{-- @foreach($entities as $entity)
               <option @if(@$params['entity']==$entity->name_short) selected
                 @endif
                 value="{{$entity->name_short}}">{{$entity->name_short}}</option>
               @endforeach --}}-->
-              <option value="">-</option>
-              <option value="today">На сьогодні</option>
-              <option value="tomorrow">На тиждень</option>
-              <option value="fix-date">На 12.08.2025</option>
-            </select>
+            <option value="">-</option>
+            <option value="today">На сьогодні</option>
+            <option value="tomorrow">На тиждень</option>
+            <option value="fix-date">На 12.08.2025</option>
+          </select>
+        </div>
+
+        <div class="filters-panel__field-wrapper">
+          <label>Показати</label>
+
+          <div class="show-tasks-panel">
+            <input type="radio" name="showTask" id="showTasksAll" class="show-tasks-radio visually-hidden" checked>
+            <label for="showTasksAll" class="show-tasks-btn show-tasks--btn__all">
+              <span>Всі</span>
+            </label>
+            <input type="radio" name="showTask" id="showTasksLeads" class="show-tasks-radio visually-hidden">
+            <label for="showTasksLeads" class="show-tasks-btn show-tasks--btn__leads">
+              <span>Ліди</span>
+            </label>
+            <input type="radio" name="showTask" id="showTasksClients" class="show-tasks-radio visually-hidden">
+            <label for="showTasksClients" class="show-tasks-btn show-tasks--btn__clients">
+              <span>Клієнти</span>
+            </label>
           </div>
         </div>
 
-        <div class="field-container">
-          <div class="input-block big-input-block">
-            <label>Показати</label>
+        <div class="filters-panel__field-wrapper">
+          <!--{{-- <label>@lang('message.results_period')</label> -}}-->
+          <label>Відповідальний</label>
 
-            <div class="show-tasks-panel">
-              <input type="radio" name="showTask" id="showTasksAll" class="show-tasks-radio visually-hidden" checked>
-              <label for="showTasksAll" class="show-tasks-btn show-tasks--btn__all">
-                <span>Всі</span>
-              </label>
-              <input type="radio" name="showTask" id="showTasksLeads" class="show-tasks-radio visually-hidden">
-              <label for="showTasksLeads" class="show-tasks-btn show-tasks--btn__leads">
-                <span>Ліди</span>
-              </label>
-              <input type="radio" name="showTask" id="showTasksClients" class="show-tasks-radio visually-hidden">
-              <label for="showTasksClients" class="show-tasks-btn show-tasks--btn__clients">
-                <span>Клієнти</span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <div class="field-container">
-          <div class="input-block small-input-block" style="width: 88%">
-            <!--{{-- <label>@lang('message.results_period')</label> -}}-->
-            <label>Відповідальний</label>
-
-            <select name="tasksResponsible" id="tasksResponsibleFilter" style="width: 100%">
-              <option value="">-</option>
-              <!-- {{-- @foreach($dates as $k => $v)
+          <select name="tasksResponsible" id="tasksResponsibleFilter" style="width: 100%">
+            <option value="">-</option>
+            <!-- {{-- @foreach($dates as $k => $v)
               <option value="{{ $k }}" {{ in_array($k, $params['periods']) ? 'selected' : '' }}>{{ $v }}</option>
               @endforeach --}}-->
-              <option value="1">Іванов І.І.</option>
-              <option value="2">Петров П.П.</option>
-              <option value="3">Сидоров С.С.</option>
-            </select>
-          </div>
+            <option value="1">Іванов І.І.</option>
+            <option value="2">Петров П.П.</option>
+            <option value="3">Сидоров С.С.</option>
+          </select>
         </div>
 
-        <h5>За часом</h5>
+        <h5 class="filters-panel-subtitle">За часом</h5>
 
-
-        <div class="complete-task-modal__field-wrapper" style="padding: 0 30px;">
+        <div class="filters-panel__field-wrapper">
           <label for="filterCreateTaskTime">Дата створення</label>
           <div class="change-task-time-input-wrapper">
             <input value="" id="filterCreateTaskTime" readonly />
@@ -1898,7 +1886,7 @@
           </div>
         </div>
 
-        <div class="complete-task-modal__field-wrapper" style="padding: 0 30px;">
+        <div class="filters-panel__field-wrapper">
           <label for="filterDeadlineTaskTime">Дата дедлайну</label>
           <div class="change-task-time-input-wrapper">
             <input value="" id="filterDeadlineTaskTime" readonly />
@@ -1912,7 +1900,7 @@
           </div>
         </div>
 
-        <div class="complete-task-modal__field-wrapper" style="padding: 0 30px;">
+        <div class="filters-panel__field-wrapper">
           <label for="filterCompleteTaskTime">Дата закриття</label>
           <div class="change-task-time-input-wrapper">
             <input value="" id="filterCompleteTaskTime" readonly />
