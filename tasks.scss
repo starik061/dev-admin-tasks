@@ -606,6 +606,12 @@ body.modal-open {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      & h3 {
+        font-size: 20px;
+        margin: 0;
+        font-weight: 600;
+      }
     }
 
     & .details-wrapper {
@@ -613,7 +619,7 @@ body.modal-open {
     }
 
     & .tab-content {
-      height: 390px;
+      height: 396px;
       overflow-y: auto;
     }
   }

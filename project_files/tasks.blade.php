@@ -2777,11 +2777,18 @@ body.modal-open {
   justify-content: space-between;
   align-items: center;
 }
+
+#tasks-page-wrapper .details-modal-container .calendar-task-details-modal__header-container h3 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 600;
+}
+
 #tasks-page-wrapper .details-modal-container .details-wrapper {
   background-color: white;
 }
 #tasks-page-wrapper .details-modal-container .tab-content {
-  height: 390px;
+  height: 396px;
   overflow-y: auto;
 }
 #tasks-page-wrapper .modal-container {
