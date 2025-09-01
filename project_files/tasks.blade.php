@@ -1866,16 +1866,12 @@ $webp = "";
         </div>
 
         <div class="filters-panel__field-wrapper">
-          <!--{{-- <label>@lang('message.results_period')</label> -}}-->
           <label>Відповідальний</label>
 
-          <select name="tasksResponsible" id="tasksResponsibleFilter" style="width: 100%" multiple>
-            <!-- {{-- @foreach($dates as $k => $v)
-              <option value="{{ $k }}" {{ in_array($k, $params['periods']) ? 'selected' : '' }}>{{ $v }}</option>
-              @endforeach --}}-->
-            <option value="1">Іванов І.І.</option>
-            <option value="2">Петров П.П.</option>
-            <option value="3">Сидоров С.С.</option>
+          <select name="tasksResponsibleFilter" id="tasksResponsibleFilter" style="width: 100%" multiple>
+            <option value="Іванов І.І.">Іванов</option>
+            <option value="Петров П.П.">Петров</option>
+            <option value="Сидоров С.С.">Сидоров</option>
           </select>
         </div>
 
