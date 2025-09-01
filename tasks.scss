@@ -727,6 +727,10 @@ body.modal-open {
     position: absolute;
     width: 30px;
     height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
     right: 0;
     top: 50%;
     transform: translate(-50%, -50%);
@@ -793,7 +797,6 @@ body.modal-open {
     display: flex;
     align-items: center;
     gap: 5px;
-    ;
     margin: 0;
     padding: 0;
   }
@@ -946,6 +949,19 @@ body.modal-open {
   color: $text-color;
   font-weight: 600;
   height: 42px;
+}
+
+.task-term-towork-input-wrapper {
+  position: relative;
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+
+  & .complete-task-modal__show-datepicker-btn {
+    position: static !important;
+    transform: none !important;
+  }
 }
 
 
