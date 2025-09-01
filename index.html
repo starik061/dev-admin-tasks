@@ -1792,11 +1792,10 @@
           <!-- {{-- <label>@lang('message.document_type')</label> --}}-->
           <label>Тип задачі</label>
 
-          <select name="taskType" id="taskTypeFilter" style="width: 100%">
+          <select name="taskType" id="taskTypeFilter" style="width: 100%" multiple>
             <!-- {{-- @foreach($docsTypes as $docType)
               <option value="{{$docType}}" @if($docType==@$params['docType']) selected @endif>{{$docType}}</option>
               @endforeach --}}-->
-            <option value="">-</option>
             <option value="call">Дзвінок</option>
             <option value="meeting">Зустріч</option>
             <option value="email">Email</option>
@@ -1807,12 +1806,11 @@
           <!--{{-- <label>@lang('message.manager')</label> --}}-->
           <label>Статус</label>
 
-          <select name="taskStatus" id="taskStatusFilter" style="width: 100%">
+          <select name="taskStatus" id="taskStatusFilter" style="width: 100%" multiple>
             <!--{{-- @foreach($managers as $manager)
               <option value="{{$manager->name}}" @if($manager->name == @$params['manager']) selected
                 @endif>{{$manager->name}}</option>
                 @endforeach --}}-->
-            <option value="">-</option>
             <option value="uncompleted">Невиконані задачі</option>
             <option value="completed">Виконані</option>
             <option value="overdue">Протерміновані</option>
@@ -1823,13 +1821,12 @@
         <div class="filters-panel__field-wrapper">
           <label>Термін</label>
 
-          <select name="taskTerm" id="taskTermFilter" style="width: 100%">
+          <select name="taskTerm" id="taskTermFilter" style="width: 100%" multiple>
             <!--{{-- @foreach($entities as $entity)
               <option @if(@$params['entity']==$entity->name_short) selected
                 @endif
                 value="{{$entity->name_short}}">{{$entity->name_short}}</option>
               @endforeach --}}-->
-            <option value="">-</option>
             <option value="overdue"><span class="extra-important">протерміновані</span></option>
             <option value="today">До виконання: <span class="today">на сьогодні</span></option>
             <option value="tomorrow">До виконання: <span class="important">на завтра</span></option>
@@ -1860,8 +1857,7 @@
           <!--{{-- <label>@lang('message.results_period')</label> -}}-->
           <label>Відповідальний</label>
 
-          <select name="tasksResponsible" id="tasksResponsibleFilter" style="width: 100%">
-            <option value="">-</option>
+          <select name="tasksResponsible" id="tasksResponsibleFilter" style="width: 100%" multiple disabled>
             <!-- {{-- @foreach($dates as $k => $v)
               <option value="{{ $k }}" {{ in_array($k, $params['periods']) ? 'selected' : '' }}>{{ $v }}</option>
               @endforeach --}}-->

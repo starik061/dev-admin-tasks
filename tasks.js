@@ -83,6 +83,8 @@ $(document).ready(function () {
   const select2Options = (parentEl) => ({
     dropdownParent: $(parentEl), // Указываем родительский элемент для выпадающего списка
     width: "100%", // Задаем ширину, чтобы соответствовать стилю
+    minimumResultsForSearch: 0, // Показываем строку поиска внутри выпадающего списка
+    multiple: true,
   });
 
   // Инициализация для селектов в панели фильтров
