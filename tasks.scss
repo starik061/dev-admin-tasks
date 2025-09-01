@@ -34,6 +34,8 @@ $usual-type-background-color: #edf7ed;
 $important-type-color: #348af8;
 $important-type-background-color: #ebf3fe;
 $extra-important-type-background-color: #fce9e4;
+$today-type-color: #F2994A;
+$today-type-background-color: #FEF5ED;
 
 body.modal-open {
   overflow: hidden;
@@ -473,6 +475,14 @@ body.modal-open {
   & .extra-important {
     color: $primary-color;
     background-color: $extra-important-type-background-color;
+    display: inline-block;
+    padding: 3px 6px;
+    border-radius: 4px;
+  }
+
+  & .today {
+    color: $today-type-color;
+    background-color: $today-type-background-color;
     display: inline-block;
     padding: 3px 6px;
     border-radius: 4px;

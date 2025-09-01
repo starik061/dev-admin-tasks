@@ -372,6 +372,13 @@ body.modal-open {
   padding: 3px 6px;
   border-radius: 4px;
 }
+#tasks-page-wrapper .today {
+  color: #F2994A;
+  background-color: #FEF5ED;
+  display: inline-block;
+  padding: 3px 6px;
+  border-radius: 4px;
+}
 #tasks-page-wrapper .details-wrapper {
   margin-bottom: 20px;
   padding: 20px;

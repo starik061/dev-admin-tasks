@@ -23,11 +23,59 @@ $(document).ready(function () {
     }
   );
 
-  // Добавляем обработчик клика на кнопку для открытия пикера
-  $(".complete-task-modal__show-datepicker-btn").on("click", function (e) {
+  const changeTaskTimeInput = $("#changeTaskTimeInput");
+  const changeTaskTimeBtn = changeTaskTimeInput.siblings(".complete-task-modal__show-datepicker-btn");
+
+  // Открываем календарь по клику на инпут или кнопку
+  changeTaskTimeInput.add(changeTaskTimeBtn).on("click", function (e) {
     e.preventDefault();
-    $("#changeTaskTimeInput").data("daterangepicker").show();
+    changeTaskTimeInput.data("daterangepicker").show();
   });
+
+  // Инициализация daterangepicker для полей фильтра с выбором диапазона
+  const initDateRangePickerForFilter = (inputId) => {
+    const input = $(`#${inputId}`);
+    if (input.length === 0) return; // Не выполнять, если инпут не найден
+
+    const pickerOptions = {
+      autoUpdateInput: false, // Отключаем авто-обновление, чтобы показывать плейсхолдер
+      locale: {
+        format: "DD.MM.YYYY",
+        applyLabel: "Застосувати",
+        cancelLabel: "Очистити",
+        fromLabel: "З",
+        toLabel: "По",
+        customRangeLabel: "Користувацький",
+        weekLabel: "Т",
+        daysOfWeek: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+        monthNames: ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
+        firstDay: 1,
+      },
+    };
+
+    input.daterangepicker(pickerOptions);
+
+    // Обработчик для кнопки "Застосувати"
+    input.on("apply.daterangepicker", function (ev, picker) {
+      $(this).val(picker.startDate.format("DD.MM.YYYY") + " - " + picker.endDate.format("DD.MM.YYYY"));
+    });
+
+    // Обработчик для кнопки "Очистити"
+    input.on("cancel.daterangepicker", function (ev, picker) {
+      $(this).val("");
+    });
+
+    // Открываем календарь по клику на инпут или на кнопку с иконкой
+    const button = input.siblings(".complete-task-modal__show-datepicker-btn");
+    input.add(button).on("click", function () {
+      input.data("daterangepicker").show();
+    });
+  };
+
+  // Применяем инициализацию к инпутам в панели фильтров
+  initDateRangePickerForFilter("filterCreationDate");
+  initDateRangePickerForFilter("filterDeadlineDate");
+  initDateRangePickerForFilter("filterCompleteDate");
 
   // --- Инициализация Select2 ---
 
@@ -40,7 +88,30 @@ $(document).ready(function () {
   // Инициализация для селектов в панели фильтров
   $("#taskTypeFilter").select2(select2Options("#tasks-filter-block"));
   $("#taskStatusFilter").select2(select2Options("#tasks-filter-block"));
-  $("#taskTermFilter").select2(select2Options("#tasks-filter-block"));
+  // Специальная инициализация для селекта "Термін" с поддержкой HTML
+  $("#taskTermFilter").select2({
+    ...select2Options("#tasks-filter-block"),
+    templateResult: function (data) {
+      // Для плейсхолдера или если нет элемента, возвращаем просто текст
+      if (!data.element) {
+        return data.text;
+      }
+      // Возвращаем HTML-содержимое <option> как строку, чтобы не перемещать DOM-узлы
+      return $(data.element).html();
+    },
+    templateSelection: function (data) {
+      // Для выбранного элемента показываем только текстовое содержимое
+      if (!data.element) {
+        return data.text;
+      }
+      // Возвращаем HTML-содержимое, чтобы стили применились и к выбранному элементу
+      return $(data.element).html();
+    },
+    escapeMarkup: function (markup) {
+      // Разрешаем HTML, так как templateResult возвращает HTML-строку
+      return markup;
+    },
+  });
   $("#tasksResponsibleFilter").select2(select2Options("#tasks-filter-block"));
 
   // Инициализация для селектов в модальном окне "Создать задачу"
@@ -330,46 +401,4 @@ $(document).ready(function () {
 
   // Initial view setup on page load
   updateTaskView();
-
-  // Инициализация daterangepicker для полей фильтра с выбором диапазона
-  const initDateRangePickerForFilter = (inputId) => {
-    const input = $(`#${inputId}`);
-    if (!input.length) return; // Не выполнять, если инпут не найден
-
-    const pickerOptions = {
-      autoUpdateInput: false, // Отключаем авто-обновление, чтобы показывать плейсхолдер
-      locale: {
-        format: "DD.MM.YYYY",
-        applyLabel: "Застосувати",
-        cancelLabel: "Очистити",
-        fromLabel: "З",
-        toLabel: "По",
-        customRangeLabel: "Користувацький",
-        weekLabel: "Т",
-        daysOfWeek: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
-        monthNames: ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
-        firstDay: 1,
-      },
-    };
-
-    input.daterangepicker(pickerOptions);
-
-    input.on("apply.daterangepicker", function (ev, picker) {
-      $(this).val(picker.startDate.format("DD.MM.YYYY") + " - " + picker.endDate.format("DD.MM.YYYY"));
-    });
-
-    input.on("cancel.daterangepicker", function (ev, picker) {
-      $(this).val("");
-    });
-
-    const button = input.siblings(".complete-task-modal__show-datepicker-btn");
-    input.add(button).on("click", function () {
-      input.data("daterangepicker").show();
-    });
-  };
-
-  // Применяем инициализацию к инпутам в панели фильтров
-  initDateRangePickerForFilter("filterCreateTaskTime");
-  initDateRangePickerForFilter("filterDeadlineTaskTime");
-  initDateRangePickerForFilter("filterCompleteTaskTime");
 });

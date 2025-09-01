@@ -1830,9 +1830,10 @@
                 value="{{$entity->name_short}}">{{$entity->name_short}}</option>
               @endforeach --}}-->
             <option value="">-</option>
-            <option value="today">На сьогодні</option>
-            <option value="tomorrow">На тиждень</option>
-            <option value="fix-date">На 12.08.2025</option>
+            <option value="overdue"><span class="extra-important">протерміновані</span></option>
+            <option value="today">До виконання: <span class="today">на сьогодні</span></option>
+            <option value="tomorrow">До виконання: <span class="important">на завтра</span></option>
+            <option value="fix-date">До виконання: <span class="usual">12.02.2025</span></option>
           </select>
         </div>
 
