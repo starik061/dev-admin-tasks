@@ -7,6 +7,7 @@
   <title>Разработка страницы "Задачи"</title>
   <link rel="stylesheet" href="tasks.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -1792,11 +1793,14 @@
             <!-- {{-- <label>@lang('message.document_type')</label> --}}-->
             <label>Тип задачі</label>
 
-            <select name="taskType" class="manager-select" style="width: 100%">
-              <option value="">Оберіть тип задачі</option>
+            <select name="taskType" id="taskTypeFilter" style="width: 100%">
               <!-- {{-- @foreach($docsTypes as $docType)
               <option value="{{$docType}}" @if($docType==@$params['docType']) selected @endif>{{$docType}}</option>
               @endforeach --}}-->
+              <option value="">-</option>
+              <option value="call">Дзвінок</option>
+              <option value="meeting">Зустріч</option>
+              <option value="email">Email</option>
             </select>
           </div>
         </div>
@@ -1806,12 +1810,16 @@
             <!--{{-- <label>@lang('message.manager')</label> --}}-->
             <label>Статус</label>
 
-            <select name="taskStatus" class="manager-select" style="width: 100%">
-              <option value="">Невиконані задачі</option>
+            <select name="taskStatus" id="taskStatusFilter" style="width: 100%">
               <!--{{-- @foreach($managers as $manager)
               <option value="{{$manager->name}}" @if($manager->name == @$params['manager']) selected
                 @endif>{{$manager->name}}</option>
-              @endforeach --}}-->
+                @endforeach --}}-->
+              <option value="">-</option>
+              <option value="uncompleted">Невиконані задачі</option>
+              <option value="completed">Виконані</option>
+              <option value="overdue">Протерміновані</option>
+              <option value="in_progress">В роботі</option>
             </select>
           </div>
         </div>
@@ -1821,13 +1829,16 @@
 
             <label>Термін</label>
 
-            <select name="taskTerm" class="manager-select" style="width: 100%">
-              <option value="">-</option>
+            <select name="taskTerm" id="taskTermFilter" style="width: 100%">
               <!--{{-- @foreach($entities as $entity)
               <option @if(@$params['entity']==$entity->name_short) selected
                 @endif
                 value="{{$entity->name_short}}">{{$entity->name_short}}</option>
               @endforeach --}}-->
+              <option value="">-</option>
+              <option value="today">На сьогодні</option>
+              <option value="tomorrow">На тиждень</option>
+              <option value="fix-date">На 12.08.2025</option>
             </select>
           </div>
         </div>
@@ -1858,11 +1869,14 @@
             <!--{{-- <label>@lang('message.results_period')</label> -}}-->
             <label>Відповідальний</label>
 
-            <select name="tasksКesponsible" class="report_period-select" style="width: 100%">
+            <select name="tasksResponsible" id="tasksResponsibleFilter" style="width: 100%">
               <option value="">-</option>
               <!-- {{-- @foreach($dates as $k => $v)
               <option value="{{ $k }}" {{ in_array($k, $params['periods']) ? 'selected' : '' }}>{{ $v }}</option>
               @endforeach --}}-->
+              <option value="1">Іванов І.І.</option>
+              <option value="2">Петров П.П.</option>
+              <option value="3">Сидоров С.С.</option>
             </select>
           </div>
         </div>
@@ -2176,26 +2190,31 @@
       </div>
 
       <div class="complete-task-modal__field-wrapper">
-        <label for="complete-task-type-select">Тип задачі</label>
-        <select name="complete-task-type-select" id="complete-task-type-select"></select>
+        <label for="create-task-type-select">Тип задачі</label>
+        <select name="create_task_type" id="create-task-type-select" style="width: 100%;">
+          <option value="call">Дзвінок</option>
+          <option value="meeting">Зустріч</option>
+          <option value="email">Email</option>
+        </select>
       </div>
 
 
       <div class="complete-task-modal__field-wrapper">
-        <label for="complete-task-title">Title задачі:</label>
-        <input value="" id="complete-task-title" />
+        <label for="create-task-title">Title задачі:</label>
+        <input value="" id="create-task-title" class="complete-task-modal__textarea"
+          style="height: auto; resize: none;" />
       </div>
 
 
       <div class="complete-task-modal__field-wrapper">
-        <label for="complete-task-description">Description задачі:</label>
-        <textarea value="" class="complete-task-modal__textarea" id="complete-task-description" rows="5"></textarea>
+        <label for="create-task-description">Description задачі:</label>
+        <textarea value="" class="complete-task-modal__textarea" id="create-task-description" rows="5"></textarea>
       </div>
 
       <div class="complete-task-modal__field-wrapper">
-        <label for="complete-task-deadline">Дата та час дедлайна</label>
+        <label for="create-task-deadline">Дата та час дедлайна</label>
         <div class="change-task-time-input-wrapper">
-          <input value="" id="complete-task-deadline" readonly />
+          <input value="" id="create-task-deadline" readonly />
           <button class="complete-task-modal__show-datepicker-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
               <path fill-rule="evenodd" clip-rule="evenodd"
@@ -2206,8 +2225,8 @@
         </div>
       </div>
 
-      <div>
-        <ul>
+      <div class="complete-task-modal__field-wrapper" style="padding-top: 0;">
+        <ul style="display: flex; gap: 10px; list-style: none; padding: 0; flex-wrap: wrap;">
           <li><button>через годину</button></li>
           <li><button>кінець дня</button></li>
           <li><button>на завтра</button></li>
@@ -2218,18 +2237,30 @@
       </div>
 
       <div class="complete-task-modal__field-wrapper">
-        <label for="complete-task-priority">Пріоритет</label>
-        <select name="complete-task-type-select" id="complete-task-priority"></select>
+        <label for="create-task-priority">Пріоритет</label>
+        <select name="create_task_priority" id="create-task-priority" style="width: 100%;">
+          <option value="usual">Звичайний</option>
+          <option value="important">Важливий</option>
+          <option value="extra-important">Дуже важливий</option>
+        </select>
       </div>
 
       <div class="complete-task-modal__field-wrapper">
-        <label for="complete-task-client">Лід/Клієнт</label>
-        <select name="complete-task-type-select" id="complete-task-client"></select>
+        <label for="create-task-client">Лід/Клієнт</label>
+        <select name="create_task_client" id="create-task-client" style="width: 100%;">
+          <option value="">Оберіть</option>
+          <option value="1">Sushi Master</option>
+          <option value="2">ТОВ "Нова справа"</option>
+        </select>
       </div>
 
       <div class="complete-task-modal__field-wrapper">
-        <label for="complete-task-responsible">Відповідальний</label>
-        <select name="complete-task-type-select" id="complete-task-responsible"></select>
+        <label for="create-task-responsible">Відповідальний</label>
+        <select name="create_task_responsible" id="create-task-responsible" style="width: 100%;">
+          <option value="">Оберіть</option>
+          <option value="1">Іванов І.І.</option>
+          <option value="2">Петров П.П.</option>
+        </select>
       </div>
 
       <div class="complete-task-modal-btn-wrapper">
@@ -2249,7 +2280,9 @@
 
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="/tasks.js"></script>
+
 </body>
 
 </html>
