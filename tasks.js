@@ -29,6 +29,26 @@ $(document).ready(function () {
     $("#changeTaskTimeInput").data("daterangepicker").show();
   });
 
+  // --- Инициализация Select2 ---
+
+  // Общая конфигурация для Select2, чтобы избежать дублирования кода
+  const select2Options = (parentEl) => ({
+    dropdownParent: $(parentEl), // Указываем родительский элемент для выпадающего списка
+    width: "100%", // Задаем ширину, чтобы соответствовать стилю
+  });
+
+  // Инициализация для селектов в панели фильтров
+  $("#taskTypeFilter").select2(select2Options("#tasks-filter-block"));
+  $("#taskStatusFilter").select2(select2Options("#tasks-filter-block"));
+  $("#taskTermFilter").select2(select2Options("#tasks-filter-block"));
+  $("#tasksResponsibleFilter").select2(select2Options("#tasks-filter-block"));
+
+  // Инициализация для селектов в модальном окне "Создать задачу"
+  $("#create-task-type-select").select2(select2Options("#create-task-modal"));
+  $("#create-task-priority").select2(select2Options("#create-task-modal"));
+  $("#create-task-client").select2(select2Options("#create-task-modal"));
+  $("#create-task-responsible").select2(select2Options("#create-task-modal"));
+
   // A single function to rule them all: updates the view based on active tab and view mode.
   function updateTaskView() {
     const activeTab = $(".main-tasks-tab-btn.active").data("tab"); // 'pending' or 'overdue'
