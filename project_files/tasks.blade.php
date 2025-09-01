@@ -2213,8 +2213,7 @@ $webp = "";
 
       <div class="complete-task-modal__field-wrapper">
         <label for="create-task-title">Title задачі:</label>
-        <input value="" id="create-task-title" class="complete-task-modal__textarea"
-          style="height: auto; resize: none;" />
+        <input value="" id="create-task-title" class="complete-task-modal__textarea"/>
       </div>
 
 
@@ -3320,9 +3319,18 @@ body.modal-open {
 #create-task-modal .select2-selection__rendered {
   justify-content: flex-start;
   flex-direction: row;
-  
-  
 }
+
+  
+#tasks-filter-block .select2-selection--single .select2-selection__rendered,
+#create-task-modal .select2-selection--single .select2-selection__rendered {
+ justify-content: flex-start !important;
+    align-items: center !important;
+    margin: 0;
+    height: 42px !important;
+    flex-direction: row !important;
+}
+
 #create-task-modal .create-task-termin-type-btn {
   border: none;
   background-color: transparent;

@@ -823,6 +823,14 @@ body.modal-open {
     padding: 0 11px;
   }
 
+  & .select2-selection--single .select2-selection__rendered {
+    justify-content: flex-start !important;
+    align-items: center !important;
+    margin: 0;
+    height: 42px !important;
+    flex-direction: row !important;
+  }
+
   &.select2-results__option {
     padding: 6px;
     height: auto;

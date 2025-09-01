@@ -669,6 +669,14 @@ body.modal-open {
   color: #3d445c;
   padding: 0 11px;
 }
+#tasks-filter-block .select2-selection--single .select2-selection__rendered,
+#create-task-modal .select2-selection--single .select2-selection__rendered {
+  justify-content: flex-start !important;
+  align-items: center !important;
+  margin: 0;
+  height: 42px !important;
+  flex-direction: row !important;
+}
 #tasks-filter-block.select2-results__option,
 #create-task-modal.select2-results__option {
   padding: 6px;
