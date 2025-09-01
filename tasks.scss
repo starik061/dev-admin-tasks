@@ -684,7 +684,10 @@ body.modal-open {
     position: relative;
   }
 
-  & #changeTaskTimeInput {
+  & #changeTaskTimeInput,
+  & #filterCreateTaskTime,
+  & #filterCompleteTaskTime,
+  & #filterDeadlineTaskTime {
     background: white;
     border: 1px solid $border-color;
     border-radius: 4px;

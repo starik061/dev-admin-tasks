@@ -547,7 +547,7 @@ body.modal-open {
 #tasks-page-wrapper .change-task-time-input-wrapper {
   position: relative;
 }
-#tasks-page-wrapper #changeTaskTimeInput {
+#tasks-page-wrapper #changeTaskTimeInput, #tasks-page-wrapper #filterCreateTaskTime, #tasks-page-wrapper #filterCompleteTaskTime, #tasks-page-wrapper #filterDeadlineTaskTime {
   background: white;
   border: 1px solid #CDD4D9;
   border-radius: 4px;
@@ -560,7 +560,7 @@ body.modal-open {
   color: #3d445c;
   padding: 0 11px;
 }
-#tasks-page-wrapper #changeTaskTimeInput::placeholder {
+#tasks-page-wrapper #changeTaskTimeInput::placeholder, #tasks-page-wrapper #filterCreateTaskTime::placeholder, #tasks-page-wrapper #filterCompleteTaskTime::placeholder, #tasks-page-wrapper #filterDeadlineTaskTime::placeholder {
   display: block;
   font-style: normal;
   font-weight: 500;
