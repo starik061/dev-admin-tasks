@@ -401,6 +401,61 @@ $(document).ready(function () {
     }
   }
 
+  // --- Логика для выбора диапазона дат в фильтре "Термін" ---
+
+  // Используем делегирование событий, так как элементы select2 создаются динамически
+  $("body").on("click", ".js-task-term-btn, .js-task-term-span", function (e) {
+    e.preventDefault();
+    e.stopPropagation(); // Останавливаем всплытие, чтобы select2 не закрылся
+
+    // Находим span, на который будем вешать календарь
+    const targetSpan = $(this).closest(".task-term-towork-input-wrapper").find(".js-task-term-span");
+
+    // Если календарь уже инициализирован, просто показываем его
+    if (targetSpan.data("daterangepicker")) {
+      targetSpan.data("daterangepicker").show();
+      return;
+    }
+
+    // Инициализация daterangepicker
+    targetSpan.daterangepicker({
+      autoUpdateInput: false, // Мы будем обновлять значение вручную
+      locale: {
+        format: "DD.MM.YYYY",
+        separator: " - ",
+        applyLabel: "Застосувати",
+        cancelLabel: "Скасувати",
+        fromLabel: "З",
+        toLabel: "До",
+        customRangeLabel: "Свій",
+        weekLabel: "Т",
+        daysOfWeek: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+        monthNames: ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
+        firstDay: 1,
+      },
+    });
+
+    // Событие, которое срабатывает при нажатии на кнопку "Застосувати"
+    targetSpan.on("apply.daterangepicker", function (ev, picker) {
+      const newDate = picker.startDate.format("DD.MM.YYYY") + " - " + picker.endDate.format("DD.MM.YYYY");
+      $(this).text(newDate); // Обновляем текст в выпадающем списке
+      // Находим оригинальный <option> и обновляем его, чтобы сохранить значение
+      $('#taskTermFilter option[value="fix-date"]').find(".js-task-term-span").text(newDate);
+      $("#taskTermFilter").trigger("change.select2"); // Обновляем вид выбранного элемента
+    });
+
+    // Сразу открываем календарь после инициализации
+    targetSpan.data("daterangepicker").show();
+  });
+
+  // Сбрасываем дату обратно на "Оберіть дату", когда пользователь снимает выбор с этой опции
+  $("#taskTermFilter").on("select2:unselect", function (e) {
+    const unselectedItem = e.params.data;
+    if (unselectedItem.id === "fix-date") {
+      $('#taskTermFilter option[value="fix-date"]').find(".js-task-term-span").text("Оберіть дату");
+    }
+  });
+
   // Initial view setup on page load
   updateTaskView();
 });
