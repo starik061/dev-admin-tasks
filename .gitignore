@@ -55,6 +55,7 @@ storage/framework/views/
 
 # Папка с временными файлами
 temp_files/
+project_files/
 
 # Системные файлы Windows
 ehthumbs.db
