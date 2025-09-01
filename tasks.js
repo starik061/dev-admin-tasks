@@ -79,7 +79,7 @@ $(document).ready(function () {
 
   // --- Инициализация Select2 ---
 
-  // Общая конфигурация для Select2, чтобы избежать дублирования кода
+  // Общая конфигурация для Select2 с множественным выбором
   const select2Options = (parentEl) => ({
     dropdownParent: $(parentEl), // Указываем родительский элемент для выпадающего списка
     width: "100%", // Задаем ширину, чтобы соответствовать стилю
@@ -116,8 +116,16 @@ $(document).ready(function () {
   });
   $("#tasksResponsibleFilter").select2(select2Options("#tasks-filter-block"));
 
-  // Инициализация для селектов в модальном окне "Создать задачу"
-  $("#create-task-type-select").select2(select2Options("#create-task-modal"));
+  // --- Инициализация селектов в модальном окне "Создать задачу" ---
+
+  // Инициализация селекта "Тип задачи" как ОДИНОЧНЫЙ выбор (согласно запросу)
+  $("#create-task-type-select").select2({
+    dropdownParent: $("#create-task-modal"),
+    width: "100%",
+    minimumResultsForSearch: Infinity, // Скрываем поиск, так как опций мало
+  });
+
+  // Инициализация остальных селектов в модальном окне как МНОЖЕСТВЕННЫЙ выбор (как и было)
   $("#create-task-priority").select2(select2Options("#create-task-modal"));
   $("#create-task-client").select2(select2Options("#create-task-modal"));
   $("#create-task-responsible").select2(select2Options("#create-task-modal"));

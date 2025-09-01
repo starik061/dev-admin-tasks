@@ -621,7 +621,7 @@ body.modal-open {
   // Modals
   & .modal-container {
     position: fixed;
-    min-width: 600px;
+    width: 600px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -697,7 +697,8 @@ body.modal-open {
   & #changeTaskTimeInput,
   & #filterCreateTaskTime,
   & #filterCompleteTaskTime,
-  & #filterDeadlineTaskTime {
+  & #filterDeadlineTaskTime,
+  & #createTaskDeadline {
     background: white;
     border: 1px solid $border-color;
     border-radius: 4px;
@@ -746,7 +747,8 @@ body.modal-open {
 }
 
 // Filters panel
-#tasks-filter-block {
+#tasks-filter-block,
+#create-task-modal {
   .filters-panel__field-wrapper {
     padding: 0;
     width: 100%;
@@ -1173,5 +1175,22 @@ body.modal-open {
     color: $text-color;
     background-color: transparent !important;
     border: 1px solid $border-color
+  }
+}
+
+// Create task modal
+
+#create-task-modal {
+  & .complete-task-modal__field-wrapper {
+    padding-top: 0;
+  }
+
+  & .select2-selection__rendered {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+
   }
 }
