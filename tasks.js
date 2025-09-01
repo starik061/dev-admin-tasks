@@ -218,7 +218,9 @@ $(document).ready(function () {
   });
 
   //! View type switcher click handler
-  $(".tasks-view-type .view-item").on("click", function () {
+  $(".tasks-view-type .view-item").on("click", function (event) {
+    event.preventDefault();
+    event.stopPropagation();
     const $this = $(this);
     // No need to check if it's already active
     $(".tasks-view-type .view-item").removeClass("active");
