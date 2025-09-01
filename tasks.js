@@ -456,6 +456,61 @@ $(document).ready(function () {
     }
   });
 
+  // --- Инициализация datepicker для фильтров по датам (создание, дедлайн, закрытие) ---
+
+  const initializeSingleDatePicker = (selector) => {
+    const input = $(selector);
+    // Находим кнопку рядом с инпутом
+    const button = input.next(".complete-task-modal__show-datepicker-btn");
+
+    const initAndShowPicker = (e) => {
+      e.preventDefault();
+
+      // Если календарь уже был инициализирован, просто показываем его
+      if (input.data("daterangepicker")) {
+        input.data("daterangepicker").show();
+        return;
+      }
+
+      // Инициализация daterangepicker для выбора одной даты
+      input.daterangepicker({
+        singleDatePicker: true, // Ключевая опция для выбора одной даты
+        showDropdowns: true, // Позволяет быстро выбирать месяц и год
+        autoUpdateInput: false, // Мы будем обновлять значение инпута вручную
+        locale: {
+          format: "DD.MM.YYYY",
+          applyLabel: "Застосувати",
+          cancelLabel: "Скасувати",
+          daysOfWeek: ["Нд", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+          monthNames: ["Січень", "Лютий", "Березень", "Квітень", "Травень", "Червень", "Липень", "Серпень", "Вересень", "Жовтень", "Листопад", "Грудень"],
+          firstDay: 1,
+        },
+      });
+
+      // Событие, когда пользователь выбирает дату и нажимает "Застосувати"
+      input.on("apply.daterangepicker", function (ev, picker) {
+        $(this).val(picker.startDate.format("DD.MM.YYYY"));
+      });
+
+      // Событие для очистки поля при нажатии "Скасувати"
+      input.on("cancel.daterangepicker", function (ev, picker) {
+        $(this).val("");
+      });
+
+      // Сразу открываем календарь
+      input.data("daterangepicker").show();
+    };
+
+    // Навешиваем обработчик и на инпут, и на кнопку
+    input.on("click", initAndShowPicker);
+    button.on("click", initAndShowPicker);
+  };
+
+  // Применяем нашу функцию-инициализатор ко всем нужным инпутам в панели фильтров
+  initializeSingleDatePicker("#filterCreateTaskTime");
+  initializeSingleDatePicker("#filterDeadlineTaskTime");
+  initializeSingleDatePicker("#filterCompleteTaskTime");
+
   // Initial view setup on page load
   updateTaskView();
 });
