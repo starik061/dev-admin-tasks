@@ -231,33 +231,33 @@ $(document).ready(function () {
   //! Filter functionality
   $(".tasks-filter-btn").on("click", function (event) {
     event.preventDefault();
-    $(".al-overlay3").removeClass("hide");
+    $(".task-page-overlay-2").removeClass("hide");
     $("#tasks-filter-block").removeClass("hide").css("display", "block");
   });
 
   // Close modals on overlay click
-  $(document).on("click", ".al-overlay3", function (event) {
+  $(document).on("click", ".task-page-overlay-2", function (event) {
     if ($("#complete-task-modal").is(":visible") || $("#change-task-time-modal").is(":visible") || $("#create-task-modal").is(":visible")) {
       $("#complete-task-modal, #change-task-time-modal, #create-task-modal").css("display", "none");
       $("#calendar-task-details-modal").css("z-index", "10102");
 
       if ($("#calendar-task-details-modal").hasClass("hide")) {
-        $(".al-overlay3").addClass("hide");
+        $(".task-page-overlay-2").addClass("hide");
         $("body").removeClass("modal-open");
       }
     } else if ($("#calendar-task-details-modal").is(":visible")) {
       $("#calendar-task-details-modal").addClass("hide");
-      $(".al-overlay3").addClass("hide");
+      $(".task-page-overlay-2").addClass("hide");
       $("body").removeClass("modal-open");
     } else if ($("#tasks-filter-block").is(":visible")) {
       $("#tasks-filter-block").addClass("hide");
-      $(".al-overlay3").addClass("hide");
+      $(".task-page-overlay-2").addClass("hide");
     }
   });
 
   // Close filter on close button click
   $(document).on("click", "#tasks-filter-block .close", function (event) {
-    $(".al-overlay3").addClass("hide");
+    $(".task-page-overlay-2").addClass("hide");
     $("#tasks-filter-block").addClass("hide").css("display", "none");
   });
 
@@ -265,7 +265,7 @@ $(document).ready(function () {
   $(document).on("click", ".finish-task-btn", function (e) {
     e.preventDefault();
     e.stopPropagation();
-    $(".al-overlay3.zi10101").removeClass("hide");
+    $(".task-page-overlay-2").removeClass("hide");
     $("#complete-task-modal").css("display", "block");
     $("body").addClass("modal-open");
     $("#calendar-task-details-modal").css("z-index", "10100");
@@ -278,7 +278,7 @@ $(document).ready(function () {
     $("#calendar-task-details-modal").css("z-index", "10102");
 
     if ($("#calendar-task-details-modal").hasClass("hide")) {
-      $(".al-overlay3.zi10101").addClass("hide");
+      $(".task-page-overlay-2").addClass("hide");
       $("body").removeClass("modal-open");
     }
   });
@@ -287,7 +287,7 @@ $(document).ready(function () {
   $(document).on("click", ".change-task-time-btn", function (e) {
     e.preventDefault();
     e.stopPropagation();
-    $(".al-overlay3.zi10101").removeClass("hide");
+    $(".task-page-overlay-2").removeClass("hide");
     $("#change-task-time-modal").css("display", "block");
     $("body").addClass("modal-open");
     $("#calendar-task-details-modal").css("z-index", "10100");
@@ -300,7 +300,7 @@ $(document).ready(function () {
     $("#calendar-task-details-modal").css("z-index", "10102");
 
     if ($("#calendar-task-details-modal").hasClass("hide")) {
-      $(".al-overlay3.zi10101").addClass("hide");
+      $(".task-page-overlay-2").addClass("hide");
       $("body").removeClass("modal-open");
     }
   });
@@ -309,7 +309,7 @@ $(document).ready(function () {
   $(document).on("click", ".create-task-btn", function (e) {
     e.preventDefault();
     e.stopPropagation();
-    $(".al-overlay3.zi10101").removeClass("hide");
+    $(".task-page-overlay-2").removeClass("hide");
     $("#create-task-modal").css("display", "block");
     $("body").addClass("modal-open");
     $("#calendar-task-details-modal").css("z-index", "10100");
@@ -322,7 +322,7 @@ $(document).ready(function () {
     $("#calendar-task-details-modal").css("z-index", "10102");
 
     if ($("#calendar-task-details-modal").hasClass("hide")) {
-      $(".al-overlay3.zi10101").addClass("hide");
+      $(".task-page-overlay-2").addClass("hide");
       $("body").removeClass("modal-open");
     }
   });
@@ -346,7 +346,7 @@ $(document).ready(function () {
     eventClick: function (info) {
       info.jsEvent.preventDefault();
       $("#calendar-task-details-modal").removeClass("hide");
-      $(".al-overlay3").removeClass("hide");
+      $(".task-page-overlay-2").removeClass("hide");
       $("body").addClass("modal-open");
     },
   };

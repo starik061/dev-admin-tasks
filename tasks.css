@@ -21,6 +21,16 @@ body.modal-open {
   overflow: hidden;
 }
 
+.task-page-overlay-2 {
+  z-index: 10101;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(29, 29, 33, 0.8);
+}
+
 #tasks-page-wrapper {
   font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
   font-style: normal;
