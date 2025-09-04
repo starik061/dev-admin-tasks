@@ -2384,7 +2384,6 @@ body.modal-open {
   fill: #3d445c;
 }
 #tasks-page-wrapper .view-item.box-view.active svg, #tasks-page-wrapper .view-item.box-view:hover svg {
-  stroke-width: 0;
   fill: #fc6b40;
 }
 #tasks-page-wrapper .box-view {
@@ -2785,6 +2784,12 @@ body.modal-open {
   border-radius: 4px;
   padding: 20px;
   overflow-y: auto;
+  max-width: 90vw;
+}
+@media (max-width: 799px) {
+  #tasks-page-wrapper .details-modal-container .details-content {
+    width: 600px;
+  }
 }
 #tasks-page-wrapper .details-modal-container .details-content-btn-wrapper {
   position: static;
@@ -2816,8 +2821,10 @@ body.modal-open {
   border-radius: 10px;
   z-index: 10102 !important;
 }
-#tasks-page-wrapper #change-task-time-modal {
-  width: 600px;
+@media (max-width: 799px) {
+  #tasks-page-wrapper .modal-container {
+    width: 500px;
+  }
 }
 #tasks-page-wrapper .complete-task-modal-btn-wrapper {
   display: flex;
@@ -3386,6 +3393,7 @@ body.modal-open {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+
 </style>
 
 
