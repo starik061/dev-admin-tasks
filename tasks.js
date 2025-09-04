@@ -47,109 +47,95 @@ $(document).ready(function () {
   // --- Инициализация Select2 ---
 
   // Общая конфигурация для Select2 с множественным выбором
-  const select2Options = (parentEl) => ({
-    dropdownParent: $(parentEl), // Указываем родительский элемент для выпадающего списка
-    width: "100%", // Задаем ширину, чтобы соответствовать стилю
-    minimumResultsForSearch: 0, // Показываем строку поиска внутри выпадающего списка
+  const select2Options = (parentEl, extraOptions = {}) => ({
+    dropdownParent: $(parentEl),
+    width: "100%",
+    minimumResultsForSearch: 0,
     multiple: true,
+    ...extraOptions,
   });
 
-  // Инициализация для селектов в панели фильтров
+  // Функция для обработки single-behavior: при выборе нового элемента удаляем предыдущие
+  const enforceSingleSelection = (selectId) => {
+    $(`#${selectId}`).on("select2:select", function (e) {
+      const selectedValue = e.params.data.id;
+      $(this).val([selectedValue]).trigger("change");
+    });
+  };
+
+  // Инициализация селектов в панели фильтров (все multiple)
   $("#taskTypeFilter").select2(select2Options("#tasks-filter-block"));
   $("#taskStatusFilter").select2(select2Options("#tasks-filter-block"));
-  // Специальная инициализация для селекта "Термін" с поддержкой HTML
   $("#taskTermFilter").select2({
     ...select2Options("#tasks-filter-block"),
     templateResult: function (data) {
-      // Для плейсхолдера или если нет элемента, возвращаем просто текст
       if (!data.element) {
         return data.text;
       }
-      // Возвращаем HTML-содержимое <option> как строку, чтобы не перемещать DOM-узлы
       return $(data.element).html();
     },
     templateSelection: function (data) {
-      // Для выбранного элемента показываем только текстовое содержимое
       if (!data.element) {
         return data.text;
       }
-      // Возвращаем HTML-содержимое, чтобы стили применились и к выбранному элементу
       return $(data.element).html();
     },
     escapeMarkup: function (markup) {
-      // Разрешаем HTML, так как templateResult возвращает HTML-строку
       return markup;
     },
   });
   $("#tasksResponsibleFilter").select2(select2Options("#tasks-filter-block"));
 
-  // --- Инициализация селектов в модальном окне "Создать задачу" ---
-
-  // Инициализация селекта "Тип задачи" как ОДИНОЧНЫЙ выбор (согласно запросу)
-  const createTaskTypeSelect = $("#create-task-type-select");
-  createTaskTypeSelect
+  // Инициализация селектов в модальном окне "Создать задачу" (multiple с single-behavior)
+  $("#create-task-type-select")
     .select2({
-      dropdownParent: $("#create-task-modal"),
-      width: "100%",
-      minimumResultsForSearch: Infinity, // Скрываем поиск, так как опций мало
-      placeholder: "Оберіть тип задачі",
+      ...select2Options("#create-task-modal", { minimumResultsForSearch: Infinity, placeholder: "Оберіть тип задачі" }),
     })
     .val(null)
     .trigger("change");
+  enforceSingleSelection("create-task-type-select");
 
-  const createTaskPrioritySelect = $("#create-task-priority");
-  createTaskPrioritySelect
+  $("#create-task-priority")
     .select2({
-      dropdownParent: $("#create-task-modal"),
-      width: "100%",
-      minimumResultsForSearch: Infinity,
-      placeholder: "Оберіть пріоритет",
-
-      templateResult: function (data) {
-        // Для плейсхолдера или если нет элемента, возвращаем просто текст
-        if (!data.element) {
-          return data.text;
-        }
-        // Возвращаем HTML-содержимое <option> как строку, чтобы не перемещать DOM-узлы
-        return $(data.element).html();
-      },
-      templateSelection: function (data) {
-        // Для выбранного элемента показываем только текстовое содержимое
-        if (!data.element) {
-          return data.text;
-        }
-        // Возвращаем HTML-содержимое, чтобы стили применились и к выбранному элементу
-        return $(data.element).html();
-      },
-      escapeMarkup: function (markup) {
-        // Разрешаем HTML, так как templateResult возвращает HTML-строку
-        return markup;
-      },
+      ...select2Options("#create-task-modal", {
+        minimumResultsForSearch: Infinity,
+        placeholder: "Оберіть пріоритет",
+        templateResult: function (data) {
+          if (!data.element) {
+            return data.text;
+          }
+          return $(data.element).html();
+        },
+        templateSelection: function (data) {
+          if (!data.element) {
+            return data.text;
+          }
+          return $(data.element).html();
+        },
+        escapeMarkup: function (markup) {
+          return markup;
+        },
+      }),
     })
     .val(null)
     .trigger("change");
+  enforceSingleSelection("create-task-priority");
 
-  const createTaskClientSelect = $("#create-task-client");
-  createTaskClientSelect
+  $("#create-task-client")
     .select2({
-      dropdownParent: $("#create-task-modal"),
-      width: "100%",
-      minimumResultsForSearch: Infinity,
-      placeholder: "Оберіть ліда/клієнта",
+      ...select2Options("#create-task-modal", { minimumResultsForSearch: Infinity, placeholder: "Оберіть ліда/клієнта" }),
     })
     .val(null)
     .trigger("change");
+  enforceSingleSelection("create-task-client");
 
-  const createTaskResponsibleSelect = $("#create-task-responsible");
-  createTaskResponsibleSelect
+  $("#create-task-responsible")
     .select2({
-      dropdownParent: $("#create-task-modal"),
-      width: "100%",
-      minimumResultsForSearch: Infinity,
-      placeholder: "Оберіть відповідального",
+      ...select2Options("#create-task-modal", { minimumResultsForSearch: Infinity, placeholder: "Оберіть відповідального" }),
     })
     .val(null)
     .trigger("change");
+  enforceSingleSelection("create-task-responsible");
 
   // A single function to rule them all: updates the view based on active tab and view mode.
   function updateTaskView() {
