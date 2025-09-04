@@ -87,44 +87,48 @@ $(document).ready(function () {
 
   // Инициализация селекта "Тип задачи" как ОДИНОЧНЫЙ выбор (согласно запросу)
   const createTaskTypeSelect = $("#create-task-type-select");
-  if (createTaskTypeSelect.find('option[value=""]').length === 0) {
-    createTaskTypeSelect.prepend('<option value="" disabled selected>Оберіть Тип задачі</option>');
-  }
-  createTaskTypeSelect.select2({
-    dropdownParent: $("#create-task-modal"),
-    width: "100%",
-    minimumResultsForSearch: Infinity, // Скрываем поиск, так как опций мало
-  });
+  createTaskTypeSelect
+    .select2({
+      dropdownParent: $("#create-task-modal"),
+      width: "100%",
+      minimumResultsForSearch: Infinity, // Скрываем поиск, так как опций мало
+      placeholder: "Оберіть тип задачі",
+    })
+    .val(null)
+    .trigger("change");
 
   const createTaskPrioritySelect = $("#create-task-priority");
-  if (createTaskPrioritySelect.find('option[value=""]').length === 0) {
-    createTaskPrioritySelect.prepend('<option value="" disabled selected>Оберіть пріоритет</option>');
-  }
-  createTaskPrioritySelect.select2({
-    dropdownParent: $("#create-task-modal"),
-    width: "100%",
-    minimumResultsForSearch: Infinity,
-  });
+  createTaskPrioritySelect
+    .select2({
+      dropdownParent: $("#create-task-modal"),
+      width: "100%",
+      minimumResultsForSearch: Infinity,
+      placeholder: "Оберіть пріоритет",
+    })
+    .val(null)
+    .trigger("change");
 
   const createTaskClientSelect = $("#create-task-client");
-  if (createTaskClientSelect.find('option[value=""]').length === 0) {
-    createTaskClientSelect.prepend('<option value="" disabled selected>Оберіть ліда/клієнта</option>');
-  }
-  createTaskClientSelect.select2({
-    dropdownParent: $("#create-task-modal"),
-    width: "100%",
-    minimumResultsForSearch: Infinity,
-  });
+  createTaskClientSelect
+    .select2({
+      dropdownParent: $("#create-task-modal"),
+      width: "100%",
+      minimumResultsForSearch: Infinity,
+      placeholder: "Оберіть ліда/клієнта",
+    })
+    .val(null)
+    .trigger("change");
 
   const createTaskResponsibleSelect = $("#create-task-responsible");
-  if (createTaskResponsibleSelect.find('option[value=""]').length === 0) {
-    createTaskResponsibleSelect.prepend('<option value="" disabled selected>Оберіть відповідального</option>');
-  }
-  createTaskResponsibleSelect.select2({
-    dropdownParent: $("#create-task-modal"),
-    width: "100%",
-    minimumResultsForSearch: Infinity,
-  });
+  createTaskResponsibleSelect
+    .select2({
+      dropdownParent: $("#create-task-modal"),
+      width: "100%",
+      minimumResultsForSearch: Infinity,
+      placeholder: "Оберіть відповідального",
+    })
+    .val(null)
+    .trigger("change");
 
   // A single function to rule them all: updates the view based on active tab and view mode.
   function updateTaskView() {

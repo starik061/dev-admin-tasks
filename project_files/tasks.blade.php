@@ -3462,16 +3462,49 @@ $(document).ready(function () {
   // --- Инициализация селектов в модальном окне "Создать задачу" ---
 
   // Инициализация селекта "Тип задачи" как ОДИНОЧНЫЙ выбор (согласно запросу)
-  $("#create-task-type-select").select2({
-    dropdownParent: $("#create-task-modal"),
-    width: "100%",
-    minimumResultsForSearch: Infinity, // Скрываем поиск, так как опций мало
-  });
+  const createTaskTypeSelect = $("#create-task-type-select");
+  createTaskTypeSelect
+    .select2({
+      dropdownParent: $("#create-task-modal"),
+      width: "100%",
+      minimumResultsForSearch: Infinity, // Скрываем поиск, так как опций мало
+      placeholder: "Оберіть тип задачі",
+    })
+    .val(null)
+    .trigger("change");
 
-  // Инициализация остальных селектов в модальном окне как МНОЖЕСТВЕННЫЙ выбор (как и было)
-  $("#create-task-priority").select2(select2Options("#create-task-modal"));
-  $("#create-task-client").select2(select2Options("#create-task-modal"));
-  $("#create-task-responsible").select2(select2Options("#create-task-modal"));
+  const createTaskPrioritySelect = $("#create-task-priority");
+  createTaskPrioritySelect
+    .select2({
+      dropdownParent: $("#create-task-modal"),
+      width: "100%",
+      minimumResultsForSearch: Infinity,
+      placeholder: "Оберіть пріоритет",
+    })
+    .val(null)
+    .trigger("change");
+
+  const createTaskClientSelect = $("#create-task-client");
+  createTaskClientSelect
+    .select2({
+      dropdownParent: $("#create-task-modal"),
+      width: "100%",
+      minimumResultsForSearch: Infinity,
+      placeholder: "Оберіть ліда/клієнта",
+    })
+    .val(null)
+    .trigger("change");
+
+  const createTaskResponsibleSelect = $("#create-task-responsible");
+  createTaskResponsibleSelect
+    .select2({
+      dropdownParent: $("#create-task-modal"),
+      width: "100%",
+      minimumResultsForSearch: Infinity,
+      placeholder: "Оберіть відповідального",
+    })
+    .val(null)
+    .trigger("change");
 
   // A single function to rule them all: updates the view based on active tab and view mode.
   function updateTaskView() {
@@ -3887,6 +3920,5 @@ $(document).ready(function () {
   // Initial view setup on page load
   updateTaskView();
 });
-
 
   </script>
