@@ -812,8 +812,18 @@ body.modal-open {
       border-width: 5px 4px 0 4px;
       height: 0;
       width: 0;
-
     }
+  }
+
+  /* Скрываем поле поиска по умолчанию для множественных селектов */
+  .select2-container .select2-selection--multiple .select2-search--inline {
+    height: 0 !important;
+  }
+
+  /* Показываем поле поиска, когда выпадающий список открыт или Select2 имеет фокус */
+  .select2-container--open .select2-selection--multiple .select2-search--inline,
+  .select2-container--focus .select2-selection--multiple .select2-search--inline {
+    height: 18px !important;
   }
 
   // & .select2-selection--multiple {

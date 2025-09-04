@@ -38,6 +38,8 @@ body.modal-open {
   font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
+  /* Скрываем поле поиска по умолчанию для множественных селектов */
+  /* Показываем поле поиска, когда выпадающий список открыт или Select2 имеет фокус */
 }
 #tasks-page-wrapper input:focus-visible, #tasks-page-wrapper select:focus-visible, #tasks-page-wrapper textarea:focus-visible {
   outline: none;
@@ -653,6 +655,13 @@ body.modal-open {
   border-width: 5px 4px 0 4px;
   height: 0;
   width: 0;
+}
+#tasks-page-wrapper .select2-container .select2-selection--multiple .select2-search--inline {
+  height: 0 !important;
+}
+#tasks-page-wrapper .select2-container--open .select2-selection--multiple .select2-search--inline,
+#tasks-page-wrapper .select2-container--focus .select2-selection--multiple .select2-search--inline {
+  height: 18px !important;
 }
 #tasks-page-wrapper .select2-selection__rendered {
   width: 100%;
