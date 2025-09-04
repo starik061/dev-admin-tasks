@@ -799,7 +799,7 @@ body.modal-open {
     &::after {
       content: "";
       position: absolute;
-      right: 8px;
+      right: 5px;
       top: 50%;
       transform: translateY(-50%);
       color: $placeholder-color;
@@ -840,10 +840,15 @@ body.modal-open {
     padding: 0;
   }
 
-  &.select2-results__option {
-    padding: 6px;
+  & .select2-results__option {
+    padding: 9px 13px;
     height: auto;
     font-size: 13px;
+  }
+
+  & .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: $primary-color;
+    color: white;
   }
 
   & .select2-container--default .select2-selection--multiple .select2-selection__choice {
