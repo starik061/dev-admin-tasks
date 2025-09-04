@@ -49,6 +49,10 @@ body.modal-open {
   left: 0;
   top: 0;
   background: rgba(29, 29, 33, 0.8);
+
+  &.hide {
+    display: none;
+  }
 }
 
 #tasks-page-wrapper {

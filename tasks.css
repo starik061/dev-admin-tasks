@@ -30,6 +30,9 @@ body.modal-open {
   top: 0;
   background: rgba(29, 29, 33, 0.8);
 }
+.task-page-overlay-2.hide {
+  display: none;
+}
 
 #tasks-page-wrapper {
   font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
