@@ -104,6 +104,27 @@ $(document).ready(function () {
       width: "100%",
       minimumResultsForSearch: Infinity,
       placeholder: "Оберіть пріоритет",
+
+      templateResult: function (data) {
+        // Для плейсхолдера или если нет элемента, возвращаем просто текст
+        if (!data.element) {
+          return data.text;
+        }
+        // Возвращаем HTML-содержимое <option> как строку, чтобы не перемещать DOM-узлы
+        return $(data.element).html();
+      },
+      templateSelection: function (data) {
+        // Для выбранного элемента показываем только текстовое содержимое
+        if (!data.element) {
+          return data.text;
+        }
+        // Возвращаем HTML-содержимое, чтобы стили применились и к выбранному элементу
+        return $(data.element).html();
+      },
+      escapeMarkup: function (markup) {
+        // Разрешаем HTML, так как templateResult возвращает HTML-строку
+        return markup;
+      },
     })
     .val(null)
     .trigger("change");

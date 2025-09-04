@@ -2250,9 +2250,9 @@ $webp = "";
       <div class="complete-task-modal__field-wrapper">
         <label for="create-task-priority">Пріоритет</label>
         <select name="create_task_priority" id="create-task-priority" style="width: 100%;">
-          <option value="usual">Звичайний</option>
-          <option value="important">Важливий</option>
-          <option value="extra-important">Дуже важливий</option>
+          <option value="usual"><span class="usual">Звичайний</span></option>
+          <option value="important"><span class="important">Важливо</span></option>
+          <option value="extra-important"><span class="extra-important">Дуже важливо</span></option>
         </select>
       </div>
 
@@ -3480,6 +3480,27 @@ $(document).ready(function () {
       width: "100%",
       minimumResultsForSearch: Infinity,
       placeholder: "Оберіть пріоритет",
+
+      templateResult: function (data) {
+        // Для плейсхолдера или если нет элемента, возвращаем просто текст
+        if (!data.element) {
+          return data.text;
+        }
+        // Возвращаем HTML-содержимое <option> как строку, чтобы не перемещать DOM-узлы
+        return $(data.element).html();
+      },
+      templateSelection: function (data) {
+        // Для выбранного элемента показываем только текстовое содержимое
+        if (!data.element) {
+          return data.text;
+        }
+        // Возвращаем HTML-содержимое, чтобы стили применились и к выбранному элементу
+        return $(data.element).html();
+      },
+      escapeMarkup: function (markup) {
+        // Разрешаем HTML, так как templateResult возвращает HTML-строку
+        return markup;
+      },
     })
     .val(null)
     .trigger("change");
@@ -3920,5 +3941,6 @@ $(document).ready(function () {
   // Initial view setup on page load
   updateTaskView();
 });
+
 
   </script>
