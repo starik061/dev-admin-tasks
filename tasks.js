@@ -52,6 +52,7 @@ $(document).ready(function () {
     width: "100%",
     minimumResultsForSearch: 0,
     multiple: true,
+    placeholder: "Оберіть...",
     ...extraOptions,
   });
 
@@ -64,10 +65,10 @@ $(document).ready(function () {
   };
 
   // Инициализация селектов в панели фильтров (все multiple)
-  $("#taskTypeFilter").select2(select2Options("#tasks-filter-block"));
-  $("#taskStatusFilter").select2(select2Options("#tasks-filter-block"));
+  $("#taskTypeFilter").select2(select2Options("#tasks-filter-block", { placeholder: "Оберіть тип задачі" }));
+  $("#taskStatusFilter").select2(select2Options("#tasks-filter-block", { placeholder: "Оберіть статус задачі" }));
   $("#taskTermFilter").select2({
-    ...select2Options("#tasks-filter-block"),
+    ...select2Options("#tasks-filter-block", { placeholder: "Оберіть термін виконання задачі" }),
     templateResult: function (data) {
       if (!data.element) {
         return data.text;
@@ -84,7 +85,7 @@ $(document).ready(function () {
       return markup;
     },
   });
-  $("#tasksResponsibleFilter").select2(select2Options("#tasks-filter-block"));
+  $("#tasksResponsibleFilter").select2(select2Options("#tasks-filter-block", { placeholder: "Оберіть відповідальних" }));
 
   // Инициализация селектов в модальном окне "Создать задачу" (multiple с single-behavior)
   $("#create-task-type-select")
