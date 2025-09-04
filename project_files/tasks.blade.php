@@ -2380,9 +2380,11 @@ body.modal-open {
   stroke: #fc6b40;
 }
 #tasks-page-wrapper .view-item.box-view svg {
+  stroke-width: 0;
   fill: #3d445c;
 }
 #tasks-page-wrapper .view-item.box-view.active svg, #tasks-page-wrapper .view-item.box-view:hover svg {
+  stroke-width: 0;
   fill: #fc6b40;
 }
 #tasks-page-wrapper .box-view {

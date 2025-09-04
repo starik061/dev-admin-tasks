@@ -115,6 +115,7 @@ body.modal-open {
     }
 
     &.box-view svg {
+      stroke-width: 0;
       fill: $text-color;
     }
 
