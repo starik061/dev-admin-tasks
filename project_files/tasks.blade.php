@@ -2333,6 +2333,8 @@ body.modal-open {
   font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
+  /* Скрываем поле поиска по умолчанию для множественных селектов */
+  /* Показываем поле поиска, когда выпадающий список открыт или Select2 имеет фокус */
 }
 #tasks-page-wrapper input:focus-visible, #tasks-page-wrapper select:focus-visible, #tasks-page-wrapper textarea:focus-visible {
   outline: none;
@@ -2790,13 +2792,11 @@ body.modal-open {
   justify-content: space-between;
   align-items: center;
 }
-
 #tasks-page-wrapper .details-modal-container .calendar-task-details-modal__header-container h3 {
   font-size: 20px;
   margin: 0;
   font-weight: 600;
 }
-
 #tasks-page-wrapper .details-modal-container .details-wrapper {
   background-color: white;
 }
@@ -2912,6 +2912,129 @@ body.modal-open {
 #tasks-page-wrapper .complete-task-modal__show-datepicker-btn:hover {
   background-color: #f5f5f5;
 }
+#tasks-page-wrapper .select2-selection {
+  background: white;
+  border: 1px solid #CDD4D9;
+  border-radius: 4px;
+  width: 100%;
+  padding: 9px 13px;
+  min-height: 42px;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+#tasks-page-wrapper .select2-search {
+  margin: 0;
+  height: 18px !important;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+  padding-right: 7px;
+}
+#tasks-page-wrapper .select2-search::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #adb0b9;
+  font-size: 12px;
+  border-color: #adb0b9 transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px 4px 0 4px;
+  height: 0;
+  width: 0;
+}
+#tasks-page-wrapper .select2-container .select2-selection--multiple .select2-search--inline {
+  height: 0 !important;
+}
+#tasks-page-wrapper .select2-container--open .select2-selection--multiple .select2-search--inline,
+#tasks-page-wrapper .select2-container--focus .select2-selection--multiple .select2-search--inline {
+  height: 18px !important;
+}
+#tasks-page-wrapper .select2-selection__rendered {
+  width: 100%;
+  height: auto !important;
+  margin: 0;
+  background-color: white !important;
+  display: flex;
+  flex-direction: column !important;
+  justify-content: flex-start;
+  gap: 5px;
+  padding: 0 11px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  color: #3d445c;
+  padding: 0;
+}
+#tasks-page-wrapper .select2-results__option {
+  padding: 9px 13px;
+  height: auto;
+  font-size: 13px;
+}
+#tasks-page-wrapper .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+  background-color: #fc6b40;
+  color: white;
+}
+#tasks-page-wrapper .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  background-color: transparent;
+  border: none;
+  color: #3d445c;
+  margin: 0;
+  padding: 0;
+  height: 18px;
+}
+#tasks-page-wrapper .select2-selection__choice__remove {
+  position: static;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 19px;
+  width: 19px;
+  height: 19px;
+  font-size: 19px;
+  padding: 2px;
+}
+#tasks-page-wrapper .select2-dropdown {
+  background: white;
+  border: 1px solid #CDD4D9;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  color: #3d445c;
+}
+#tasks-page-wrapper .select2-search__field {
+  width: 100% !important;
+  height: 18px !important;
+  font-size: 13px !important;
+  line-height: 1;
+  margin: 0;
+  position: relative;
+  resize: none !important;
+}
+#tasks-page-wrapper .select2-search__field::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: #adb0b9;
+}
 
 #tasks-filter-block .filters-panel__field-wrapper,
 #create-task-modal .filters-panel__field-wrapper {
@@ -2939,92 +3062,6 @@ body.modal-open {
   font-weight: 600;
   line-height: 130%;
   margin: 0 0 12px;
-}
-#tasks-filter-block .select2-selection,
-#create-task-modal .select2-selection {
-  background: white;
-  border: 1px solid #CDD4D9;
-  border-radius: 4px;
-  width: 100%;
-  min-height: 42px;
-  cursor: pointer;
-}
-#tasks-filter-block .select2-selection__arrow,
-#create-task-modal .select2-selection__arrow {
-  top: 50%;
-  transform: translateY(-50%);
-}
-#tasks-filter-block .select2-search.select2-search--inline,
-#create-task-modal .select2-search.select2-search--inline {
-  display: none;
-}
-#tasks-filter-block .select2-selection--multiple,
-#create-task-modal .select2-selection--multiple {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin: 0;
-  padding: 0;
-}
-#tasks-filter-block .select2-selection__rendered,
-#create-task-modal .select2-selection__rendered {
-  width: 100%;
-  height: auto !important;
-  margin: 9.5px 0;
-  display: flex;
-  flex-direction: column !important;
-  background-color: white;
-  justify-content: flex-start;
-  gap: 5px;
-  padding: 0 11px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 16px;
-  color: #3d445c;
-  padding: 0 11px;
-}
-
-#tasks-filter-block .select2-results__option,
-#create-task-modal .select2-results__option{
-    padding: 6px;
-    height: auto;
-    font-size: 13px;
-  }
-
-#tasks-filter-block .select2-container--default .select2-selection--multiple .select2-selection__choice,
-#create-task-modal .select2-container--default .select2-selection--multiple .select2-selection__choice {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 5px;
-  background-color: transparent;
-  align-items: center;
-  border: none;
-  color: #3d445c;
-  margin: 0;
-  padding: 0;
-  height: 18px;
-}
-#tasks-filter-block .select2-selection__choice__remove,
-#create-task-modal .select2-selection__choice__remove {
-  position: static;
-  border: none;
-  padding: 2px;
-}
-#tasks-filter-block .select2-dropdown,
-#create-task-modal .select2-dropdown {
-  background: white;
-  border: 1px solid #CDD4D9;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 16px;
-  color: #3d445c;
 }
 
 .visually-hidden {
@@ -3336,21 +3373,6 @@ body.modal-open {
 #create-task-modal .complete-task-modal__field-wrapper {
   padding-top: 0;
 }
-#create-task-modal .select2-selection__rendered {
-  justify-content: flex-start;
-  flex-direction: row;
-}
-
-  
-#tasks-filter-block .select2-selection--single .select2-selection__rendered,
-#create-task-modal .select2-selection--single .select2-selection__rendered {
- justify-content: flex-start !important;
-    align-items: center !important;
-    margin: 0;
-    height: 42px !important;
-    flex-direction: row !important;
-}
-
 #create-task-modal .create-task-termin-type-btn {
   border: none;
   background-color: transparent;
@@ -3362,7 +3384,6 @@ body.modal-open {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-
 </style>
 
 
@@ -3423,109 +3444,96 @@ $(document).ready(function () {
   // --- Инициализация Select2 ---
 
   // Общая конфигурация для Select2 с множественным выбором
-  const select2Options = (parentEl) => ({
-    dropdownParent: $(parentEl), // Указываем родительский элемент для выпадающего списка
-    width: "100%", // Задаем ширину, чтобы соответствовать стилю
-    minimumResultsForSearch: 0, // Показываем строку поиска внутри выпадающего списка
+  const select2Options = (parentEl, extraOptions = {}) => ({
+    dropdownParent: $(parentEl),
+    width: "100%",
+    minimumResultsForSearch: 0,
     multiple: true,
+    placeholder: "Оберіть...",
+    ...extraOptions,
   });
 
-  // Инициализация для селектов в панели фильтров
-  $("#taskTypeFilter").select2(select2Options("#tasks-filter-block"));
-  $("#taskStatusFilter").select2(select2Options("#tasks-filter-block"));
-  // Специальная инициализация для селекта "Термін" с поддержкой HTML
+  // Функция для обработки single-behavior: при выборе нового элемента удаляем предыдущие
+  const enforceSingleSelection = (selectId) => {
+    $(`#${selectId}`).on("select2:select", function (e) {
+      const selectedValue = e.params.data.id;
+      $(this).val([selectedValue]).trigger("change");
+    });
+  };
+
+  // Инициализация селектов в панели фильтров (все multiple)
+  $("#taskTypeFilter").select2(select2Options("#tasks-filter-block", { placeholder: "Оберіть тип задачі" }));
+  $("#taskStatusFilter").select2(select2Options("#tasks-filter-block", { placeholder: "Оберіть статус задачі" }));
   $("#taskTermFilter").select2({
-    ...select2Options("#tasks-filter-block"),
+    ...select2Options("#tasks-filter-block", { placeholder: "Оберіть термін виконання задачі" }),
     templateResult: function (data) {
-      // Для плейсхолдера или если нет элемента, возвращаем просто текст
       if (!data.element) {
         return data.text;
       }
-      // Возвращаем HTML-содержимое <option> как строку, чтобы не перемещать DOM-узлы
       return $(data.element).html();
     },
     templateSelection: function (data) {
-      // Для выбранного элемента показываем только текстовое содержимое
       if (!data.element) {
         return data.text;
       }
-      // Возвращаем HTML-содержимое, чтобы стили применились и к выбранному элементу
       return $(data.element).html();
     },
     escapeMarkup: function (markup) {
-      // Разрешаем HTML, так как templateResult возвращает HTML-строку
       return markup;
     },
   });
-  $("#tasksResponsibleFilter").select2(select2Options("#tasks-filter-block"));
+  $("#tasksResponsibleFilter").select2(select2Options("#tasks-filter-block", { placeholder: "Оберіть відповідальних" }));
 
-  // --- Инициализация селектов в модальном окне "Создать задачу" ---
-
-  // Инициализация селекта "Тип задачи" как ОДИНОЧНЫЙ выбор (согласно запросу)
-  const createTaskTypeSelect = $("#create-task-type-select");
-  createTaskTypeSelect
+  // Инициализация селектов в модальном окне "Создать задачу" (multiple с single-behavior)
+  $("#create-task-type-select")
     .select2({
-      dropdownParent: $("#create-task-modal"),
-      width: "100%",
-      minimumResultsForSearch: Infinity, // Скрываем поиск, так как опций мало
-      placeholder: "Оберіть тип задачі",
+      ...select2Options("#create-task-modal", { minimumResultsForSearch: Infinity, placeholder: "Оберіть тип задачі" }),
     })
     .val(null)
     .trigger("change");
+  enforceSingleSelection("create-task-type-select");
 
-  const createTaskPrioritySelect = $("#create-task-priority");
-  createTaskPrioritySelect
+  $("#create-task-priority")
     .select2({
-      dropdownParent: $("#create-task-modal"),
-      width: "100%",
-      minimumResultsForSearch: Infinity,
-      placeholder: "Оберіть пріоритет",
-
-      templateResult: function (data) {
-        // Для плейсхолдера или если нет элемента, возвращаем просто текст
-        if (!data.element) {
-          return data.text;
-        }
-        // Возвращаем HTML-содержимое <option> как строку, чтобы не перемещать DOM-узлы
-        return $(data.element).html();
-      },
-      templateSelection: function (data) {
-        // Для выбранного элемента показываем только текстовое содержимое
-        if (!data.element) {
-          return data.text;
-        }
-        // Возвращаем HTML-содержимое, чтобы стили применились и к выбранному элементу
-        return $(data.element).html();
-      },
-      escapeMarkup: function (markup) {
-        // Разрешаем HTML, так как templateResult возвращает HTML-строку
-        return markup;
-      },
+      ...select2Options("#create-task-modal", {
+        minimumResultsForSearch: Infinity,
+        placeholder: "Оберіть пріоритет",
+        templateResult: function (data) {
+          if (!data.element) {
+            return data.text;
+          }
+          return $(data.element).html();
+        },
+        templateSelection: function (data) {
+          if (!data.element) {
+            return data.text;
+          }
+          return $(data.element).html();
+        },
+        escapeMarkup: function (markup) {
+          return markup;
+        },
+      }),
     })
     .val(null)
     .trigger("change");
+  enforceSingleSelection("create-task-priority");
 
-  const createTaskClientSelect = $("#create-task-client");
-  createTaskClientSelect
+  $("#create-task-client")
     .select2({
-      dropdownParent: $("#create-task-modal"),
-      width: "100%",
-      minimumResultsForSearch: Infinity,
-      placeholder: "Оберіть ліда/клієнта",
+      ...select2Options("#create-task-modal", { minimumResultsForSearch: Infinity, placeholder: "Оберіть ліда/клієнта" }),
     })
     .val(null)
     .trigger("change");
+  enforceSingleSelection("create-task-client");
 
-  const createTaskResponsibleSelect = $("#create-task-responsible");
-  createTaskResponsibleSelect
+  $("#create-task-responsible")
     .select2({
-      dropdownParent: $("#create-task-modal"),
-      width: "100%",
-      minimumResultsForSearch: Infinity,
-      placeholder: "Оберіть відповідального",
+      ...select2Options("#create-task-modal", { minimumResultsForSearch: Infinity, placeholder: "Оберіть відповідального" }),
     })
     .val(null)
     .trigger("change");
+  enforceSingleSelection("create-task-responsible");
 
   // A single function to rule them all: updates the view based on active tab and view mode.
   function updateTaskView() {
@@ -3941,6 +3949,5 @@ $(document).ready(function () {
   // Initial view setup on page load
   updateTaskView();
 });
-
 
   </script>
