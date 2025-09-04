@@ -611,6 +611,11 @@ body.modal-open {
       border-radius: 4px;
       padding: 20px;
       overflow-y: auto;
+      max-width: 90vw;
+
+      @media (max-width:799px) {
+        width: 600px;
+      }
     }
 
     & .details-content-btn-wrapper {
@@ -649,10 +654,10 @@ body.modal-open {
     background-color: white;
     border-radius: 10px;
     z-index: 10102 !important;
-  }
 
-  & #change-task-time-modal {
-    width: 600px;
+    @media (max-width:799px) {
+      width: 500px;
+    }
   }
 
   & .complete-task-modal-btn-wrapper {
@@ -806,7 +811,7 @@ body.modal-open {
       transform: translateY(-50%);
       color: $placeholder-color;
       font-size: 12px;
-      border-color: $placeholder-color transparent transparent transparent;
+      border-color: #888 transparent transparent transparent;
       border-style: solid;
       border-width: 5px 4px 0 4px;
       height: 0;
@@ -1052,7 +1057,7 @@ body.modal-open {
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  color: $text-color;
+  color: $primary-color;
   font-weight: 600;
   height: 42px;
 }

@@ -2945,7 +2945,7 @@ body.modal-open {
   transform: translateY(-50%);
   color: #adb0b9;
   font-size: 12px;
-  border-color: #adb0b9 transparent transparent transparent;
+  border-color: #888 transparent transparent transparent;
   border-style: solid;
   border-width: 5px 4px 0 4px;
   height: 0;
@@ -3154,7 +3154,7 @@ body.modal-open {
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-  color: #3d445c;
+  color: #fc6b40;
   font-weight: 600;
   height: 42px;
 }
