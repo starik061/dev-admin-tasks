@@ -551,4 +551,7 @@ $(document).ready(function () {
 
   // Initial view setup on page load
   updateTaskView();
+
+  // Disable search field in Select2 to prevent text input
+  $("#tasks-page-wrapper .select2-search__field").attr("readonly", true).attr("tabindex", "-1");
 });

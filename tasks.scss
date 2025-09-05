@@ -825,14 +825,25 @@ body.modal-open {
   }
 
   /* Скрываем поле поиска по умолчанию для множественных селектов */
-  .select2-container .select2-selection--multiple .select2-search--inline {
-    height: 0 !important;
-  }
+  // .select2-container .select2-selection--multiple .select2-search--inline {
+  //   height: 0 !important;
+  // }
 
   /* Показываем поле поиска, когда выпадающий список открыт или Select2 имеет фокус */
-  .select2-container--open .select2-selection--multiple .select2-search--inline,
-  .select2-container--focus .select2-selection--multiple .select2-search--inline {
+  // .select2-container--open .select2-selection--multiple .select2-search--inline,
+  // .select2-container--focus .select2-selection--multiple .select2-search--inline {
+  //   height: 18px !important;
+  // }
+
+  /* Скрываем поле поиска по умолчанию для множественных селектов */
+  .select2-container .select2-selection--multiple .select2-search--inline {
+    display: none;
     height: 18px !important;
+  }
+
+  /* Показываем поле поиска, когда нет выбранных опций (для плейсхолдера) */
+  .select2-container .select2-selection--multiple:not(:has(.select2-selection__choice)) .select2-search--inline {
+    display: block;
   }
 
   // & .select2-selection--multiple {
@@ -922,6 +933,9 @@ body.modal-open {
     margin: 0;
     position: relative;
     resize: none !important;
+    pointer-events: none;
+    cursor: pointer;
+    user-select: none;
 
     &::placeholder {
       font-style: normal;

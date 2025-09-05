@@ -2335,6 +2335,8 @@ body.modal-open {
   font-weight: normal;
   /* Скрываем поле поиска по умолчанию для множественных селектов */
   /* Показываем поле поиска, когда выпадающий список открыт или Select2 имеет фокус */
+  /* Скрываем поле поиска по умолчанию для множественных селектов */
+  /* Показываем поле поиска, когда нет выбранных опций (для плейсхолдера) */
 }
 #tasks-page-wrapper input:focus-visible, #tasks-page-wrapper select:focus-visible, #tasks-page-wrapper textarea:focus-visible {
   outline: none;
@@ -2963,11 +2965,11 @@ body.modal-open {
   width: 0;
 }
 #tasks-page-wrapper .select2-container .select2-selection--multiple .select2-search--inline {
-  height: 0 !important;
-}
-#tasks-page-wrapper .select2-container--open .select2-selection--multiple .select2-search--inline,
-#tasks-page-wrapper .select2-container--focus .select2-selection--multiple .select2-search--inline {
+  display: none;
   height: 18px !important;
+}
+#tasks-page-wrapper .select2-container .select2-selection--multiple:not(:has(.select2-selection__choice)) .select2-search--inline {
+  display: block;
 }
 #tasks-page-wrapper .select2-selection__rendered {
   width: 100%;
@@ -3040,6 +3042,9 @@ body.modal-open {
   margin: 0;
   position: relative;
   resize: none !important;
+  pointer-events: none;
+  cursor: pointer;
+  user-select: none;
 }
 #tasks-page-wrapper .select2-search__field::placeholder {
   font-style: normal;
@@ -3974,6 +3979,8 @@ $(document).ready(function () {
 
   // Initial view setup on page load
   updateTaskView();
-});
 
+  // Disable search field in Select2 to prevent text input
+  $("#tasks-page-wrapper .select2-search__field").attr("readonly", true).attr("tabindex", "-1");
+});
   </script>
