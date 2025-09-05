@@ -595,6 +595,11 @@ body.modal-open {
 
   // Calendar details modal styles
 
+  & #calendar-task-details-modal {
+    max-height: 90vh;
+    overflow: auto;
+  }
+
   & .details-modal-container {
     position: fixed;
     top: 50%;
@@ -1318,6 +1323,18 @@ body.modal-open {
 // Create task modal
 
 #create-task-modal {
+  max-height: 90vh;
+  overflow-y: auto;
+
+  & #create-task-description {
+    height: calc(16.9px * 5);
+    overflow: auto;
+
+    @media (max-height: 799px) {
+      height: calc(16.9px * 4);
+    }
+  }
+
   & .complete-task-modal__field-wrapper {
     padding-top: 0;
   }

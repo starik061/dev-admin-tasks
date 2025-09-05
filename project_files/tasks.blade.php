@@ -2769,6 +2769,10 @@ body.modal-open {
   border-radius: 4px;
   cursor: pointer;
 }
+#tasks-page-wrapper #calendar-task-details-modal {
+  max-height: 90vh;
+  overflow: auto;
+}
 #tasks-page-wrapper .details-modal-container {
   position: fixed;
   top: 50%;
@@ -3379,6 +3383,19 @@ body.modal-open {
   border: 1px solid #CDD4D9;
 }
 
+#create-task-modal {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+#create-task-modal #create-task-description {
+  height: 84.5px;
+  overflow: auto;
+}
+@media (max-height: 799px) {
+  #create-task-modal #create-task-description {
+    height: 67.6px;
+  }
+}
 #create-task-modal .complete-task-modal__field-wrapper {
   padding-top: 0;
 }
@@ -3393,7 +3410,6 @@ body.modal-open {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
-
 </style>
 
 
