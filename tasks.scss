@@ -884,6 +884,10 @@ body.modal-open {
     color: white;
   }
 
+  .select2-container--open {
+    z-index: 10103;
+  }
+
   & .select2-container--default .select2-selection--multiple .select2-selection__choice {
     width: 100%;
     display: flex;
