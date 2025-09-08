@@ -2999,6 +2999,9 @@ body.modal-open {
   background-color: #fc6b40;
   color: white;
 }
+#tasks-page-wrapper .select2-container--open {
+  z-index: 10103;
+}
 #tasks-page-wrapper .select2-container--default .select2-selection--multiple .select2-selection__choice {
   width: 100%;
   display: flex;
