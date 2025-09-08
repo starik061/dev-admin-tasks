@@ -2259,7 +2259,6 @@ $webp = "";
       <div class="complete-task-modal__field-wrapper">
         <label for="create-task-client">Лід/Клієнт</label>
         <select name="create_task_client" id="create-task-client" style="width: 100%;">
-          <option value="">Оберіть</option>
           <option value="1">Sushi Master</option>
           <option value="2">ТОВ "Нова справа"</option>
         </select>
@@ -2268,9 +2267,12 @@ $webp = "";
       <div class="complete-task-modal__field-wrapper">
         <label for="create-task-responsible">Відповідальний</label>
         <select name="create_task_responsible" id="create-task-responsible" style="width: 100%;">
-          <option value="">Оберіть</option>
           <option value="1">Іванов І.І.</option>
           <option value="2">Петров П.П.</option>
+          <option value="3">Сид І.І.</option>
+          <option value="4">Галя П.П.</option>
+          <option value="5">Мирон І.І.</option>
+          <option value="6">Сашко П.П.</option>
         </select>
       </div>
 
@@ -3476,7 +3478,7 @@ $(document).ready(function () {
 
   // Общая конфигурация для Select2 с множественным выбором
   const select2Options = (parentEl, extraOptions = {}) => ({
-    dropdownParent: $(parentEl),
+    dropdownParent: $("#tasks-page-wrapper"),
     width: "100%",
     minimumResultsForSearch: 0,
     multiple: true,

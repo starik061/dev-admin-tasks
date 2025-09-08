@@ -48,7 +48,7 @@ $(document).ready(function () {
 
   // Общая конфигурация для Select2 с множественным выбором
   const select2Options = (parentEl, extraOptions = {}) => ({
-    dropdownParent: $(parentEl),
+    dropdownParent: $("#tasks-page-wrapper"),
     width: "100%",
     minimumResultsForSearch: 0,
     multiple: true,
