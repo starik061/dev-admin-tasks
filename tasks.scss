@@ -778,180 +778,6 @@ body.modal-open {
     }
   }
 
-  // Ovverride select2 library stiles on tasks page
-  & .select2-selection {
-    background: white;
-    border: 1px solid $border-color;
-    border-radius: 4px;
-    width: 100%;
-    padding: 9px 13px;
-    min-height: 42px;
-    cursor: pointer;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-  }
-
-  // & .select2-selection__arrow {
-  //   top: 50%;
-  //   transform: translateY(-50%);
-  // }
-
-  & .select2-search {
-    margin: 0;
-    height: 18px !important;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding-left: 4px;
-    padding-right: 7px;
-
-    &::after {
-      content: "";
-      position: absolute;
-      right: 5px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: $placeholder-color;
-      font-size: 12px;
-      border-color: #888 transparent transparent transparent;
-      border-style: solid;
-      border-width: 5px 4px 0 4px;
-      height: 0;
-      width: 0;
-    }
-  }
-
-  /* Скрываем поле поиска по умолчанию для множественных селектов */
-  // .select2-container .select2-selection--multiple .select2-search--inline {
-  //   height: 0 !important;
-  // }
-
-  /* Показываем поле поиска, когда выпадающий список открыт или Select2 имеет фокус */
-  // .select2-container--open .select2-selection--multiple .select2-search--inline,
-  // .select2-container--focus .select2-selection--multiple .select2-search--inline {
-  //   height: 18px !important;
-  // }
-
-  /* Скрываем поле поиска по умолчанию для множественных селектов */
-  .select2-container .select2-selection--multiple .select2-search--inline {
-    display: none;
-    height: 18px !important;
-  }
-
-  /* Показываем поле поиска, когда нет выбранных опций (для плейсхолдера) */
-  .select2-container .select2-selection--multiple:not(:has(.select2-selection__choice)) .select2-search--inline {
-    display: block;
-  }
-
-  // & .select2-selection--multiple {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: flex-start;
-  //   gap: 5px;
-  //   margin: 0;
-  //   padding: 0;
-  // }
-
-  & .select2-selection__rendered {
-    width: 100%;
-    height: auto !important;
-    margin: 0;
-    background-color: white !important;
-    display: flex;
-    flex-direction: column !important;
-    justify-content: flex-start;
-    gap: 5px;
-    padding: 0 11px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 16px;
-    color: $text-color;
-    padding: 0;
-  }
-
-  & .select2-results__option {
-    padding: 9px 13px;
-    height: auto;
-    font-size: 13px;
-  }
-
-  & .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
-    background-color: $primary-color;
-    color: white;
-  }
-
-  .select2-container--open {
-    z-index: 10103;
-  }
-
-  & .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    width: 100%;
-    display: flex;
-    // flex-direction: row-reverse;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5px;
-    background-color: transparent;
-    border: none;
-    color: $text-color;
-    margin: 0;
-    padding: 0;
-    height: 18px;
-  }
-
-  & .select2-selection__choice__remove {
-    position: static;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 19px;
-    width: 19px;
-    height: 19px;
-    font-size: 19px;
-    padding: 2px;
-  }
-
-  & .select2-dropdown {
-    background: white;
-    border: 1px solid $border-color;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 13px;
-    line-height: 16px;
-    color: $text-color;
-  }
-
-  & .select2-search__field {
-    width: 100% !important;
-    height: 18px !important;
-    font-size: 13px !important;
-    line-height: 1;
-    margin: 0;
-    position: relative;
-    resize: none !important;
-    pointer-events: none;
-    cursor: pointer;
-    user-select: none;
-
-    &::placeholder {
-      font-style: normal;
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 18px;
-      color: $placeholder-color;
-    }
-  }
-
-
-
 }
 
 // Filters panel
@@ -987,8 +813,6 @@ body.modal-open {
 
 
 }
-
-
 
 .visually-hidden {
   position: absolute;
@@ -1371,4 +1195,169 @@ body.modal-open {
   }
 }
 
-// Select2 library overrides
+
+// Ovverride select2 library stiles on tasks page
+.tasks-page-body {
+
+  & .select2-selection {
+    background: white;
+    border: 1px solid $border-color !important;
+    border-radius: 4px;
+    width: 100%;
+    padding: 9px 13px !important;
+    min-height: 42px !important;
+    cursor: pointer !important;
+    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  // & .select2-selection__arrow {
+  //   top: 50%;
+  //   transform: translateY(-50%);
+  // }
+
+  & .select2-search {
+    margin: 0;
+    height: 18px !important;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 4px;
+    padding-right: 7px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $placeholder-color;
+      font-size: 12px;
+      border-color: #888 transparent transparent transparent;
+      border-style: solid;
+      border-width: 5px 4px 0 4px;
+      height: 0;
+      width: 0;
+    }
+  }
+
+  /* Скрываем поле поиска по умолчанию для множественных селектов */
+  // .select2-container .select2-selection--multiple .select2-search--inline {
+  //   height: 0 !important;
+  // }
+
+  /* Показываем поле поиска, когда выпадающий список открыт или Select2 имеет фокус */
+  // .select2-container--open .select2-selection--multiple .select2-search--inline,
+  // .select2-container--focus .select2-selection--multiple .select2-search--inline {
+  //   height: 18px !important;
+  // }
+
+  /* Скрываем поле поиска по умолчанию для множественных селектов */
+  .select2-container .select2-selection--multiple .select2-search--inline {
+    display: none;
+    height: 18px !important;
+  }
+
+  /* Показываем поле поиска, когда нет выбранных опций (для плейсхолдера) */
+  .select2-container .select2-selection--multiple:not(:has(.select2-selection__choice)) .select2-search--inline {
+    display: block;
+  }
+
+  & .select2-selection__rendered {
+    width: 100%;
+    height: auto !important;
+    margin: 0;
+    background-color: white !important;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 0 11px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 16px;
+    color: $text-color;
+    padding: 0;
+  }
+
+  & .select2-results__option {
+    padding: 9px 13px !important;
+    height: auto !important;
+    font-size: 13px !important;
+  }
+
+  & .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: $primary-color;
+    color: white;
+  }
+
+  .select2-container--open {
+    z-index: 10103;
+  }
+
+  & .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    width: 100%;
+    display: flex;
+    // flex-direction: row-reverse;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    background-color: transparent;
+    border: none;
+    color: $text-color;
+    margin: 0;
+    padding: 0;
+    height: 18px;
+  }
+
+  & .select2-selection__choice__remove {
+    position: static;
+    border: none !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    width: 19px;
+    width: 19px;
+    height: 19px;
+    font-size: 19px !important;
+    padding: 2px !important;
+  }
+
+  & .select2-dropdown {
+    background: white;
+    border: 1px solid $border-color !important;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-style: normal;
+    font-weight: 600 !important;
+    font-size: 13px;
+    line-height: 16px !important;
+    color: $text-color !important;
+  }
+
+  & .select2-search__field {
+    width: 100% !important;
+    height: 18px !important;
+    font-size: 13px !important;
+    line-height: 1 !important;
+    margin: 0 !important;
+    position: relative;
+    resize: none !important;
+    pointer-events: none;
+    cursor: pointer;
+    user-select: none;
+
+    &::placeholder {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      color: $placeholder-color;
+    }
+  }
+}

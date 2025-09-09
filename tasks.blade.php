@@ -1,5 +1,5 @@
 @include('add.head')
-<body>
+<body class="tasks-page-body">
   @include('add.header')
   @include('add.menu')
   @include('add.bread')
@@ -2334,10 +2334,6 @@ body.modal-open {
   font-family: "Helvetica Neue", Helvetica, "helvetica", Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
-  /* Скрываем поле поиска по умолчанию для множественных селектов */
-  /* Показываем поле поиска, когда выпадающий список открыт или Select2 имеет фокус */
-  /* Скрываем поле поиска по умолчанию для множественных селектов */
-  /* Показываем поле поиска, когда нет выбранных опций (для плейсхолдера) */
 }
 #tasks-page-wrapper input:focus-visible, #tasks-page-wrapper select:focus-visible, #tasks-page-wrapper textarea:focus-visible {
   outline: none;
@@ -2928,135 +2924,6 @@ body.modal-open {
 #tasks-page-wrapper .complete-task-modal__show-datepicker-btn:hover {
   background-color: #f5f5f5;
 }
-#tasks-page-wrapper .select2-selection {
-  background: white;
-  border: 1px solid #CDD4D9;
-  border-radius: 4px;
-  width: 100%;
-  padding: 9px 13px;
-  min-height: 42px;
-  cursor: pointer;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-}
-#tasks-page-wrapper .select2-search {
-  margin: 0;
-  height: 18px !important;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding-left: 4px;
-  padding-right: 7px;
-}
-#tasks-page-wrapper .select2-search::after {
-  content: "";
-  position: absolute;
-  right: 5px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #adb0b9;
-  font-size: 12px;
-  border-color: #888 transparent transparent transparent;
-  border-style: solid;
-  border-width: 5px 4px 0 4px;
-  height: 0;
-  width: 0;
-}
-#tasks-page-wrapper .select2-container .select2-selection--multiple .select2-search--inline {
-  display: none;
-  height: 18px !important;
-}
-#tasks-page-wrapper .select2-container .select2-selection--multiple:not(:has(.select2-selection__choice)) .select2-search--inline {
-  display: block;
-}
-#tasks-page-wrapper .select2-selection__rendered {
-  width: 100%;
-  height: auto !important;
-  margin: 0;
-  background-color: white !important;
-  display: flex;
-  flex-direction: column !important;
-  justify-content: flex-start;
-  gap: 5px;
-  padding: 0 11px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 16px;
-  color: #3d445c;
-  padding: 0;
-}
-#tasks-page-wrapper .select2-results__option {
-  padding: 9px 13px;
-  height: auto;
-  font-size: 13px;
-}
-#tasks-page-wrapper .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
-  background-color: #fc6b40;
-  color: white;
-}
-#tasks-page-wrapper .select2-container--open {
-  z-index: 10103;
-}
-#tasks-page-wrapper .select2-container--default .select2-selection--multiple .select2-selection__choice {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 5px;
-  background-color: transparent;
-  border: none;
-  color: #3d445c;
-  margin: 0;
-  padding: 0;
-  height: 18px;
-}
-#tasks-page-wrapper .select2-selection__choice__remove {
-  position: static;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 19px;
-  width: 19px;
-  height: 19px;
-  font-size: 19px;
-  padding: 2px;
-}
-#tasks-page-wrapper .select2-dropdown {
-  background: white;
-  border: 1px solid #CDD4D9;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 16px;
-  color: #3d445c;
-}
-#tasks-page-wrapper .select2-search__field {
-  width: 100% !important;
-  height: 18px !important;
-  font-size: 13px !important;
-  line-height: 1;
-  margin: 0;
-  position: relative;
-  resize: none !important;
-  pointer-events: none;
-  cursor: pointer;
-  user-select: none;
-}
-#tasks-page-wrapper .select2-search__field::placeholder {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 18px;
-  color: #adb0b9;
-}
 
 #tasks-filter-block .filters-panel__field-wrapper,
 #create-task-modal .filters-panel__field-wrapper {
@@ -3418,6 +3285,142 @@ body.modal-open {
 #create-task-modal .create-task-termin-type-btn:hover {
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.tasks-page-body {
+  /* Скрываем поле поиска по умолчанию для множественных селектов */
+  /* Показываем поле поиска, когда выпадающий список открыт или Select2 имеет фокус */
+  /* Скрываем поле поиска по умолчанию для множественных селектов */
+  /* Показываем поле поиска, когда нет выбранных опций (для плейсхолдера) */
+}
+.tasks-page-body .select2-selection {
+  background: white;
+  border: 1px solid #CDD4D9 !important;
+  border-radius: 4px;
+  width: 100%;
+  padding: 9px 13px !important;
+  min-height: 42px !important;
+  cursor: pointer !important;
+  box-sizing: border-box;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.tasks-page-body .select2-search {
+  margin: 0;
+  height: 18px !important;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 4px;
+  padding-right: 7px;
+}
+.tasks-page-body .select2-search::after {
+  content: "";
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #adb0b9;
+  font-size: 12px;
+  border-color: #888 transparent transparent transparent;
+  border-style: solid;
+  border-width: 5px 4px 0 4px;
+  height: 0;
+  width: 0;
+}
+.tasks-page-body .select2-container .select2-selection--multiple .select2-search--inline {
+  display: none;
+  height: 18px !important;
+}
+.tasks-page-body .select2-container .select2-selection--multiple:not(:has(.select2-selection__choice)) .select2-search--inline {
+  display: block;
+}
+.tasks-page-body .select2-selection__rendered {
+  width: 100%;
+  height: auto !important;
+  margin: 0;
+  background-color: white !important;
+  display: flex;
+  flex-direction: column !important;
+  justify-content: flex-start;
+  gap: 5px;
+  padding: 0 11px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 16px;
+  color: #3d445c;
+  padding: 0;
+}
+.tasks-page-body .select2-results__option {
+  padding: 9px 13px !important;
+  height: auto !important;
+  font-size: 13px !important;
+}
+.tasks-page-body .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+  background-color: #fc6b40;
+  color: white;
+}
+.tasks-page-body .select2-container--open {
+  z-index: 10103;
+}
+.tasks-page-body .select2-container--default .select2-selection--multiple .select2-selection__choice {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  background-color: transparent;
+  border: none;
+  color: #3d445c;
+  margin: 0;
+  padding: 0;
+  height: 18px;
+}
+.tasks-page-body .select2-selection__choice__remove {
+  position: static;
+  border: none !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  width: 19px;
+  width: 19px;
+  height: 19px;
+  font-size: 19px !important;
+  padding: 2px !important;
+}
+.tasks-page-body .select2-dropdown {
+  background: white;
+  border: 1px solid #CDD4D9 !important;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  font-style: normal;
+  font-weight: 600 !important;
+  font-size: 13px;
+  line-height: 16px !important;
+  color: #3d445c !important;
+}
+.tasks-page-body .select2-search__field {
+  width: 100% !important;
+  height: 18px !important;
+  font-size: 13px !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  position: relative;
+  resize: none !important;
+  pointer-events: none;
+  cursor: pointer;
+  user-select: none;
+}
+.tasks-page-body .select2-search__field::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: #adb0b9;
 }
 </style>
 
